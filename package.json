@@ -3,9 +3,11 @@
   "bugs": {
     "url": "https://github.com/Delemangi/eslint-config-kozle/issues"
   },
-  "dependencies": {},
   "description": "Very strict ESLint config",
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint": "^9.3.0",
+    "typescript": "^5.4.5"
+  },
   "engines": {
     "node": ">=20.0.0"
   },
@@ -17,8 +19,10 @@
     "type": "git",
     "url": "https://github.com/Delemangi/eslint-config-kozle.git"
   },
-  "scripts": {
+  "peerDependencies": {
+    "eslint": "^9.0.0"
   },
+  "scripts": {},
   "type": "module",
   "version": "0.0.1"
 }
