@@ -5,24 +5,33 @@
   },
   "description": "Very strict ESLint config",
   "devDependencies": {
+    "@types/eslint": "^8.56.10",
     "eslint": "^9.3.0",
     "typescript": "^5.4.5"
   },
   "engines": {
     "node": ">=20.0.0"
   },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "lib"
+  ],
   "homepage": "https://github.com/Delemangi/eslint-config-kozle",
   "license": "MIT",
-  "main": "src/main.ts",
+  "main": "lib/index.js",
   "name": "eslint-config-kozle",
+  "peerDependencies": {
+    "eslint": "^9.0.0"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Delemangi/eslint-config-kozle.git"
   },
-  "peerDependencies": {
-    "eslint": "^9.0.0"
+  "scripts": {
+    "build": "tsc"
   },
-  "scripts": {},
   "type": "module",
+  "types": "lib/index.d.ts",
   "version": "0.0.1"
 }

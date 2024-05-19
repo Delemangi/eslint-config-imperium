@@ -20,7 +20,7 @@
     "noUncheckedIndexedAccess": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "outDir": "dist",
+    "outDir": "lib",
     "resolveJsonModule": true,
     "strict": true,
     "target": "ESNext",
