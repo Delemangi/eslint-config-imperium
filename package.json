@@ -3,6 +3,9 @@
   "bugs": {
     "url": "https://github.com/Delemangi/eslint-config-kozle/issues"
   },
+  "dependencies": {
+    "globals": "^15.3.0"
+  },
   "description": "Very strict ESLint config",
   "devDependencies": {
     "@types/eslint": "^8.56.10",
