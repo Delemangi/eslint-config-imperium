@@ -4,11 +4,13 @@
     "url": "https://github.com/Delemangi/eslint-config-kozle/issues"
   },
   "dependencies": {
+    "@typescript-eslint/parser": "^8.0.0-alpha.14",
     "globals": "^15.3.0"
   },
   "description": "Very strict ESLint config",
   "devDependencies": {
     "@types/eslint": "^8.56.10",
+    "@typescript-eslint/eslint-plugin": "^8.0.0-alpha.14",
     "eslint": "^9.3.0",
     "rimraf": "^5.0.7",
     "typescript": "^5.4.5"
