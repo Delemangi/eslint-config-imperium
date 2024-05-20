@@ -22,7 +22,11 @@
     "noUnusedParameters": true,
     "outDir": "lib",
     "resolveJsonModule": true,
+    "rootDir": "src",
     "strict": true,
-    "target": "ESNext",
-  }
+    "target": "ESNext"
+  },
+  "exclude": [
+    "**/*.js"
+  ]
 }
