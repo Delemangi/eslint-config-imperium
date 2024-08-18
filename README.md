@@ -1,1 +1,3 @@
-# Kozle ESLint Config
+# Imperium ESLint Config
+
+WIP

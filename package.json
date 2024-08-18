@@ -1,7 +1,7 @@
 {
   "author": "Delemangi",
   "bugs": {
-    "url": "https://github.com/Delemangi/eslint-config-kozle/issues"
+    "url": "https://github.com/Delemangi/eslint-config-imperium/issues"
   },
   "dependencies": {
     "@typescript-eslint/parser": "^8.0.0-alpha.14",
@@ -23,16 +23,16 @@
     "README.md",
     "lib"
   ],
-  "homepage": "https://github.com/Delemangi/eslint-config-kozle",
+  "homepage": "https://github.com/Delemangi/eslint-config-imperium",
   "license": "MIT",
   "main": "lib/index.js",
-  "name": "eslint-config-kozle",
+  "name": "eslint-config-imperium",
   "peerDependencies": {
     "eslint": "^9.0.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Delemangi/eslint-config-kozle.git"
+    "url": "https://github.com/Delemangi/eslint-config-imperium.git"
   },
   "scripts": {
     "build": "rimraf lib && tsc"
