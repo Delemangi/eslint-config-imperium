@@ -1,5 +1,6 @@
-import baseConfig from "./lib/base.js";
+import auto from "./lib/auto.js";
 
-export default {
-  ...baseConfig,
-};
+export default [
+  { ignores: ["**/*.js"] },
+  ...auto
+];

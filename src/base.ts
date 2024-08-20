@@ -1,32 +1,23 @@
-import { type Linter } from "eslint";
-import globals from "globals";
-import parser from "@typescript-eslint/parser";
+import type { Linter } from 'eslint';
+import simpleImportSort from 'eslint-plugin-simple-import-sort';
 
-const rules: Linter.RulesRecord = {
-  "array-callback-return": [
-    "error",
-    {
-      allowImplicit: true,
-    },
-  ],
-};
-
-const baseConfig: Linter.FlatConfig = {
-  languageOptions: {
-    parser,
-    parserOptions: {
-      project: true,
-    },
-    ecmaVersion: "latest",
-    sourceType: "module",
-    globals: {
-      ...globals.es2021,
-      ...globals.node,
-      ...globals.browser,
-    },
+const base: Linter.Config = {
+  files: ['**/*.{js,ts}'],
+  plugins: {
+    'simple-import-sort': simpleImportSort,
   },
-  rules,
-  files: ["**/*.{js,ts}"],
+  rules: {
+    'simple-import-sort/exports': 'error',
+    'simple-import-sort/imports': 'error',
+    'sort-keys': [
+      'error',
+      'asc',
+      {
+        caseSensitive: true,
+        natural: false,
+      },
+    ],
+  },
 };
 
-export default baseConfig;
+export default base;
