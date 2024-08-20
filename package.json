@@ -8,19 +8,20 @@
     "url": "https://github.com/Delemangi/eslint-config-imperium/issues"
   },
   "dependencies": {
+    "@stylistic/eslint-plugin": "^2.6.4",
+    "@typescript-eslint/eslint-plugin": "^8.1.0",
     "@typescript-eslint/parser": "^8.1.0",
     "eslint-plugin-n": "^17.10.2",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
     "eslint-plugin-unicorn": "^55.0.0",
     "globals": "^15.9.0"
   },
   "description": "Comprehensive ESLint configuration",
   "devDependencies": {
-    "@stylistic/eslint-plugin": "^2.6.4",
-    "@types/eslint": "^8.56.11",
-    "@types/node": "^22.4.1",
-    "@typescript-eslint/eslint-plugin": "^8.1.0",
+    "@types/eslint": "^9.6.0",
     "eslint": "^9.9.0",
-    "rimraf": "^5.0.10",
+    "eslint-plugin-react": "^7.35.0",
+    "rimraf": "^6.0.1",
     "typescript": "^5.5.4"
   },
   "engines": {
@@ -51,9 +52,9 @@
   "scripts": {
     "build": "rimraf lib && tsc",
     "format": "eslint --fix .",
-    "format:test": "npm run build && npm run format",
+    "format:dev": "npm run build && npm run format",
     "lint": "eslint .",
-    "lint:test": "npm run build && npm run lint",
+    "lint:dev": "npm run build && npm run lint",
     "package": "npm run build && npm pack"
   },
   "type": "module",
