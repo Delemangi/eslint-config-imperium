@@ -32,16 +32,6 @@ const typescript: Linter.Config = {
       },
     ],
   },
-  settings: {
-    node: {
-      tryExtensions: [
-        '.ts',
-        '.tsx',
-        '.js',
-        '.json',
-      ],
-    },
-  },
 };
 
 export default typescript;
