@@ -1,4 +1,4 @@
-import auto from "./lib/auto.js";
+import { auto } from './lib/index.js';
 
 export default [
   { ignores: ["**/*.js"] },

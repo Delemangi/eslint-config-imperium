@@ -1,15 +1,17 @@
-import auto from './auto.js';
+import type { Linter } from 'eslint';
 import base from './base/index.js';
-import node from './node/index.js';
-import react from './react.js';
+
 import style from './style.js';
 import typescript from './typescript/index.js';
 
-export default {
-  auto,
+export const auto: Linter.Config[] = [
   base,
-  node,
-  react,
-  style,
   typescript,
-};
+  style,
+];
+
+export { default as node } from './node/index.js';
+export { default as react } from './react.js';
+export { default as base } from './base/index.js';
+export { default as style } from './style.js';
+export { default as typescript } from './typescript/index.js';
