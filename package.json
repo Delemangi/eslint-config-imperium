@@ -19,7 +19,7 @@
   "description": "Comprehensive ESLint configuration",
   "devDependencies": {
     "@types/eslint": "^9.6.0",
-    "eslint": "^9.9.0",
+    "eslint": "^9.9.1",
     "eslint-plugin-react": "^7.35.0",
     "rimraf": "^6.0.1",
     "typescript": "^5.5.4"
