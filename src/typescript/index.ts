@@ -1,6 +1,8 @@
+import type { Linter } from 'eslint';
+
 import typescriptPlugin from '@typescript-eslint/eslint-plugin';
 import typescriptParser from '@typescript-eslint/parser';
-import type { Linter } from 'eslint';
+
 import rules from './rules.js';
 
 const typescript: Linter.Config = {
