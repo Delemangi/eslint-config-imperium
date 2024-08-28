@@ -11,7 +11,6 @@ export const auto: Linter.Config[] = [
 ];
 
 export { default as node } from './node/index.js';
-export { default as react } from './react.js';
 export { default as base } from './base/index.js';
 export { default as style } from './style.js';
 export { default as typescript } from './typescript/index.js';
