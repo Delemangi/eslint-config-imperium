@@ -56,48 +56,13 @@ const typescriptEslintRules = {
   '@typescript-eslint/explicit-member-accessibility': ['off'],
   '@typescript-eslint/explicit-module-boundary-types': ['off'], // Should this be disabled?
   '@typescript-eslint/init-declarations': ['off'],
-  '@typescript-eslint/max-params': ['warn', 3],
+  '@typescript-eslint/max-params': ['warn', { max: 3 }],
   '@typescript-eslint/member-ordering': ['off'],
   '@typescript-eslint/method-signature-style': [
     'error',
     'property',
   ],
-  '@typescript-eslint/naming-convention': [
-    'error',
-    {
-      format: ['strictCamelCase'],
-      selector: 'default',
-    },
-    {
-      format: ['strictCamelCase', 'StrictPascalCase'],
-      selector: ['function', 'import'],
-    },
-    {
-      format: ['StrictPascalCase'],
-      selector: ['typeLike', 'enumMember'],
-    },
-    {
-      format: ['PascalCase'],
-      prefix: ['is', 'has', 'are', 'can', 'should', 'did', 'will'],
-      selector: ['variable', 'parameter', 'accessor'],
-      types: ['boolean'],
-    },
-    {
-      format: null,
-      modifiers: ['requiresQuotes'],
-      selector: ['objectLiteralProperty'],
-    },
-    {
-      filter: {
-        match: false,
-        regex: '^(allowfullscreen|allowFullScreen|async|autofocus|autoFocus|autoplay|autoPlay|checked|defaultChecked|contenteditable|contentEditable|controls|default|defer|disabled|draggable|formnovalidate|formNoValidate|hidden|inert|ismap|itemscope|itemScope|loop|multiple|muted|nomodule|noModule|novalidate|noValidate|open|playsinline|playsInline|readonly|readOnly|required|reversed|selected|spellcheck|spellCheck)$',
-      },
-      format: ['PascalCase'],
-      prefix: ['is', 'has', 'are', 'can', 'should', 'did', 'will'],
-      selector: ['property'],
-      types: ['boolean'],
-    },
-  ],
+  '@typescript-eslint/naming-convention': ['off'], // Should this be disabled?
   '@typescript-eslint/no-array-constructor': ['error'],
   '@typescript-eslint/no-array-delete': ['error'],
   '@typescript-eslint/no-base-to-string': ['error', { ignoredTypeNames: ['RegExp'] }],

@@ -1,4 +1,5 @@
-/* eslint-disable no-magic-numbers */
+/* eslint-disable @typescript-eslint/no-magic-numbers */
+
 import type { Linter } from 'eslint';
 
 const eslintRules = {
