@@ -8,20 +8,20 @@
     "url": "https://github.com/Delemangi/eslint-config-imperium/issues"
   },
   "dependencies": {
-    "@stylistic/eslint-plugin": "^2.6.4",
-    "@typescript-eslint/eslint-plugin": "^8.3.0",
-    "@typescript-eslint/parser": "^8.3.0",
-    "eslint-plugin-n": "^17.10.2",
-    "eslint-plugin-unicorn": "^55.0.0",
-    "globals": "^15.9.0"
+    "@stylistic/eslint-plugin": "^2.9.0",
+    "@typescript-eslint/eslint-plugin": "^8.11.0",
+    "@typescript-eslint/parser": "^8.11.0",
+    "eslint-plugin-n": "^17.11.1",
+    "eslint-plugin-unicorn": "^56.0.0",
+    "globals": "^15.11.0"
   },
   "description": "Comprehensive ESLint configuration",
   "devDependencies": {
     "@types/eslint": "^9.6.1",
-    "eslint": "^9.9.1",
-    "eslint-plugin-perfectionist": "^3.3.0",
+    "eslint": "^9.13.0",
+    "eslint-plugin-perfectionist": "^3.9.1",
     "rimraf": "^6.0.1",
-    "typescript": "^5.5.4"
+    "typescript": "~5.6.3"
   },
   "engines": {
     "node": ">=16.0.0"
