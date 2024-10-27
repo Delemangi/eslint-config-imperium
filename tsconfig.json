@@ -24,9 +24,11 @@
     "resolveJsonModule": true,
     "rootDir": "src",
     "strict": true,
-    "target": "ESNext"
+    "target": "ESNext",
+    "declaration": true
   },
   "exclude": [
-    "**/*.js"
+    "**/*.js",
+    "lib"
   ]
 }

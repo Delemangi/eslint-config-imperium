@@ -1,6 +1,6 @@
 import { auto } from './lib/index.js';
 
 export default [
-  { ignores: ["**/*.js"] },
+  { ignores: ["**/*.js", "lib"] },
   ...auto
 ];
