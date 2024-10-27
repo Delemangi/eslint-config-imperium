@@ -74,6 +74,7 @@ const typescriptEslintRules = {
       ignoreVoidOperator: false,
     },
   ],
+  '@typescript-eslint/no-deprecated': ['warn'],
   '@typescript-eslint/no-dupe-class-members': ['off'],
   '@typescript-eslint/no-duplicate-enum-values': ['error'],
   '@typescript-eslint/no-duplicate-type-constituents': ['error'],
