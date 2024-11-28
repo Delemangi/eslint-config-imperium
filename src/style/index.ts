@@ -27,7 +27,7 @@ const stylistic: Linter.Config = {
   },
 };
 
-const perfectionist = perfectionistPlugin.configs['recommended-natural'] as Linter.Config;
+const perfectionist = perfectionistPlugin.configs['recommended-natural'];
 
 const style = [stylistic, perfectionist];
 
