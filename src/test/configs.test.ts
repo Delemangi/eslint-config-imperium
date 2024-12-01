@@ -13,6 +13,16 @@ test('Base Configuration', async () => {
   expect(results[0]?.messages[2]?.ruleId).toBe('eqeqeq');
 });
 
+test('Browser configuration', async () => {
+  const results = await eslint.lintFiles(['src/test/browser.ts']);
+
+  expect(results[0]?.errorCount).toBe(3);
+
+  expect(results[0]?.messages[0]?.ruleId).toBe('unicorn/prefer-dom-node-append');
+  expect(results[0]?.messages[1]?.ruleId).toBe('unicorn/prefer-dom-node-text-content');
+  expect(results[0]?.messages[2]?.ruleId).toBe('unicorn/prefer-query-selector');
+});
+
 test('React Configuration', async () => {
   const results = await eslint.lintFiles(['src/test/react.tsx']);
 
