@@ -201,9 +201,9 @@ const eslintSuggestionsRules = {
   'require-await': ['error'], // Should this be enabled?
   'require-unicode-regexp': ['error'],
   'require-yield': ['error'],
-  'sort-imports': ['off'], // Revisit this rule
-  'sort-keys': ['error'],
-  'sort-vars': ['error'],
+  'sort-imports': ['off'],
+  'sort-keys': ['off'],
+  'sort-vars': ['off'],
   'strict': ['error', 'never'],
   'symbol-description': ['error'],
   'vars-on-top': ['error'],
