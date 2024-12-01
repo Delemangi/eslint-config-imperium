@@ -61,3 +61,13 @@ test('Style Configuration', async () => {
   expect(results[0]?.messages[5]?.ruleId).toBe('@stylistic/array-bracket-newline');
   expect(results[0]?.messages[6]?.ruleId).toBe('@stylistic/semi');
 });
+
+test('TypeScript Configuration', async () => {
+  const results = await eslint.lintFiles(['src/test/typescript.ts']);
+
+  expect(results[0]?.errorCount).toBe(3);
+
+  expect(results[0]?.messages[0]?.ruleId).toBe('@typescript-eslint/no-unused-expressions');
+  expect(results[0]?.messages[1]?.ruleId).toBe('@typescript-eslint/dot-notation');
+  expect(results[0]?.messages[2]?.ruleId).toBe('@typescript-eslint/only-throw-error');
+});
