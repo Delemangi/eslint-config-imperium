@@ -10,7 +10,7 @@ on:
 
 jobs:
   build-test-publish:
-    name: TypeScript & ESLint
+    name: Build, Test and Publish
     runs-on: ubuntu-latest
 
     steps:
