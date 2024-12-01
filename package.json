@@ -59,8 +59,8 @@
     "build": "rimraf lib && tsc",
     "format": "eslint --fix .",
     "format:dev": "npm run build && npm run format",
-    "lint": "eslint . --ignore-pattern **/test/* --no-warn-ignored",
-    "lint:test": "eslint . **/test/*",
+    "lint": "eslint . --ignore-pattern \"**/test/*\" --no-warn-ignored",
+    "lint:test": "eslint \"**/test/*\"",
     "lint:dev": "npm run build && npm run lint",
     "package": "npm run build && npm pack",
     "test": "vitest run --exclude lib"
