@@ -40,7 +40,7 @@ jobs:
 
       - name: Upload Package
         if: github.ref == 'refs/heads/release'
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: eslint-config-imperium
           path: "*.tgz"
