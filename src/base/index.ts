@@ -1,5 +1,6 @@
 import type { Linter } from 'eslint';
 
+import regexpPlugin from 'eslint-plugin-regexp';
 import unicornPlugin from 'eslint-plugin-unicorn';
 import globals from 'globals';
 
@@ -13,6 +14,7 @@ const base: Linter.Config = {
     },
   },
   plugins: {
+    regexp: regexpPlugin,
     unicorn: unicornPlugin,
   },
   rules,
