@@ -10,6 +10,8 @@ export const auto: Linter.Config[] = [
   ...style,
 ];
 
+export default auto;
+
 export { default as base } from './base/index.js';
 export { default as browser } from './browser/index.js';
 export { default as node } from './node/index.js';
