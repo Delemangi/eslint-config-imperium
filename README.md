@@ -22,15 +22,15 @@ After this, the build output will be placed in the `lib` folder. You may use it 
 
 This package is modular and includes several configurations intended to be enabled for certain environments:
 
-- [`imperium/auto`](./src/index.ts) - Special configuration in which some of the below configurations are enabled
-- [`imperium/base`](./src/base/index.ts) - Base framework and environment agnostic configuration
-- [`imperium/browser`](./src/browser/index.ts) - Browser environment configuration
-- [`imperium/node`](./src/node/index.ts) - Node environment configuration
-- [`imperium/react`](./src/react/index.ts) - React configuration
-- [`imperium/style`](./src/style/index.ts) - Style guide
-- [`imperium/typescript`](./src/typescript/index.ts) - TypeScript configuration
+- [`auto`](./src/index.ts) - Special configuration in which some of the below configurations are enabled
+- [`base`](./src/base/index.ts) - Base framework and environment agnostic configuration
+- [`browser`](./src/browser/index.ts) - Browser environment configuration
+- [`node`](./src/node/index.ts) - Node environment configuration
+- [`react`](./src/react/index.ts) - React configuration
+- [`style`](./src/style/index.ts) - Style guide
+- [`typescript`](./src/typescript/index.ts) - TypeScript configuration
 
-If you don't know what you need, you should probably use [`imperium/auto`](./src/index.ts).
+If you don't know what you need, you should probably use [`auto`](./src/index.ts). Otherwise, pick a combination of the above configurations.
 
 ## Usage
 
@@ -38,9 +38,18 @@ Here is an example on how to import the `auto` configuration:
 
 ```ts
 // eslint.config.js
-import { auto } from 'eslint-config-imperium';
+import { auto } from "eslint-config-imperium";
 
 export default auto;
+```
+
+The style config is special in that it exports an array of configurations:
+
+```ts
+// eslint.config.js
+import { base, node, style } from "eslint-config-imperium";
+
+export default [base, node, ...style];
 ```
 
 ## License
