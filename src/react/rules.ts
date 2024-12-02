@@ -198,8 +198,14 @@ const reactRules = {
   'react/void-dom-elements-no-children': ['error'],
 } satisfies Linter.Config['rules'];
 
+const reactHooksRules = {
+  'react-hooks/exhaustive-deps': ['error'],
+  'react-hooks/rules-of-hooks': ['error'],
+} satisfies Linter.Config['rules'];
+
 const rules = {
   ...reactRules,
+  ...reactHooksRules,
 } satisfies Linter.Config['rules'];
 
 export default rules;

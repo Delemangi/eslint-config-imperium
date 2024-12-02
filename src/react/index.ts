@@ -1,6 +1,8 @@
-import type { Linter } from 'eslint';
+import type { ESLint, Linter } from 'eslint';
 
 import reactPlugin from 'eslint-plugin-react';
+// @ts-expect-error missing type
+import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import globals from 'globals';
 
 import rules from './rules.js';
@@ -20,8 +22,8 @@ const react: Linter.Config = {
     },
   },
   plugins: {
-    // @ts-expect-error missing type
-    react: reactPlugin,
+    'react': reactPlugin as ESLint.Plugin,
+    'react-hooks': reactHooksPlugin as ESLint.Plugin,
   },
   rules,
   settings: {
