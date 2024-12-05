@@ -443,10 +443,36 @@ const regexpRules = {
   'regexp/use-ignore-case': ['error'],
 } satisfies Linter.Config['rules'];
 
+const promiseRules = {
+  'promise/always-return': ['error'],
+  'promise/avoid-new': ['off'],
+  'promise/catch-or-return': [
+    'error',
+    {
+      allowFinally: true,
+    },
+  ],
+  'promise/no-callback-in-promise': ['error'],
+  'promise/no-multiple-resolved': ['error'],
+  'promise/no-native': ['off'],
+  'promise/no-nesting': ['error'],
+  'promise/no-new-statics': ['error'],
+  'promise/no-promise-in-callback': ['error'],
+  'promise/no-return-in-finally': ['error'],
+  'promise/no-return-wrap': ['error'],
+  'promise/param-names': ['error'],
+  'promise/prefer-await-to-callbacks': ['off'],
+  'promise/prefer-await-to-then': ['off'],
+  'promise/prefer-catch': ['error'],
+  'promise/spec-only': ['error'],
+  'promise/valid-params': ['error'],
+} satisfies Linter.Config['rules'];
+
 export default {
   ...eslintRules,
   ...eslintSuggestionsRules,
   ...eslintLayoutRules,
   ...unicornRules,
   ...regexpRules,
+  ...promiseRules,
 } satisfies Linter.Config['rules'];
