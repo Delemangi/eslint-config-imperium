@@ -199,7 +199,7 @@ const reactRules = {
 } satisfies Linter.Config['rules'];
 
 const reactHooksRules = {
-  'react-hooks/exhaustive-deps': ['error'],
+  'react-hooks/exhaustive-deps': ['error'], // Should this throw warnings instead?
   'react-hooks/rules-of-hooks': ['error'],
 } satisfies Linter.Config['rules'];
 
