@@ -24,6 +24,7 @@ const typescriptEslintRules = {
     'fields',
   ],
   '@typescript-eslint/class-methods-use-this': ['off'],
+  '@typescript-eslint/no-misused-spread': ['error'],
   '@typescript-eslint/consistent-generic-constructors': ['error'],
   '@typescript-eslint/consistent-indexed-object-style': ['off'],
   '@typescript-eslint/consistent-return': ['off'],
