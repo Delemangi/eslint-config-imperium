@@ -58,7 +58,7 @@
   },
   "scripts": {
     "build": "rimraf lib && tsc",
-    "format": "eslint --fix .",
+    "format": "eslint --ignore-pattern \"**/test/*\" --fix .",
     "format:dev": "npm run build && npm run format",
     "lint": "eslint . --ignore-pattern \"**/test/*\" --no-warn-ignored --cache",
     "lint:test": "eslint \"**/test/*\" --no-warn-ignored --cache",
