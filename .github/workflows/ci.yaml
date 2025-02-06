@@ -4,18 +4,14 @@ on:
   push:
     branches:
       - "main"
-      - "release"
   pull_request:
     branches:
       - "main"
 
 jobs:
   build-test-publish:
-    name: Build, Test and Publish
+    name: Build & Test
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      id-token: write
 
     steps:
       - name: Checkout Repository
@@ -25,7 +21,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          registry-url: "https://registry.npmjs.org"
 
       - name: Install Dependencies
         run: npm i
@@ -38,20 +33,3 @@ jobs:
 
       - name: Run Tests
         run: npm test
-
-      - name: Create Package
-        if: github.ref == 'refs/heads/release'
-        run: npm pack
-
-      - name: Upload Package
-        if: github.ref == 'refs/heads/release'
-        uses: actions/upload-artifact@v4
-        with:
-          name: eslint-config-imperium
-          path: "*.tgz"
-
-      - name: Publish Package
-        if: github.ref == 'refs/heads/release'
-        run: npm publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}

@@ -7,6 +7,11 @@
   "bugs": {
     "url": "https://github.com/Delemangi/eslint-config-imperium/issues"
   },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
   "dependencies": {
     "@stylistic/eslint-plugin": "^3.0.0",
     "@typescript-eslint/eslint-plugin": "^8.22.0",
@@ -22,12 +27,18 @@
   },
   "description": "Comprehensive ESLint configuration",
   "devDependencies": {
+    "@commitlint/cli": "^19.6.1",
+    "@commitlint/config-conventional": "^19.6.0",
     "@types/eslint": "^9.6.1",
     "@types/node": "^22.10.10",
     "@types/react": "^19.0.8",
+    "commitizen": "^4.3.1",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^9.19.0",
+    "husky": "^9.1.7",
     "react": "^19.0.0",
     "rimraf": "^6.0.1",
+    "semantic-release": "^24.2.1",
     "typescript": "~5.7.3",
     "vitest": "^3.0.4"
   },
@@ -58,11 +69,14 @@
   },
   "scripts": {
     "build": "rimraf lib && tsc",
+    "commit": "cz",
+    "commitlint": "commitlint --edit",
     "format": "eslint --ignore-pattern \"**/test/*\" --fix .",
     "format:dev": "npm run build && npm run format",
     "lint": "eslint . --ignore-pattern \"**/test/*\" --no-warn-ignored --cache",
     "lint:test": "eslint \"**/test/*\" --no-warn-ignored --cache",
     "lint:dev": "npm run build && npm run lint",
+    "prepare": "husky",
     "package": "npm run build && npm pack",
     "test": "vitest run --exclude lib"
   },
