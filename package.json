@@ -29,6 +29,8 @@
   "devDependencies": {
     "@commitlint/cli": "^19.7.1",
     "@commitlint/config-conventional": "^19.7.1",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
     "@types/eslint": "^9.6.1",
     "@types/node": "^22.10.10",
     "@types/react": "^19.0.8",
