@@ -102,6 +102,7 @@ const typescriptEslintRules = {
   '@typescript-eslint/no-meaningless-void-operator': ['error'],
   '@typescript-eslint/no-misused-new': ['error'],
   '@typescript-eslint/no-misused-promises': ['error'],
+  '@typescript-eslint/no-misused-spread': ['error'],
   '@typescript-eslint/no-mixed-enums': ['error'],
   '@typescript-eslint/no-namespace': [
     'error',
