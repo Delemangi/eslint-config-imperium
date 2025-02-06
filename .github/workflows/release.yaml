@@ -29,6 +29,9 @@ jobs:
       - name: Update package-lock.json
         run: npm install --package-lock-only
 
+      - name: Build Package
+        run: npm run build
+
       - name: Run Semantic Release
         run: npx semantic-release
         env:
