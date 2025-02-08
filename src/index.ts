@@ -16,3 +16,4 @@ export { default as node } from './node/index.js';
 export { default as react } from './react/index.js';
 export { default as style } from './style/index.js';
 export { default as typescript } from './typescript/index.js';
+export { default as vitest } from './vitest/index.js';

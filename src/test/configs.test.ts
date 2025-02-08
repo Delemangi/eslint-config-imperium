@@ -71,3 +71,17 @@ test('TypeScript Configuration', async () => {
   expect(results[0]?.messages[1]?.ruleId).toBe('@typescript-eslint/dot-notation');
   expect(results[0]?.messages[2]?.ruleId).toBe('@typescript-eslint/only-throw-error');
 });
+
+test('Vitest Configuration', async () => {
+  const results = await eslint.lintFiles(['src/test/vitest.ts']);
+
+  expect(results[0]?.errorCount).toBe(7);
+
+  expect(results[0]?.messages[0]?.ruleId).toBe('vitest/no-import-node-test');
+  expect(results[0]?.messages[1]?.ruleId).toBe('vitest/prefer-spy-on');
+  expect(results[0]?.messages[2]?.ruleId).toBe('vitest/padding-around-all');
+  expect(results[0]?.messages[3]?.ruleId).toBe('vitest/padding-around-before-all-blocks');
+  expect(results[0]?.messages[4]?.ruleId).toBe('vitest/no-standalone-expect');
+  expect(results[0]?.messages[5]?.ruleId).toBe('@typescript-eslint/no-unnecessary-condition');
+  expect(results[0]?.messages[6]?.ruleId).toBe('vitest/prefer-strict-boolean-matchers');
+});

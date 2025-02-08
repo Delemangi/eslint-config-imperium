@@ -29,6 +29,7 @@ This package is modular and includes several configurations intended to be enabl
 - [`react`](./src/react/index.ts) - React configuration
 - [`style`](./src/style/index.ts) - Style guide
 - [`typescript`](./src/typescript/index.ts) - TypeScript configuration
+- [`vitest`](./src/vitest/index.ts) - Vitest configuration
 
 If you don't know what you need, you should probably use [`auto`](./src/index.ts). Otherwise, pick a combination of the above configurations.
 
