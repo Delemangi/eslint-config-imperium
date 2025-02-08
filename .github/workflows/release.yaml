@@ -40,14 +40,15 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
-      - name: Create Release -> Main Pull Request
+      - name: Create Pull Request from Release to Main
         run: |
-          gh pr create --title "Release -> Main" --body "This PR merges the release branch into main" --base main --head release
+          gh pr create --base main --head release --title "Release: Merge release branch into main" --body "This PR merges the release branch into main." --label "release, automated" --assignee "@me"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
 
       - name: Enable Auto-Merge
         run: |
-          gh pr merge --auto --merge --delete-branch
+          pr_number=$(gh pr list --state=open --head release --base main --json number -q '.[0].number')
+          gh pr merge $pr_number --merge --auto --delete-branch
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
