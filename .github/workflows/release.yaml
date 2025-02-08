@@ -39,3 +39,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+
+      - name: Merge Release -> Main
+        run: |
+          git checkout main
+          git pull origin main
+          git merge release -m "chore: merge release branch into main"
+          git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
