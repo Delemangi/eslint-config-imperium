@@ -158,15 +158,7 @@ const eslintSuggestionsRules = {
   'no-lone-blocks': ['error'],
   'no-lonely-if': ['error'],
   'no-loop-func': ['error'],
-  'no-magic-numbers': [
-    'error',
-    {
-      enforceConst: true,
-      ignore: [0, 1, 2, 3, 4, 5],
-      ignoreClassFieldInitialValues: true,
-      ignoreDefaultValues: true,
-    },
-  ], // Should this be enabled?
+  'no-magic-numbers': ['off'],
   'no-multi-assign': ['error'],
   'no-multi-str': ['off'],
   'no-negated-condition': ['off'], // Disabled in favor of 'unicorn/no-negated-condition'
