@@ -159,7 +159,7 @@ const eslintSuggestionsRules = {
   'no-return-assign': ['error'],
   'no-script-url': ['error'],
   'no-sequences': ['error'],
-  'no-shadow': ['error', { allow: ['event', 'length', 'name', 'status'], builtinGlobals: true, hoist: 'all' }],
+  'no-shadow': ['error', { allow: ['event', 'length', 'name', 'status'], builtinGlobals: false, hoist: 'all' }],
   'no-shadow-restricted-names': ['error'],
   'no-ternary': ['off'],
   'no-throw-literal': ['error'],
