@@ -87,6 +87,7 @@ const typescriptEslintRules = {
   '@typescript-eslint/no-floating-promises': [
     'error',
     {
+      allowForKnownSafeCalls: ['describe', 'it', 'expect', 'test'],
       ignoreIIFE: true,
       ignoreVoid: true,
     },
