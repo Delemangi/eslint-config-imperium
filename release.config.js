@@ -1,5 +1,5 @@
 export default {
-  branches: ["main", "release"],
+  branches: ["main"],
   plugins: [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
@@ -10,8 +10,9 @@ export default {
       "@semantic-release/git",
       {
         "assets": ["package.json", "package-lock.json", "CHANGELOG.md"],
-        "message": "chore(release): ${nextRelease.version} [skip ci]"
+        "message": "chore(release): ${nextRelease.version}"
       }
     ]
-  ]
+  ],
+  ci: false
 };
