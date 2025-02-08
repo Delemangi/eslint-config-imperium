@@ -1,3 +1,16 @@
+## [1.1.4](https://github.com/Delemangi/eslint-config-imperium/compare/v1.1.3...v1.1.4) (2025-02-08)
+
+
+### Bug Fixes
+
+* **base:** allow shadowing globals ([5c57f54](https://github.com/Delemangi/eslint-config-imperium/commit/5c57f54404de64cd418724afc6f037210f3c096c))
+* **base:** disable no-magic-numbers ([b1f1390](https://github.com/Delemangi/eslint-config-imperium/commit/b1f1390bc401a5f20080c68b66a81286154d065f))
+* **node:** disable n/no-missing-import and n/no-missing-require ([68faf4a](https://github.com/Delemangi/eslint-config-imperium/commit/68faf4a389bc1c90f63fc40127c19a2771900a71))
+* trigger release ([9b03a06](https://github.com/Delemangi/eslint-config-imperium/commit/9b03a063761f074dfc3bacf2b39b32d6e1f51c2a))
+* **typescript:** allow loops with constant conditions ([1935d61](https://github.com/Delemangi/eslint-config-imperium/commit/1935d61284ff1cb5c4b6b098b8feea679702082b))
+* **typescript:** allow shadowing globals ([784fe9d](https://github.com/Delemangi/eslint-config-imperium/commit/784fe9d27b8f7e1768cc4688d082d1d9f698779b))
+* **typescript:** disable no-magic-numbers ([1c0a42b](https://github.com/Delemangi/eslint-config-imperium/commit/1c0a42b7d3799e5f0a7218dbecf3a9025dd294d3))
+
 ## [1.1.3](https://github.com/Delemangi/eslint-config-imperium/compare/v1.1.2...v1.1.3) (2025-02-08)
 
 
