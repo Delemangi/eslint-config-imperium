@@ -98,7 +98,7 @@ const eslintSuggestionsRules = {
   'max-classes-per-file': ['off'],
   'max-depth': ['warn', 5],
   'max-lines': ['warn', 1_000],
-  'max-lines-per-function': ['warn', 100],
+  'max-lines-per-function': ['warn', 200],
   'max-nested-callbacks': ['warn', 3],
   'max-params': ['warn', 3],
   'max-statements': ['off'],

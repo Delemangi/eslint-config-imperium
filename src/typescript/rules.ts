@@ -65,7 +65,11 @@ const typescriptEslintRules = {
   '@typescript-eslint/naming-convention': ['off'], // Should this be disabled?
   '@typescript-eslint/no-array-constructor': ['error'],
   '@typescript-eslint/no-array-delete': ['error'],
-  '@typescript-eslint/no-base-to-string': ['error', { ignoredTypeNames: ['RegExp'] }],
+  '@typescript-eslint/no-base-to-string': [
+    'error', {
+      ignoredTypeNames: ['RegExp'],
+    },
+  ],
   '@typescript-eslint/no-confusing-non-null-assertion': ['error'],
   '@typescript-eslint/no-confusing-void-expression': [
     'error',
@@ -99,7 +103,15 @@ const typescriptEslintRules = {
   '@typescript-eslint/no-invalid-this': ['off'],
   '@typescript-eslint/no-invalid-void-type': ['error'],
   '@typescript-eslint/no-loop-func': ['error'],
-  '@typescript-eslint/no-magic-numbers': ['error', { enforceConst: true, ignore: [0, 1, 2, 3, 4, 5], ignoreClassFieldInitialValues: true, ignoreDefaultValues: true }],
+  '@typescript-eslint/no-magic-numbers': [
+    'error',
+    {
+      enforceConst: true,
+      ignore: [0, 1, 2, 3, 4, 5],
+      ignoreClassFieldInitialValues: true,
+      ignoreDefaultValues: true,
+    },
+  ],
   '@typescript-eslint/no-meaningless-void-operator': ['error'],
   '@typescript-eslint/no-misused-new': ['error'],
   '@typescript-eslint/no-misused-promises': ['error'],
@@ -119,7 +131,14 @@ const typescriptEslintRules = {
   '@typescript-eslint/no-require-imports': ['error'],
   '@typescript-eslint/no-restricted-imports': ['off'],
   '@typescript-eslint/no-restricted-types': ['off'],
-  '@typescript-eslint/no-shadow': ['error', { allow: ['event', 'length', 'name', 'status'], builtinGlobals: true, hoist: 'all' }],
+  '@typescript-eslint/no-shadow': [
+    'error',
+    {
+      allow: ['event', 'length', 'name', 'status'],
+      builtinGlobals: true,
+      hoist: 'all',
+    },
+  ],
   '@typescript-eslint/no-this-alias': [
     'error',
     {
@@ -154,12 +173,15 @@ const typescriptEslintRules = {
   '@typescript-eslint/no-unsafe-unary-minus': ['error'],
   '@typescript-eslint/no-unused-expressions': ['error'],
   '@typescript-eslint/no-unused-vars': ['error', 'all'],
-  '@typescript-eslint/no-use-before-define': ['error', {
-    allowNamedExports: false,
-    classes: true,
-    functions: false,
-    variables: true,
-  }],
+  '@typescript-eslint/no-use-before-define': [
+    'error',
+    {
+      allowNamedExports: false,
+      classes: true,
+      functions: false,
+      variables: true,
+    },
+  ],
   '@typescript-eslint/no-useless-constructor': ['error'],
   '@typescript-eslint/no-useless-empty-export': ['error'],
   '@typescript-eslint/no-wrapper-object-types': ['error'],
