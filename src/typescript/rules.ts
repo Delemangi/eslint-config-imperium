@@ -135,7 +135,7 @@ const typescriptEslintRules = {
     'error',
     {
       allow: ['event', 'length', 'name', 'status'],
-      builtinGlobals: true,
+      builtinGlobals: false,
       hoist: 'all',
     },
   ],
