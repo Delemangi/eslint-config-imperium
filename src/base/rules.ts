@@ -20,7 +20,12 @@ const eslintRules = {
   'no-cond-assign': ['error', 'except-parens'],
   'no-const-assign': ['error'],
   'no-constant-binary-expression': ['error'],
-  'no-constant-condition': ['error', { checkLoops: 'allExceptWhileTrue' }],
+  'no-constant-condition': [
+    'error',
+    {
+      checkLoops: 'allExceptWhileTrue',
+    },
+  ],
   'no-constructor-return': ['error'],
   'no-control-regex': ['error'],
   'no-debugger': ['error'],
@@ -57,16 +62,29 @@ const eslintRules = {
   'no-unreachable': ['error'],
   'no-unreachable-loop': ['error'],
   'no-unsafe-finally': ['error'],
-  'no-unsafe-negation': ['error', { enforceForOrderingRelations: true }],
-  'no-unsafe-optional-chaining': ['error', { disallowArithmeticOperators: true }],
+  'no-unsafe-negation': [
+    'error',
+    {
+      enforceForOrderingRelations: true,
+    },
+  ],
+  'no-unsafe-optional-chaining': [
+    'error',
+    {
+      disallowArithmeticOperators: true,
+    },
+  ],
   'no-unused-private-class-members': ['error'],
   'no-unused-vars': ['error', 'all'], // Should the option be 'all'?
-  'no-use-before-define': ['error', {
-    allowNamedExports: false,
-    classes: true,
-    functions: false,
-    variables: true,
-  }],
+  'no-use-before-define': [
+    'error',
+    {
+      allowNamedExports: false,
+      classes: true,
+      functions: false,
+      variables: true,
+    },
+  ],
 } satisfies Linter.Config['rules'];
 
 const eslintSuggestionsRules = {
@@ -94,7 +112,13 @@ const eslintSuggestionsRules = {
   'id-length': ['off'],
   'id-match': ['off'],
   'init-declarations': ['off'],
-  'logical-assignment-operators': ['error', 'always', { enforceForIfStatements: true }],
+  'logical-assignment-operators': [
+    'error',
+    'always',
+    {
+      enforceForIfStatements: true,
+    },
+  ],
   'max-classes-per-file': ['off'],
   'max-depth': ['warn', 5],
   'max-lines': ['warn', 1_000],
@@ -134,7 +158,15 @@ const eslintSuggestionsRules = {
   'no-lone-blocks': ['error'],
   'no-lonely-if': ['error'],
   'no-loop-func': ['error'],
-  'no-magic-numbers': ['error', { enforceConst: true, ignore: [0, 1, 2, 3, 4, 5], ignoreClassFieldInitialValues: true, ignoreDefaultValues: true }], // Should this be enabled?
+  'no-magic-numbers': [
+    'error',
+    {
+      enforceConst: true,
+      ignore: [0, 1, 2, 3, 4, 5],
+      ignoreClassFieldInitialValues: true,
+      ignoreDefaultValues: true,
+    },
+  ], // Should this be enabled?
   'no-multi-assign': ['error'],
   'no-multi-str': ['off'],
   'no-negated-condition': ['off'], // Disabled in favor of 'unicorn/no-negated-condition'
@@ -159,7 +191,14 @@ const eslintSuggestionsRules = {
   'no-return-assign': ['error'],
   'no-script-url': ['error'],
   'no-sequences': ['error'],
-  'no-shadow': ['error', { allow: ['event', 'length', 'name', 'status'], builtinGlobals: false, hoist: 'all' }],
+  'no-shadow': [
+    'error',
+    {
+      allow: ['event', 'length', 'name', 'status'],
+      builtinGlobals: false,
+      hoist: 'all',
+    },
+  ],
   'no-shadow-restricted-names': ['error'],
   'no-ternary': ['off'],
   'no-throw-literal': ['error'],
@@ -178,7 +217,12 @@ const eslintSuggestionsRules = {
   'no-useless-rename': ['error'],
   'no-useless-return': ['error'],
   'no-var': ['error'],
-  'no-void': ['error', { allowAsStatement: true }],
+  'no-void': [
+    'error',
+    {
+      allowAsStatement: true,
+    },
+  ],
   'no-warning-comments': ['warn'], // Should this be enabled alongside 'unicorn/expiring-todo-comments'?
   'no-with': ['error'],
   'object-shorthand': ['error'],
@@ -193,7 +237,12 @@ const eslintSuggestionsRules = {
   'prefer-object-has-own': ['error'],
   'prefer-object-spread': ['error'],
   'prefer-promise-reject-errors': ['error'],
-  'prefer-regex-literals': ['error', { disallowRedundantWrapping: true }],
+  'prefer-regex-literals': [
+    'error',
+    {
+      disallowRedundantWrapping: true,
+    },
+  ],
   'prefer-rest-params': ['error'],
   'prefer-spread': ['error'],
   'prefer-template': ['error'],
@@ -229,7 +278,13 @@ const unicornRules = {
   'unicorn/explicit-length-check': ['error'],
   'unicorn/filename-case': [
     'error',
-    { cases: { camelCase: true, kebabCase: true, pascalCase: true } },
+    {
+      cases: {
+        camelCase: true,
+        kebabCase: true,
+        pascalCase: true,
+      },
+    },
   ],
   'unicorn/import-style': ['off'],
   'unicorn/new-for-builtins': ['error'],
@@ -239,7 +294,12 @@ const unicornRules = {
   'unicorn/no-array-for-each': ['error'],
   'unicorn/no-array-method-this-argument': ['error'],
   'unicorn/no-array-push-push': ['error'],
-  'unicorn/no-array-reduce': ['error', { allowSimpleOperations: true }],
+  'unicorn/no-array-reduce': [
+    'error',
+    {
+      allowSimpleOperations: true,
+    },
+  ],
   'unicorn/no-await-expression-member': ['error'],
   'unicorn/no-await-in-promise-methods': ['error'],
   'unicorn/no-console-spaces': ['error'],
