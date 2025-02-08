@@ -40,11 +40,14 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
-      - name: Merge Release -> Main
+      - name: Create Release -> Main Pull Request
         run: |
-          git checkout main
-          git pull origin main
-          git merge release -m "chore: merge release branch into main"
-          git push origin main
+          gh pr create --title "Release -> Main" --body "This PR merges the release branch into main" --base main --head release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Enable Auto-Merge
+        run: |
+          gh pr merge --auto --merge --delete-branch
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
