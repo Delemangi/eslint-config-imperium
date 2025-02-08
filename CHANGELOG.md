@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/Delemangi/eslint-config-imperium/compare/v1.1.2...v1.1.3) (2025-02-08)
+
+
+### Bug Fixes
+
+* trigger release ([a31ddd4](https://github.com/Delemangi/eslint-config-imperium/commit/a31ddd4e751a2d39a3f3ea2a1ab1fc61d2db383b))
+
 ## [1.1.2](https://github.com/Delemangi/eslint-config-imperium/compare/v1.1.1...v1.1.2) (2025-02-08)
 
 
