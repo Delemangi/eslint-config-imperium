@@ -5,8 +5,8 @@ const typescriptEslintRules = {
   '@typescript-eslint/array-type': [
     'error',
     {
-      default: 'array-simple',
-    },
+      default: 'array-simple'
+    }
   ],
   '@typescript-eslint/await-thenable': ['error'],
   '@typescript-eslint/ban-ts-comment': [
@@ -15,13 +15,13 @@ const typescriptEslintRules = {
       'ts-check': false,
       'ts-expect-error': 'allow-with-description',
       'ts-ignore': false,
-      'ts-nocheck': false,
-    },
+      'ts-nocheck': false
+    }
   ],
   '@typescript-eslint/ban-tslint-comment': ['error'],
   '@typescript-eslint/class-literal-property-style': [
     'error',
-    'fields',
+    'fields'
   ],
   '@typescript-eslint/class-methods-use-this': ['off'],
   '@typescript-eslint/consistent-generic-constructors': ['error'],
@@ -31,24 +31,24 @@ const typescriptEslintRules = {
     'error',
     {
       assertionStyle: 'as',
-      objectLiteralTypeAssertions: 'allow',
-    },
+      objectLiteralTypeAssertions: 'allow'
+    }
   ],
   '@typescript-eslint/consistent-type-definitions': [
     'error',
-    'type',
+    'type'
   ],
   '@typescript-eslint/consistent-type-exports': [
     'error',
     {
-      fixMixedExportsWithInlineTypeSpecifier: true,
-    },
+      fixMixedExportsWithInlineTypeSpecifier: true
+    }
   ],
   '@typescript-eslint/consistent-type-imports': [
     'error',
     {
-      prefer: 'type-imports',
-    },
+      prefer: 'type-imports'
+    }
   ],
   '@typescript-eslint/default-param-last': ['error'],
   '@typescript-eslint/dot-notation': ['error'],
@@ -60,23 +60,24 @@ const typescriptEslintRules = {
   '@typescript-eslint/member-ordering': ['off'],
   '@typescript-eslint/method-signature-style': [
     'error',
-    'property',
+    'property'
   ],
   '@typescript-eslint/naming-convention': ['off'], // Should this be disabled?
   '@typescript-eslint/no-array-constructor': ['error'],
   '@typescript-eslint/no-array-delete': ['error'],
   '@typescript-eslint/no-base-to-string': [
-    'error', {
-      ignoredTypeNames: ['RegExp'],
-    },
+    'error',
+    {
+      ignoredTypeNames: ['RegExp']
+    }
   ],
   '@typescript-eslint/no-confusing-non-null-assertion': ['error'],
   '@typescript-eslint/no-confusing-void-expression': [
     'error',
     {
       ignoreArrowShorthand: false,
-      ignoreVoidOperator: false,
-    },
+      ignoreVoidOperator: false
+    }
   ],
   '@typescript-eslint/no-deprecated': ['warn'],
   '@typescript-eslint/no-dupe-class-members': ['off'],
@@ -91,10 +92,15 @@ const typescriptEslintRules = {
   '@typescript-eslint/no-floating-promises': [
     'error',
     {
-      allowForKnownSafeCalls: ['describe', 'it', 'expect', 'test'],
+      allowForKnownSafeCalls: [
+        'describe',
+        'it',
+        'expect',
+        'test'
+      ],
       ignoreIIFE: true,
-      ignoreVoid: true,
-    },
+      ignoreVoid: true
+    }
   ],
   '@typescript-eslint/no-for-in-array': ['error'],
   '@typescript-eslint/no-implied-eval': ['error'],
@@ -112,8 +118,8 @@ const typescriptEslintRules = {
   '@typescript-eslint/no-namespace': [
     'error',
     {
-      allowDeclarations: true,
-    },
+      allowDeclarations: true
+    }
   ],
   '@typescript-eslint/no-non-null-asserted-nullish-coalescing': ['error'],
   '@typescript-eslint/no-non-null-asserted-optional-chain': ['error'],
@@ -126,25 +132,28 @@ const typescriptEslintRules = {
   '@typescript-eslint/no-shadow': [
     'error',
     {
-      allow: ['event', 'length', 'name', 'status'],
+      allow: [
+        'event',
+        'length',
+        'name',
+        'status'
+      ],
       builtinGlobals: false,
-      hoist: 'all',
-    },
+      hoist: 'all'
+    }
   ],
   '@typescript-eslint/no-this-alias': [
     'error',
     {
-      allowedNames: [
-        'self',
-      ],
-    },
+      allowedNames: ['self']
+    }
   ],
   '@typescript-eslint/no-unnecessary-boolean-literal-compare': ['error'],
   '@typescript-eslint/no-unnecessary-condition': [
     'error',
     {
-      allowConstantLoopConditions: true,
-    },
+      allowConstantLoopConditions: true
+    }
   ],
   '@typescript-eslint/no-unnecessary-parameter-property-assignment': ['error'],
   '@typescript-eslint/no-unnecessary-qualifier': ['error'],
@@ -171,8 +180,8 @@ const typescriptEslintRules = {
       allowNamedExports: false,
       classes: true,
       functions: false,
-      variables: true,
-    },
+      variables: true
+    }
   ],
   '@typescript-eslint/no-useless-constructor': ['error'],
   '@typescript-eslint/no-useless-empty-export': ['error'],
@@ -212,13 +221,13 @@ const typescriptEslintRules = {
     {
       lib: 'never',
       path: 'never',
-      types: 'never',
-    },
+      types: 'never'
+    }
   ],
   '@typescript-eslint/typedef': ['off'],
   '@typescript-eslint/unbound-method': ['error'],
   '@typescript-eslint/unified-signatures': ['error'],
-  '@typescript-eslint/use-unknown-in-catch-callback-variable': ['error'],
+  '@typescript-eslint/use-unknown-in-catch-callback-variable': ['error']
 } satisfies Linter.Config['rules'];
 
 const eslintDisabledRules = {
@@ -236,12 +245,12 @@ const eslintDisabledRules = {
   'no-use-before-define': ['off'],
   'no-useless-constructor': ['off'],
   'prefer-promise-reject-errors': ['off'],
-  'require-await': ['off'],
+  'require-await': ['off']
 } satisfies Linter.Config['rules'];
 
 const rules = {
   ...typescriptEslintRules,
-  ...eslintDisabledRules,
+  ...eslintDisabledRules
 } satisfies Linter.Config['rules'];
 
 export default rules;

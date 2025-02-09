@@ -8,29 +8,27 @@ import globals from 'globals';
 import rules from './rules.js';
 
 const react: Linter.Config = {
-  files: [
-    '**/*.{jsx,tsx}',
-  ],
+  files: ['**/*.{jsx,tsx}'],
   languageOptions: {
     globals: {
-      ...globals.browser,
+      ...globals.browser
     },
     parserOptions: {
       ecmaFeatures: {
-        jsx: true,
-      },
-    },
+        jsx: true
+      }
+    }
   },
   plugins: {
-    'react': reactPlugin as ESLint.Plugin,
-    'react-hooks': reactHooksPlugin as ESLint.Plugin,
+    react: reactPlugin as ESLint.Plugin,
+    'react-hooks': reactHooksPlugin as ESLint.Plugin
   },
   rules,
   settings: {
     react: {
-      version: 'detect',
-    },
-  },
+      version: 'detect'
+    }
+  }
 };
 
 export default react;

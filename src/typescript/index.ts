@@ -6,20 +6,18 @@ import typescriptParser from '@typescript-eslint/parser';
 import rules from './rules.js';
 
 const typescript: Linter.Config = {
-  files: [
-    '**/*.{ts,tsx}',
-  ],
+  files: ['**/*.{ts,tsx}'],
   languageOptions: {
     parser: typescriptParser,
     parserOptions: {
-      project: true,
-    },
+      project: true
+    }
   },
   plugins: {
     // @ts-expect-error missing type
-    '@typescript-eslint': typescriptPlugin,
+    '@typescript-eslint': typescriptPlugin
   },
-  rules,
+  rules
 };
 
 export default typescript;

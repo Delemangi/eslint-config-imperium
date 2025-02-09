@@ -7,12 +7,12 @@ import rules from './rules.js';
 const vitest: Linter.Config = {
   files: [
     '**/*.test.{ts,tsx,js,jsx}',
-    '**/*.spec.{ts,tsx,js,jsx}',
+    '**/*.spec.{ts,tsx,js,jsx}'
   ],
   plugins: {
-    vitest: vitestPlugin,
+    vitest: vitestPlugin
   },
-  rules,
+  rules
 };
 
 export default vitest;

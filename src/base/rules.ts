@@ -5,8 +5,8 @@ const eslintRules = {
     'error',
     {
       allowImplicit: true,
-      checkForEach: true,
-    },
+      checkForEach: true
+    }
   ],
   'constructor-super': ['error'],
   'for-direction': ['error'],
@@ -21,8 +21,8 @@ const eslintRules = {
   'no-constant-condition': [
     'error',
     {
-      checkLoops: 'allExceptWhileTrue',
-    },
+      checkLoops: 'allExceptWhileTrue'
+    }
   ],
   'no-constructor-return': ['error'],
   'no-control-regex': ['error'],
@@ -63,14 +63,14 @@ const eslintRules = {
   'no-unsafe-negation': [
     'error',
     {
-      enforceForOrderingRelations: true,
-    },
+      enforceForOrderingRelations: true
+    }
   ],
   'no-unsafe-optional-chaining': [
     'error',
     {
-      disallowArithmeticOperators: true,
-    },
+      disallowArithmeticOperators: true
+    }
   ],
   'no-unused-private-class-members': ['error'],
   'no-unused-vars': ['error', 'all'], // Should the option be 'all'?
@@ -80,27 +80,27 @@ const eslintRules = {
       allowNamedExports: false,
       classes: true,
       functions: false,
-      variables: true,
-    },
-  ],
+      variables: true
+    }
+  ]
 } satisfies Linter.Config['rules'];
 
 const eslintSuggestionsRules = {
   'accessor-pairs': ['error'],
   'arrow-body-style': ['error', 'as-needed'],
   'block-scoped-var': ['error'],
-  'camelcase': ['error'], // Should this be enabled?
+  camelcase: ['error'], // Should this be enabled?
   'capitalized-comments': ['off'],
   'class-methods-use-this': ['error'],
-  'complexity': ['error', 30],
+  complexity: ['error', 30],
   'consistent-return': ['error'],
   'consistent-this': ['error', 'self'],
-  'curly': ['error'],
+  curly: ['error'],
   'default-case': ['error'],
   'default-case-last': ['error'],
   'default-param-last': ['error'],
   'dot-notation': ['error'],
-  'eqeqeq': ['error'],
+  eqeqeq: ['error'],
   'func-name-matching': ['error'],
   'func-names': ['error', 'never'],
   'func-style': ['error', 'expression'],
@@ -114,8 +114,8 @@ const eslintSuggestionsRules = {
     'error',
     'always',
     {
-      enforceForIfStatements: true,
-    },
+      enforceForIfStatements: true
+    }
   ],
   'max-classes-per-file': ['off'],
   'max-depth': ['warn', 5],
@@ -184,10 +184,15 @@ const eslintSuggestionsRules = {
   'no-shadow': [
     'error',
     {
-      allow: ['event', 'length', 'name', 'status'],
+      allow: [
+        'event',
+        'length',
+        'name',
+        'status'
+      ],
       builtinGlobals: false,
-      hoist: 'all',
-    },
+      hoist: 'all'
+    }
   ],
   'no-shadow-restricted-names': ['error'],
   'no-ternary': ['off'],
@@ -210,8 +215,8 @@ const eslintSuggestionsRules = {
   'no-void': [
     'error',
     {
-      allowAsStatement: true,
-    },
+      allowAsStatement: true
+    }
   ],
   'no-warning-comments': ['warn'], // Should this be enabled alongside 'unicorn/expiring-todo-comments'?
   'no-with': ['error'],
@@ -230,27 +235,27 @@ const eslintSuggestionsRules = {
   'prefer-regex-literals': [
     'error',
     {
-      disallowRedundantWrapping: true,
-    },
+      disallowRedundantWrapping: true
+    }
   ],
   'prefer-rest-params': ['error'],
   'prefer-spread': ['error'],
   'prefer-template': ['error'],
-  'radix': ['error', 'as-needed'],
+  radix: ['error', 'as-needed'],
   'require-await': ['error'], // Should this be enabled?
   'require-unicode-regexp': ['error'],
   'require-yield': ['error'],
   'sort-imports': ['off'],
   'sort-keys': ['off'],
   'sort-vars': ['off'],
-  'strict': ['error', 'never'],
+  strict: ['error', 'never'],
   'symbol-description': ['error'],
   'vars-on-top': ['error'],
-  'yoda': ['error'],
+  yoda: ['error']
 } satisfies Linter.Config['rules'];
 
 const eslintLayoutRules = {
-  'unicode-bom': ['error'],
+  'unicode-bom': ['error']
 } satisfies Linter.Config['rules'];
 
 const unicornRules = {
@@ -272,9 +277,9 @@ const unicornRules = {
       cases: {
         camelCase: true,
         kebabCase: true,
-        pascalCase: true,
-      },
-    },
+        pascalCase: true
+      }
+    }
   ],
   'unicorn/import-style': ['off'],
   'unicorn/new-for-builtins': ['error'],
@@ -287,8 +292,8 @@ const unicornRules = {
   'unicorn/no-array-reduce': [
     'error',
     {
-      allowSimpleOperations: true,
-    },
+      allowSimpleOperations: true
+    }
   ],
   'unicorn/no-await-expression-member': ['error'],
   'unicorn/no-await-in-promise-methods': ['error'],
@@ -334,9 +339,9 @@ const unicornRules = {
     {
       number: {
         groupLength: 3,
-        minimumDigits: 0,
-      },
-    },
+        minimumDigits: 0
+      }
+    }
   ],
   'unicorn/prefer-add-event-listener': ['error'], // Should this be enabled?
   'unicorn/prefer-array-find': ['error'],
@@ -385,7 +390,7 @@ const unicornRules = {
   'unicorn/switch-case-braces': ['error', 'avoid'],
   'unicorn/template-indent': ['error'],
   'unicorn/text-encoding-identifier-case': ['error'],
-  'unicorn/throw-new-error': ['error'],
+  'unicorn/throw-new-error': ['error']
 } satisfies Linter.Config['rules'];
 
 const regexpRules = {
@@ -394,7 +399,7 @@ const regexpRules = {
   'regexp/grapheme-string-literal': ['error'],
   'regexp/hexadecimal-escape': [
     'error',
-    'never',
+    'never'
   ],
   'regexp/letter-case': [
     'error',
@@ -402,8 +407,8 @@ const regexpRules = {
       caseInsensitive: 'lowercase',
       controlEscape: 'uppercase',
       hexadecimalEscape: 'uppercase',
-      unicodeEscape: 'uppercase',
-    },
+      unicodeEscape: 'uppercase'
+    }
   ],
   'regexp/match-any': ['error'],
   'regexp/negation': ['error'],
@@ -480,17 +485,17 @@ const regexpRules = {
   'regexp/strict': ['error'],
   'regexp/unicode-escape': [
     'error',
-    'unicodeEscape',
+    'unicodeEscape'
   ],
   'regexp/unicode-property': [
     'error',
     {
       generalCategory: 'never',
       key: 'long',
-      property: 'long',
-    },
+      property: 'long'
+    }
   ],
-  'regexp/use-ignore-case': ['error'],
+  'regexp/use-ignore-case': ['error']
 } satisfies Linter.Config['rules'];
 
 const promiseRules = {
@@ -499,8 +504,8 @@ const promiseRules = {
   'promise/catch-or-return': [
     'error',
     {
-      allowFinally: true,
-    },
+      allowFinally: true
+    }
   ],
   'promise/no-callback-in-promise': ['error'],
   'promise/no-multiple-resolved': ['error'],
@@ -515,7 +520,7 @@ const promiseRules = {
   'promise/prefer-await-to-then': ['off'],
   'promise/prefer-catch': ['error'],
   'promise/spec-only': ['error'],
-  'promise/valid-params': ['error'],
+  'promise/valid-params': ['error']
 } satisfies Linter.Config['rules'];
 
 export default {
@@ -524,5 +529,5 @@ export default {
   ...eslintLayoutRules,
   ...unicornRules,
   ...regexpRules,
-  ...promiseRules,
+  ...promiseRules
 } satisfies Linter.Config['rules'];

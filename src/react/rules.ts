@@ -9,14 +9,14 @@ const reactRules = {
     'error',
     'always',
     {
-      destructureInSignature: 'always',
-    },
+      destructureInSignature: 'always'
+    }
   ],
   'react/display-name': [
     'error',
     {
-      checkContextObjects: true,
-    },
+      checkContextObjects: true
+    }
   ],
   'react/forbid-component-props': ['off'],
   'react/forbid-dom-props': ['off'],
@@ -28,94 +28,73 @@ const reactRules = {
     'error',
     {
       namedComponents: 'arrow-function',
-      unnamedComponents: 'arrow-function',
-    },
+      unnamedComponents: 'arrow-function'
+    }
   ],
   'react/hook-use-state': ['error'],
   'react/iframe-missing-sandbox': ['error'],
-  'react/jsx-boolean-value': [
-    'error',
-    'never',
-  ],
+  'react/jsx-boolean-value': ['error', 'never'],
   'react/jsx-child-element-spacing': ['off'],
-  'react/jsx-closing-bracket-location': [
-    'error',
-    'line-aligned',
-  ],
+  'react/jsx-closing-bracket-location': ['error', 'line-aligned'],
   'react/jsx-closing-tag-location': ['error'],
   'react/jsx-curly-brace-presence': [
     'error',
     {
       children: 'never',
-      props: 'never',
-    },
+      props: 'never'
+    }
   ],
   'react/jsx-curly-newline': ['error'],
   'react/jsx-curly-spacing': [
     'error',
     'never',
     {
-      allowMultiline: true,
-    },
+      allowMultiline: true
+    }
   ],
-  'react/jsx-equals-spacing': [
-    'error',
-    'never',
-  ],
+  'react/jsx-equals-spacing': ['error', 'never'],
   'react/jsx-filename-extension': ['off'],
-  'react/jsx-first-prop-new-line': [
-    'error',
-    'multiline-multiprop',
-  ],
-  'react/jsx-fragments': [
-    'error',
-    'syntax',
-  ],
+  'react/jsx-first-prop-new-line': ['error', 'multiline-multiprop'],
+  'react/jsx-fragments': ['error', 'syntax'],
   'react/jsx-handler-names': [
     'error',
     {
       checkInlineFunction: false,
       checkLocalVariables: false,
       eventHandlerPrefix: 'handle',
-      eventHandlerPropPrefix: 'on',
-    },
+      eventHandlerPropPrefix: 'on'
+    }
   ],
-  'react/jsx-indent': [
-    'error',
-    2,
-  ],
-  'react/jsx-indent-props': [
-    'error',
-    2,
-  ],
+  'react/jsx-indent': ['error', 2],
+  'react/jsx-indent-props': ['error', 2],
   'react/jsx-key': [
     'error',
     {
       checkFragmentShorthand: true,
-      checkKeyMustBeforeSpread: true,
-    },
+      checkKeyMustBeforeSpread: true
+    }
   ],
   'react/jsx-max-depth': ['off'],
   'react/jsx-max-props-per-line': [
     'error',
     {
       maximum: 3,
-      when: 'multiline',
-    },
+      when: 'multiline'
+    }
   ],
   'react/jsx-newline': [
     'error',
     {
-      prevent: true,
-    },
+      prevent: true
+    }
   ],
   'react/jsx-no-bind': [
     'error',
     {
       allowArrowFunctions: true,
       allowBind: false,
-      ignoreRefs: true,
-    },
+      ignoreRefs: true
+    }
   ],
   'react/jsx-no-comment-textnodes': ['error'],
   'react/jsx-no-constructed-context-values': ['error'],
@@ -137,8 +116,8 @@ const reactRules = {
     {
       afterOpening: 'never',
       beforeSelfClosing: 'always',
-      closingSlash: 'never',
-    },
+      closingSlash: 'never'
+    }
   ],
   'react/jsx-uses-react': ['error'],
   'react/jsx-uses-vars': ['error'],
@@ -180,8 +159,8 @@ const reactRules = {
   'react/prefer-stateless-function': [
     'error',
     {
-      ignorePureComponents: true,
-    },
+      ignorePureComponents: true
+    }
   ],
   'react/prop-types': ['error'],
   'react/react-in-jsx-scope': ['off'],
@@ -195,17 +174,17 @@ const reactRules = {
   'react/state-in-constructor': ['error'],
   'react/static-property-placement': ['off'],
   'react/style-prop-object': ['error'],
-  'react/void-dom-elements-no-children': ['error'],
+  'react/void-dom-elements-no-children': ['error']
 } satisfies Linter.Config['rules'];
 
 const reactHooksRules = {
   'react-hooks/exhaustive-deps': ['error'], // Should this throw warnings instead?
-  'react-hooks/rules-of-hooks': ['error'],
+  'react-hooks/rules-of-hooks': ['error']
 } satisfies Linter.Config['rules'];
 
 const rules = {
   ...reactRules,
-  ...reactHooksRules,
+  ...reactHooksRules
 } satisfies Linter.Config['rules'];
 
 export default rules;

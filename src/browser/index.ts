@@ -9,13 +9,13 @@ const browser: Linter.Config = {
   files: ['**/*.{js,ts,jsx,tsx,mjs,cjs}'],
   languageOptions: {
     globals: {
-      ...globals.browser,
-    },
+      ...globals.browser
+    }
   },
   plugins: {
-    unicorn: unicornPlugin,
+    unicorn: unicornPlugin
   },
-  rules,
+  rules
 };
 
 export default browser;

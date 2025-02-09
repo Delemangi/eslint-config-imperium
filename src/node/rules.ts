@@ -2,10 +2,7 @@ import type { Linter } from 'eslint';
 
 const nRules = {
   'n/callback-return': ['error'],
-  'n/exports-style': [
-    'error',
-    'module.exports',
-  ],
+  'n/exports-style': ['error', 'module.exports'],
   'n/file-extension-in-import': ['off'],
   'n/global-require': ['error'],
   'n/handle-callback-err': ['error'],
@@ -41,17 +38,17 @@ const nRules = {
   'n/prefer-node-protocol': ['error'],
   'n/prefer-promises/dns': ['error'],
   'n/prefer-promises/fs': ['error'],
-  'n/process-exit-as-throw': ['error'],
+  'n/process-exit-as-throw': ['error']
 } satisfies Linter.Config['rules'];
 
 const unicornRules = {
   'unicorn/no-process-exit': ['off'],
   'unicorn/prefer-json-parse-buffer': ['off'],
   'unicorn/prefer-module': ['error'],
-  'unicorn/prefer-node-protocol': ['error'],
+  'unicorn/prefer-node-protocol': ['error']
 } satisfies Linter.Config['rules'];
 
 export default {
   ...nRules,
-  ...unicornRules,
+  ...unicornRules
 } satisfies Linter.Config['rules'];

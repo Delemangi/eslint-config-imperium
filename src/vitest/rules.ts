@@ -61,11 +61,11 @@ const vitestRules = {
   'vitest/valid-describe-callback': ['error'],
   'vitest/valid-expect': ['error'],
   'vitest/valid-expect-in-promise': ['error'],
-  'vitest/valid-title': ['error'],
+  'vitest/valid-title': ['error']
 } satisfies Linter.Config['rules'];
 
 const rules = {
-  ...vitestRules,
+  ...vitestRules
 } satisfies Linter.Config['rules'];
 
 export default rules;

@@ -12,16 +12,16 @@ const base: Linter.Config = {
   files: ['**/*.{js,ts,jsx,tsx,mjs,cjs}'],
   languageOptions: {
     globals: {
-      ...globals['shared-node-browser'],
-    },
+      ...globals['shared-node-browser']
+    }
   },
   plugins: {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     promise: promisePlugin,
     regexp: regexpPlugin,
-    unicorn: unicornPlugin,
+    unicorn: unicornPlugin
   },
-  rules,
+  rules
 };
 
 export default base;

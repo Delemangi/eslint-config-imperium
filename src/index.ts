@@ -7,7 +7,7 @@ import typescript from './typescript/index.js';
 export const auto: Linter.Config[] = [
   base,
   typescript,
-  ...style,
+  ...style
 ];
 
 export { default as base } from './base/index.js';

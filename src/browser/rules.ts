@@ -7,9 +7,9 @@ const unicornRules = {
   'unicorn/prefer-dom-node-text-content': ['error'],
   'unicorn/prefer-modern-dom-apis': ['error'],
   'unicorn/prefer-query-selector': ['error'],
-  'unicorn/require-post-message-target-origin': ['off'],
+  'unicorn/require-post-message-target-origin': ['off']
 } satisfies Linter.Config['rules'];
 
 export default {
-  ...unicornRules,
+  ...unicornRules
 } satisfies Linter.Config['rules'];

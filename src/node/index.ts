@@ -8,14 +8,14 @@ import rules from './rules.js';
 const node: Linter.Config = {
   languageOptions: {
     globals: {
-      ...globals.node,
-    },
+      ...globals.node
+    }
   },
   plugins: {
     n: nPlugin,
-    unicorn: unicornPlugin,
+    unicorn: unicornPlugin
   },
-  rules,
+  rules
 };
 
 export default node;
