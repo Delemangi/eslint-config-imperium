@@ -1,3 +1,17 @@
+# [1.2.0](https://github.com/Delemangi/eslint-config-imperium/compare/v1.1.4...v1.2.0) (2025-02-09)
+
+
+### Bug Fixes
+
+* **prettier:** configuration not working ([084cc7b](https://github.com/Delemangi/eslint-config-imperium/commit/084cc7b9b7cc11bc2ec03759853d452288d72dc3))
+* **style:** increase line length from 80 to 120 ([0bee1dc](https://github.com/Delemangi/eslint-config-imperium/commit/0bee1dc57adc5ebfa12f0b203427461325d5a427))
+
+
+### Features
+
+* **prettier:** add prettier configuration ([812f4db](https://github.com/Delemangi/eslint-config-imperium/commit/812f4dbe566caec04a6804cd9ed0d933bd38106a))
+* **style:** add new style config ([b79c03b](https://github.com/Delemangi/eslint-config-imperium/commit/b79c03b8b2b6e10a4284187cb115eed2b44fe2a9))
+
 ## [1.1.4](https://github.com/Delemangi/eslint-config-imperium/compare/v1.1.3...v1.1.4) (2025-02-08)
 
 
