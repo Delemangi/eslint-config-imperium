@@ -4,8 +4,6 @@ This is a strict configuration for [ESLint](https://github.com/eslint/eslint). I
 
 Currently supports ESLint v9 and the flat config only.
 
-**NOTE**: Work in progress and things will break or might not work correctly.
-
 ## Installation
 
 Make sure you have ESLint already installed. Afterwards, you may add it to your project: `npm i --save-dev eslint-config-imperium`
@@ -38,7 +36,10 @@ This package is modular and includes several configurations intended to be enabl
 ### Style
 
 - [`perfectionist`](./src/perfectionist/index.ts) - Perfectionist configuration for objects order
+- [`prettier`](./src/prettier/index.ts) - Prettier configuration
 - [`stylistic`](./src/stylistic/index.ts) - Stylistic configuration
+
+You should not enable `prettier` and `stylistic` at the same time.
 
 ## Usage
 
@@ -67,6 +68,7 @@ This is a list of the currently used ESLint plugins:
 - [`@vitest/eslint-plugin`](https://github.com/vitest-dev/eslint-plugin-vitest)
 - [`eslint-plugin-n`](https://github.com/eslint-community/eslint-plugin-n)
 - [`eslint-plugin-perfectionist`](https://github.com/azat-io/eslint-plugin-perfectionist)
+- [`eslint-plugin-prettier`](https://github.com/prettier/eslint-plugin-prettier)
 - [`eslint-plugin-promise`](https://github.com/eslint-community/eslint-plugin-promise)
 - [`eslint-plugin-react`](https://github.com/jsx-eslint/eslint-plugin-react)
 - [`eslint-plugin-react-hooks`](https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks)
