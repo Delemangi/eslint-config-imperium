@@ -1,5 +1,7 @@
 import type { Linter } from 'eslint';
 
+import prettierConfig from 'eslint-config-prettier';
+
 const prettierRules = {
   'prettier/prettier': [
     'error',
@@ -26,5 +28,6 @@ const prettierRules = {
 } satisfies Linter.Config['rules'];
 
 export default {
+  ...prettierConfig.rules,
   ...prettierRules
 } satisfies Linter.Config['rules'];

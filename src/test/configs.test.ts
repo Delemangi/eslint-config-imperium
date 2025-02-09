@@ -1,5 +1,7 @@
 import { ESLint } from 'eslint';
-import { describe, expect, it } from 'vitest';
+import {
+  describe, expect, it
+} from 'vitest';
 
 const eslint = new ESLint();
 
@@ -28,14 +30,26 @@ describe('Configurations', () => {
     expect(errors).toBe(0);
   });
 
+  it('should lint Perfectionist configuration code without errors', async () => {
+    const errors = await getErrorsCount(['src/perfectionist/*.ts']);
+
+    expect(errors).toBe(0);
+  });
+
+  it('should lint Prettier configuration code without errors', async () => {
+    const errors = await getErrorsCount(['src/prettier/*.ts']);
+
+    expect(errors).toBe(0);
+  });
+
   it('should lint React configuration code without errors', async () => {
     const errors = await getErrorsCount(['src/react/*.ts']);
 
     expect(errors).toBe(0);
   });
 
-  it('should lint style configuration code without errors', async () => {
-    const errors = await getErrorsCount(['src/style/*.ts']);
+  it('should lint Stylistic configuration code without errors', async () => {
+    const errors = await getErrorsCount(['src/stylistic/*.ts']);
 
     expect(errors).toBe(0);
   });
