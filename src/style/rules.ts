@@ -184,7 +184,7 @@ const stylisticRules = {
   '@stylistic/max-len': [
     'error',
     {
-      code: 80,
+      code: 120,
       ignoreComments: true,
       ignoreUrls: true
     }
