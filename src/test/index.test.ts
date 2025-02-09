@@ -1,10 +1,12 @@
 import { ESLint } from 'eslint';
-import { expect, test } from 'vitest';
+import { describe, expect, it } from 'vitest';
 
 const eslint = new ESLint();
 
-test('Lint index.ts', async () => {
-  const results = await eslint.lintFiles(['src/index.ts']);
+describe('Linter', () => {
+  it('should lint index.ts without errors', async () => {
+    const results = await eslint.lintFiles(['src/index.ts']);
 
-  expect(results[0]?.errorCount).toBe(0);
+    expect(results[0]?.errorCount).toBe(0);
+  });
 });

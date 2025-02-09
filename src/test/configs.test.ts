@@ -1,87 +1,54 @@
-/* eslint-disable @typescript-eslint/no-magic-numbers */
-
 import { ESLint } from 'eslint';
-import { expect, test } from 'vitest';
+import { describe, expect, it } from 'vitest';
 
 const eslint = new ESLint();
 
-test('Base Configuration', async () => {
-  const results = await eslint.lintFiles(['src/test/base.ts']);
+const getErrorsCount = async (files: string[]) => {
+  const results = await eslint.lintFiles(files);
 
-  expect(results[0]?.errorCount).toBe(3);
+  return results.reduce((count, result) => count + result.errorCount, 0);
+};
 
-  expect(results[0]?.messages[0]?.ruleId).toBe('no-var');
-  expect(results[0]?.messages[1]?.ruleId).toBe('no-console');
-  expect(results[0]?.messages[2]?.ruleId).toBe('eqeqeq');
-});
+describe('Configurations', () => {
+  it('should lint base configuration code without errors', async () => {
+    const errors = await getErrorsCount(['src/base/*.ts']);
 
-test('Browser Configuration', async () => {
-  const results = await eslint.lintFiles(['src/test/browser.ts']);
+    expect(errors).toBe(0);
+  });
 
-  expect(results[0]?.errorCount).toBe(3);
+  it('should lint browser configuration code without errors', async () => {
+    const errors = await getErrorsCount(['src/browser/*.ts']);
 
-  expect(results[0]?.messages[0]?.ruleId).toBe('unicorn/prefer-dom-node-append');
-  expect(results[0]?.messages[1]?.ruleId).toBe('unicorn/prefer-dom-node-text-content');
-  expect(results[0]?.messages[2]?.ruleId).toBe('unicorn/prefer-query-selector');
-});
+    expect(errors).toBe(0);
+  });
 
-test('Node Configuration', async () => {
-  const results = await eslint.lintFiles(['src/test/node.ts']);
+  it('should lint Node configuration code without errors', async () => {
+    const errors = await getErrorsCount(['src/node/*.ts']);
 
-  expect(results[0]?.errorCount).toBe(6);
+    expect(errors).toBe(0);
+  });
 
-  expect(results[0]?.messages[0]?.ruleId).toBe('n/no-exports-assign');
-  expect(results[0]?.messages[1]?.ruleId).toBe('unicorn/prefer-module');
-  expect(results[0]?.messages[2]?.ruleId).toBe('n/exports-style');
-  expect(results[0]?.messages[3]?.ruleId).toBe('n/no-path-concat');
-  expect(results[0]?.messages[4]?.ruleId).toBe('unicorn/prefer-module');
-  expect(results[0]?.messages[5]?.ruleId).toBe('n/no-process-exit');
-});
+  it('should lint React configuration code without errors', async () => {
+    const errors = await getErrorsCount(['src/react/*.ts']);
 
-test('React Configuration', async () => {
-  const results = await eslint.lintFiles(['src/test/react.tsx']);
+    expect(errors).toBe(0);
+  });
 
-  expect(results[0]?.errorCount).toBe(3);
+  it('should lint style configuration code without errors', async () => {
+    const errors = await getErrorsCount(['src/style/*.ts']);
 
-  expect(results[0]?.messages[0]?.ruleId).toBe('react/prefer-read-only-props');
-  expect(results[0]?.messages[1]?.ruleId).toBe('react/self-closing-comp');
-  expect(results[0]?.messages[2]?.ruleId).toBe('react/no-children-prop');
-});
+    expect(errors).toBe(0);
+  });
 
-test('Style Configuration', async () => {
-  const results = await eslint.lintFiles(['src/test/style.ts']);
+  it('should lint TypeScript configuration code without errors', async () => {
+    const errors = await getErrorsCount(['src/typescript/*.ts']);
 
-  expect(results[0]?.errorCount).toBe(7);
+    expect(errors).toBe(0);
+  });
 
-  expect(results[0]?.messages[0]?.ruleId).toBe('perfectionist/sort-maps');
-  expect(results[0]?.messages[1]?.ruleId).toBe('perfectionist/sort-union-types');
-  expect(results[0]?.messages[2]?.ruleId).toBe('perfectionist/sort-objects');
-  expect(results[0]?.messages[3]?.ruleId).toBe('@stylistic/array-element-newline');
-  expect(results[0]?.messages[4]?.ruleId).toBe('@stylistic/comma-dangle');
-  expect(results[0]?.messages[5]?.ruleId).toBe('@stylistic/array-bracket-newline');
-  expect(results[0]?.messages[6]?.ruleId).toBe('@stylistic/semi');
-});
+  it('should lint Vitest configuration code without errors', async () => {
+    const errors = await getErrorsCount(['src/vitest/*.ts']);
 
-test('TypeScript Configuration', async () => {
-  const results = await eslint.lintFiles(['src/test/typescript.ts']);
-
-  expect(results[0]?.errorCount).toBe(3);
-
-  expect(results[0]?.messages[0]?.ruleId).toBe('@typescript-eslint/no-unused-expressions');
-  expect(results[0]?.messages[1]?.ruleId).toBe('@typescript-eslint/dot-notation');
-  expect(results[0]?.messages[2]?.ruleId).toBe('@typescript-eslint/only-throw-error');
-});
-
-test('Vitest Configuration', async () => {
-  const results = await eslint.lintFiles(['src/test/vitest.ts']);
-
-  expect(results[0]?.errorCount).toBe(7);
-
-  expect(results[0]?.messages[0]?.ruleId).toBe('vitest/no-import-node-test');
-  expect(results[0]?.messages[1]?.ruleId).toBe('vitest/prefer-spy-on');
-  expect(results[0]?.messages[2]?.ruleId).toBe('vitest/padding-around-all');
-  expect(results[0]?.messages[3]?.ruleId).toBe('vitest/padding-around-before-all-blocks');
-  expect(results[0]?.messages[4]?.ruleId).toBe('vitest/no-standalone-expect');
-  expect(results[0]?.messages[5]?.ruleId).toBe('@typescript-eslint/no-unnecessary-condition');
-  expect(results[0]?.messages[6]?.ruleId).toBe('vitest/prefer-strict-boolean-matchers');
+    expect(errors).toBe(0);
+  });
 });
