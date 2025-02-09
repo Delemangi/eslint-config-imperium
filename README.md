@@ -4,17 +4,20 @@ This is a strict configuration for [ESLint](https://github.com/eslint/eslint). I
 
 Currently supports ESLint v9 and the flat config only.
 
-## Installation
+## Quickstart
 
-Make sure you have ESLint already installed. Afterwards, you may add it to your project: `npm i --save-dev eslint-config-imperium`
+1. Install dependencies: `npm i --save-dev eslint eslint-config-imperium`
+2. Create `eslint.config.js` (see [Example Configuration](#example-configuration))
+3. Run your linter: `npm run lint` (or `npx eslint`)
 
-... unless you want to build it yourself, then:
+## Example Configuration
 
-1. Clone the repository: `git clone https://github.com/Delemangi/eslint-config-imperium.git`
-2. Install the dependencies: `npm i`
-3. Build the package: `npm run build`
+```ts
+// eslint.config.js
+import { auto } from "eslint-config-imperium";
 
-After this, the build output will be placed in the `lib` folder. You may use it directly, pack it or whatever you'd like afterwards.
+export default [auto, stylistic];
+```
 
 ## Configurations
 
@@ -41,24 +44,6 @@ This package is modular and includes several configurations intended to be enabl
 
 You should not enable `prettier` and `stylistic` at the same time.
 
-## Usage
-
-Here is an example on how to import the `auto` configuration:
-
-```ts
-// eslint.config.js
-import { auto } from "eslint-config-imperium";
-
-export default auto;
-```
-
-```ts
-// eslint.config.js
-import { base, node, stylistic, vitest } from "eslint-config-imperium";
-
-export default [base, node, stylistic, vitest];
-```
-
 ## Plugins
 
 This is a list of the currently used ESLint plugins:
@@ -74,6 +59,14 @@ This is a list of the currently used ESLint plugins:
 - [`eslint-plugin-react-hooks`](https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks)
 - [`eslint-plugin-regexp`](https://github.com/ota-meshi/eslint-plugin-regexp)
 - [`eslint-plugin-unicorn`](https://github.com/sindresorhus/eslint-plugin-unicorn)
+
+## Building
+
+1. Clone the repository: `git clone https://github.com/Delemangi/eslint-config-imperium.git`
+2. Install the dependencies: `npm i`
+3. Build the package: `npm run build`
+
+After this, the build output will be placed in the `lib` folder. You may use it directly, pack it or whatever you'd like afterwards.
 
 ## License
 
