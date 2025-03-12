@@ -124,7 +124,14 @@ const eslintSuggestionsRules = {
   'max-nested-callbacks': ['warn', 3],
   'max-params': ['warn', 3],
   'max-statements': ['off'],
-  'new-cap': ['error'],
+  'new-cap': [
+    'error',
+    {
+      capIsNew: false,
+      capIsNewExceptions: ['Intl'],
+      newIsCap: true
+    }
+  ],
   'no-alert': ['error'],
   'no-array-constructor': ['error'],
   'no-bitwise': ['error'],
