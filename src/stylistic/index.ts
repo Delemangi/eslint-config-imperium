@@ -6,7 +6,6 @@ import rules from './rules.js';
 
 const stylistic: Linter.Config = {
   plugins: {
-    // @ts-expect-error missing type
     '@stylistic': stylisticPlugin
   },
   rules: {

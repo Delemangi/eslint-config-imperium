@@ -1,7 +1,6 @@
 import type { ESLint, Linter } from 'eslint';
 
 import reactPlugin from 'eslint-plugin-react';
-// @ts-expect-error missing type
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import globals from 'globals';
 
