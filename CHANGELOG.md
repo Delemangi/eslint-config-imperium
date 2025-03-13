@@ -1,3 +1,21 @@
+# [2.0.0](https://github.com/Delemangi/eslint-config-imperium/compare/v1.2.0...v2.0.0) (2025-03-13)
+
+
+### Bug Fixes
+
+* **base:** update new-cap rule ([7b2065e](https://github.com/Delemangi/eslint-config-imperium/commit/7b2065efd41750f01b6ddc3203c9215eaa9ed871))
+* build ([59e770f](https://github.com/Delemangi/eslint-config-imperium/commit/59e770fdd01a40f643f651167799833ffacbea58))
+
+
+### Features
+
+* **base:** bump unicorn ([b3e5064](https://github.com/Delemangi/eslint-config-imperium/commit/b3e50645ae6ad000bb3cd258a3b9dc8f1c6b1b53))
+
+
+### BREAKING CHANGES
+
+* **base:** the new rules have new incompatible behaviour
+
 # [1.2.0](https://github.com/Delemangi/eslint-config-imperium/compare/v1.1.4...v1.2.0) (2025-02-09)
 
 
