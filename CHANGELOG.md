@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/Delemangi/eslint-config-imperium/compare/v2.0.0...v2.1.0) (2025-03-23)
+
+
+### Features
+
+* **typescript:** allow void promises in place of void function arguments ([3d0f6b7](https://github.com/Delemangi/eslint-config-imperium/commit/3d0f6b7e56a8ade3aa94c082938ef17b469e937a))
+
 # [2.0.0](https://github.com/Delemangi/eslint-config-imperium/compare/v1.2.0...v2.0.0) (2025-03-13)
 
 
