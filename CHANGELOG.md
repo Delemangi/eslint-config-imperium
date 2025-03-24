@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/Delemangi/eslint-config-imperium/compare/v2.1.0...v2.2.0) (2025-03-24)
+
+
+### Features
+
+* **node:** loosen process rules ([009eede](https://github.com/Delemangi/eslint-config-imperium/commit/009eede5e40d6af7089efb4666b0c36fd249200e))
+
 # [2.1.0](https://github.com/Delemangi/eslint-config-imperium/compare/v2.0.0...v2.1.0) (2025-03-23)
 
 
