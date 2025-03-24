@@ -17,8 +17,8 @@ const nRules = {
   'n/no-mixed-requires': ['error'],
   'n/no-new-require': ['error'],
   'n/no-path-concat': ['error'],
-  'n/no-process-env': ['error'],
-  'n/no-process-exit': ['error'],
+  'n/no-process-env': ['off'],
+  'n/no-process-exit': ['warn'],
   'n/no-restricted-import': ['off'],
   'n/no-restricted-require': ['off'],
   'n/no-sync': ['off'],
@@ -42,7 +42,7 @@ const nRules = {
 } satisfies Linter.Config['rules'];
 
 const unicornRules = {
-  'unicorn/no-process-exit': ['off'],
+  'unicorn/no-process-exit': ['warn'],
   'unicorn/prefer-json-parse-buffer': ['off'],
   'unicorn/prefer-module': ['error'],
   'unicorn/prefer-node-protocol': ['error']
