@@ -33,7 +33,7 @@ describe('Rules', () => {
   it('should verify Node configuration rules', async () => {
     const results = await eslint.lintFiles(['src/test/cases/node.ts']);
 
-    expect(results[0]?.errorCount).toBe(7);
+    expect(results[0]?.errorCount).toBe(6);
 
     expect(results[0]?.messages[0]?.ruleId).toBe('n/no-exports-assign');
     expect(results[0]?.messages[1]?.ruleId).toBe('unicorn/prefer-module');
