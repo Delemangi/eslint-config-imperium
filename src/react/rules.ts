@@ -182,9 +182,19 @@ const reactHooksRules = {
   'react-hooks/rules-of-hooks': ['error']
 } satisfies Linter.Config['rules'];
 
+const reactRefreshRules = {
+  'react-refresh/only-export-components': [
+    'error',
+    {
+      allowConstantExport: true
+    }
+  ]
+} satisfies Linter.Config['rules'];
+
 const rules = {
   ...reactRules,
-  ...reactHooksRules
+  ...reactHooksRules,
+  ...reactRefreshRules
 } satisfies Linter.Config['rules'];
 
 export default rules;
