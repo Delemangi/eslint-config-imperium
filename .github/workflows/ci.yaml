@@ -1,4 +1,4 @@
-name: CI/CD Workflow
+name: Linters & Tests
 
 on:
   push:
@@ -8,9 +8,12 @@ on:
     branches:
       - "main"
 
+permissions:
+  contents: read
+
 jobs:
-  build-test:
-    name: Build & Test
+  lint-test:
+    name: Lint & Run Tests
     runs-on: ubuntu-latest
 
     steps:
