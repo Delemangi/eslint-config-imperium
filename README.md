@@ -71,4 +71,4 @@ After this, the build output will be placed in the `lib` folder. You may use it 
 
 ## License
 
-MIT
+This project is licensed under the terms of the MIT license.
