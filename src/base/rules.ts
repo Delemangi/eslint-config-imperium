@@ -266,6 +266,7 @@ const eslintLayoutRules = {
 } satisfies Linter.Config['rules'];
 
 const unicornRules = {
+  'prefer-import-meta-properties': ['error'],
   'unicorn/better-regex': ['error'],
   'unicorn/catch-error-name': ['error', { name: 'error' }],
   'unicorn/consistent-assert': ['off'],
@@ -298,7 +299,6 @@ const unicornRules = {
   'unicorn/no-array-callback-reference': ['off'],
   'unicorn/no-array-for-each': ['error'],
   'unicorn/no-array-method-this-argument': ['error'],
-  'unicorn/no-array-push-push': ['error'],
   'unicorn/no-array-reduce': [
     'error',
     {
@@ -316,7 +316,6 @@ const unicornRules = {
   'unicorn/no-invalid-fetch-options': ['error'],
   'unicorn/no-invalid-remove-event-listener': ['error'],
   'unicorn/no-keyword-prefix': ['off'],
-  'unicorn/no-length-as-slice-end': ['error'],
   'unicorn/no-lonely-if': ['error'],
   'unicorn/no-magic-array-flat-depth': ['error'],
   'unicorn/no-named-default': ['error'],
@@ -332,8 +331,11 @@ const unicornRules = {
   'unicorn/no-thenable': ['error'],
   'unicorn/no-this-assignment': ['error'],
   'unicorn/no-typeof-undefined': ['error'],
+  'unicorn/no-unnecessary-array-flat-depth': ['error'],
+  'unicorn/no-unnecessary-array-splice-count': ['error'],
   'unicorn/no-unnecessary-await': ['error'],
   'unicorn/no-unnecessary-polyfills': ['error'],
+  'unicorn/no-unnecessary-slice-end': ['error'],
   'unicorn/no-unreadable-array-destructuring': ['error'],
   'unicorn/no-unreadable-iife': ['error'],
   'unicorn/no-unused-properties': ['error'],
@@ -383,6 +385,7 @@ const unicornRules = {
   'unicorn/prefer-regexp-test': ['error'],
   'unicorn/prefer-set-has': ['error'],
   'unicorn/prefer-set-size': ['error'],
+  'unicorn/prefer-single-call': ['error'],
   'unicorn/prefer-spread': ['off'], // Should this be disabled?
   'unicorn/prefer-string-raw': ['error'],
   'unicorn/prefer-string-replace-all': ['error'],
