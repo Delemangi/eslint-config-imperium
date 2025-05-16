@@ -266,7 +266,6 @@ const eslintLayoutRules = {
 } satisfies Linter.Config['rules'];
 
 const unicornRules = {
-  'prefer-import-meta-properties': ['error'],
   'unicorn/better-regex': ['error'],
   'unicorn/catch-error-name': ['error', { name: 'error' }],
   'unicorn/consistent-assert': ['off'],
@@ -370,6 +369,7 @@ const unicornRules = {
   'unicorn/prefer-event-target': ['error'],
   'unicorn/prefer-export-from': ['error'],
   'unicorn/prefer-global-this': ['off'],
+  'unicorn/prefer-import-meta-properties': ['error'],
   'unicorn/prefer-includes': ['error'],
   'unicorn/prefer-logical-operator-over-ternary': ['error'],
   'unicorn/prefer-math-min-max': ['error'],
