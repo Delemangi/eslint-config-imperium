@@ -16,7 +16,7 @@
     "@stylistic/eslint-plugin": "^4.2.0",
     "@typescript-eslint/eslint-plugin": "^8.32.1",
     "@typescript-eslint/parser": "^8.32.1",
-    "@vitest/eslint-plugin": "^1.1.43",
+    "@vitest/eslint-plugin": "^1.2.0",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-n": "^17.17.0",
     "eslint-plugin-perfectionist": "^4.13.0",
@@ -46,7 +46,7 @@
     "husky": "^9.1.7",
     "react": "^19.1.0",
     "rimraf": "^6.0.1",
-    "semantic-release": "^24.2.3",
+    "semantic-release": "^24.2.4",
     "typescript": "~5.8.3",
     "vitest": "^3.1.2"
   },
