@@ -101,14 +101,6 @@ const stylisticRules = {
   '@stylistic/jsx-equals-spacing': ['error', 'never'],
   '@stylistic/jsx-first-prop-new-line': ['error', 'multiline'],
   '@stylistic/jsx-function-call-newline': ['error', 'multiline'],
-  '@stylistic/jsx-indent': [
-    'error',
-    2,
-    {
-      checkAttributes: true,
-      indentLogicalExpressions: true
-    }
-  ],
   '@stylistic/jsx-indent-props': ['error', 2],
   '@stylistic/jsx-max-props-per-line': [
     'error',
