@@ -1,3 +1,19 @@
+# [2.3.0](https://github.com/Delemangi/eslint-config-imperium/compare/v2.2.0...v2.3.0) (2025-06-16)
+
+
+### Bug Fixes
+
+* **base:** update rule name ([0ce55e5](https://github.com/Delemangi/eslint-config-imperium/commit/0ce55e5cc61e902f15a5c720de7ae0fd64b38bfb))
+
+
+### Features
+
+* **base:** support new unicorn rules ([2f45b3c](https://github.com/Delemangi/eslint-config-imperium/commit/2f45b3c5062616b54ac893038d0ca31580f2989a))
+* **node:** add rules ([4a065ce](https://github.com/Delemangi/eslint-config-imperium/commit/4a065ced0ae1c1c62a158d12cadca1401016d35a))
+* **stylistic:** bump package and rules ([f4cb9f8](https://github.com/Delemangi/eslint-config-imperium/commit/f4cb9f8e08eef24cb7129926138a3c53996cc22e))
+* support Node 24 ([469b0d0](https://github.com/Delemangi/eslint-config-imperium/commit/469b0d08eeaaaafaeb1e98a61cdac68a396fdd7a))
+* **typescript:** support new rules ([54adae9](https://github.com/Delemangi/eslint-config-imperium/commit/54adae9f71a2954f6faea45bfaec49862c8e6aa1))
+
 # [2.2.0](https://github.com/Delemangi/eslint-config-imperium/compare/v2.1.0...v2.2.0) (2025-03-24)
 
 
