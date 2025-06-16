@@ -22,6 +22,7 @@ const nRules = {
   'n/no-restricted-import': ['off'],
   'n/no-restricted-require': ['off'],
   'n/no-sync': ['off'],
+  'n/no-top-level-await': ['off'],
   'n/no-unpublished-bin': ['error'],
   'n/no-unpublished-import': ['off'],
   'n/no-unpublished-require': ['off'],
