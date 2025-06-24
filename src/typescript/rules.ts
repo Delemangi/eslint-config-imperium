@@ -68,6 +68,7 @@ const typescriptEslintRules = {
   '@typescript-eslint/no-base-to-string': [
     'error',
     {
+      checkUnknown: false,
       ignoredTypeNames: ['RegExp']
     }
   ],
