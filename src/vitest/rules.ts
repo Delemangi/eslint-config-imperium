@@ -32,6 +32,7 @@ const vitestRules = {
   'vitest/padding-around-before-each-blocks': ['error'],
   'vitest/padding-around-describe-blocks': ['error'],
   'vitest/padding-around-expect-groups': ['error'],
+  'vitest/prefer-called-once': ['error'],
   'vitest/prefer-called-with': ['off'],
   'vitest/prefer-comparison-matcher': ['error'],
   'vitest/prefer-each': ['error'],
@@ -61,7 +62,8 @@ const vitestRules = {
   'vitest/valid-describe-callback': ['error'],
   'vitest/valid-expect': ['error'],
   'vitest/valid-expect-in-promise': ['error'],
-  'vitest/valid-title': ['error']
+  'vitest/valid-title': ['error'],
+  'vitest/warn-todo': ['warn']
 } satisfies Linter.Config['rules'];
 
 const rules = {
