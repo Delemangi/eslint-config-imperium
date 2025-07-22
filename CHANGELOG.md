@@ -1,3 +1,18 @@
+# [2.5.0](https://github.com/Delemangi/eslint-config-imperium/compare/v2.4.0...v2.5.0) (2025-07-22)
+
+
+### Bug Fixes
+
+* build ([20f1ccf](https://github.com/Delemangi/eslint-config-imperium/commit/20f1ccff9cc0ae3350aad95011ee08c0dd9bf2f8))
+* resolve vulnerability ([ffba119](https://github.com/Delemangi/eslint-config-imperium/commit/ffba119c451731ae96d8fbcaaab28f1c789ebbdc))
+
+
+### Features
+
+* **base:** support new unicorn rules ([a4a72a7](https://github.com/Delemangi/eslint-config-imperium/commit/a4a72a75458f4acc40b2890a35ca069a63ad1525))
+* **typescript:** ignore unknown in base to string rule ([16a8190](https://github.com/Delemangi/eslint-config-imperium/commit/16a81904d192e10ce4f0df472220446df4d2b1a2))
+* **vitest:** add new rules ([e88f0a8](https://github.com/Delemangi/eslint-config-imperium/commit/e88f0a847f443710fdc11977457072fe36fae845))
+
 # [2.4.0](https://github.com/Delemangi/eslint-config-imperium/compare/v2.3.0...v2.4.0) (2025-06-16)
 
 
