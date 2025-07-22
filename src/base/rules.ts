@@ -305,6 +305,7 @@ const unicornRules = {
       allowSimpleOperations: true
     }
   ],
+  'unicorn/no-array-reverse': ['error'],
   'unicorn/no-await-expression-member': ['error'],
   'unicorn/no-await-in-promise-methods': ['error'],
   'unicorn/no-console-spaces': ['error'],
@@ -339,6 +340,7 @@ const unicornRules = {
   'unicorn/no-unreadable-array-destructuring': ['error'],
   'unicorn/no-unreadable-iife': ['error'],
   'unicorn/no-unused-properties': ['error'],
+  'unicorn/no-useless-error-capture-stack-trace': ['error'],
   'unicorn/no-useless-fallback-in-spread': ['error'],
   'unicorn/no-useless-length-check': ['error'],
   'unicorn/no-useless-promise-resolve-reject': ['error'],
@@ -364,6 +366,7 @@ const unicornRules = {
   'unicorn/prefer-array-some': ['error'],
   'unicorn/prefer-at': ['error'],
   'unicorn/prefer-blob-reading-methods': ['error'],
+  'unicorn/prefer-class-fields': ['error'],
   'unicorn/prefer-code-point': ['error'],
   'unicorn/prefer-date-now': ['error'],
   'unicorn/prefer-default-parameters': ['error'],
@@ -400,6 +403,7 @@ const unicornRules = {
   'unicorn/prevent-abbreviations': ['off'], // Revisit this rule
   'unicorn/relative-url-style': ['error'],
   'unicorn/require-array-join-separator': ['error'],
+  'unicorn/require-module-specifiers': ['off'],
   'unicorn/require-number-to-fixed-digits-argument': ['error'],
   'unicorn/string-content': ['off'],
   'unicorn/switch-case-braces': ['error', 'avoid'],
