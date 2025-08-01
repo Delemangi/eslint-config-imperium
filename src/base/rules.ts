@@ -287,7 +287,8 @@ const unicornRules = {
       cases: {
         camelCase: true,
         kebabCase: true,
-        pascalCase: true
+        pascalCase: true,
+        snakeCase: true
       }
     }
   ],
