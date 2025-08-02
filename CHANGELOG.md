@@ -1,3 +1,10 @@
+## [2.5.1](https://github.com/Delemangi/eslint-config-imperium/compare/v2.5.0...v2.5.1) (2025-08-02)
+
+
+### Bug Fixes
+
+* **base:** allow snake case file names ([0568b3f](https://github.com/Delemangi/eslint-config-imperium/commit/0568b3fc5ee7e0a6a81700bd30a3b22bf4b58983))
+
 # [2.5.0](https://github.com/Delemangi/eslint-config-imperium/compare/v2.4.0...v2.5.0) (2025-07-22)
 
 
