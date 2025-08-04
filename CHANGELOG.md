@@ -1,3 +1,10 @@
+# [2.6.0](https://github.com/Delemangi/eslint-config-imperium/compare/v2.5.1...v2.6.0) (2025-08-04)
+
+
+### Features
+
+* allow release ([c3f3b3b](https://github.com/Delemangi/eslint-config-imperium/commit/c3f3b3b177d8ecaab23df2fa9a4291fb4fe72d7e))
+
 ## [2.5.1](https://github.com/Delemangi/eslint-config-imperium/compare/v2.5.0...v2.5.1) (2025-08-02)
 
 
