@@ -1,14 +1,12 @@
 import type { Linter } from 'eslint';
 
-import typescriptPlugin from '@typescript-eslint/eslint-plugin';
-import typescriptParser from '@typescript-eslint/parser';
+import typescriptPlugin from 'typescript-eslint';
 
 import rules from './rules.js';
 
 const typescript: Linter.Config = {
   files: ['**/*.{ts,tsx}'],
   languageOptions: {
-    parser: typescriptParser,
     parserOptions: {
       project: true
     }
