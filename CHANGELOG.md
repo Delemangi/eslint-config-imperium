@@ -1,3 +1,15 @@
+# [2.7.0](https://github.com/Delemangi/eslint-config-imperium/compare/v2.6.0...v2.7.0) (2025-08-09)
+
+
+### Bug Fixes
+
+* **typescript:** incorrect plugin settings ([bb57678](https://github.com/Delemangi/eslint-config-imperium/commit/bb576788c64d4e0be2352861e5a8038e06acf8c9))
+
+
+### Features
+
+* **typescript:** use new typescript-eslint package ([1ad1f51](https://github.com/Delemangi/eslint-config-imperium/commit/1ad1f51baa0eedc3f93e0848663bca2ec8f39f3e))
+
 # [2.6.0](https://github.com/Delemangi/eslint-config-imperium/compare/v2.5.1...v2.6.0) (2025-08-04)
 
 
