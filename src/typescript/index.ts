@@ -7,13 +7,15 @@ import rules from './rules.js';
 const typescript: Linter.Config = {
   files: ['**/*.{ts,tsx}'],
   languageOptions: {
+    // @ts-expect-error missing type
+    parser: typescriptPlugin.parser,
     parserOptions: {
       project: true
     }
   },
   plugins: {
     // @ts-expect-error missing type
-    '@typescript-eslint': typescriptPlugin
+    '@typescript-eslint': typescriptPlugin.plugin
   },
   rules
 };
