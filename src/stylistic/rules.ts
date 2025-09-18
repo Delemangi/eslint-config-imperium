@@ -122,7 +122,6 @@ const stylisticRules = {
       allowNamespace: true
     }
   ],
-  '@stylistic/jsx-props-no-multi-spaces': ['error'],
   '@stylistic/jsx-quotes': ['error', 'prefer-single'],
   '@stylistic/jsx-self-closing-comp': ['error'],
   '@stylistic/jsx-sort-props': ['error'],
