@@ -307,6 +307,7 @@ const unicornRules = {
     }
   ],
   'unicorn/no-array-reverse': ['error'],
+  'unicorn/no-array-sort': ['off'],
   'unicorn/no-await-expression-member': ['error'],
   'unicorn/no-await-in-promise-methods': ['error'],
   'unicorn/no-console-spaces': ['error'],
@@ -366,8 +367,10 @@ const unicornRules = {
   'unicorn/prefer-array-index-of': ['error'],
   'unicorn/prefer-array-some': ['error'],
   'unicorn/prefer-at': ['error'],
+  'unicorn/prefer-bigint-literals': ['error'],
   'unicorn/prefer-blob-reading-methods': ['error'],
   'unicorn/prefer-class-fields': ['error'],
+  'unicorn/prefer-classlist-toggle': ['error'],
   'unicorn/prefer-code-point': ['error'],
   'unicorn/prefer-date-now': ['error'],
   'unicorn/prefer-default-parameters': ['error'],
@@ -404,6 +407,7 @@ const unicornRules = {
   'unicorn/prevent-abbreviations': ['off'], // Revisit this rule
   'unicorn/relative-url-style': ['error'],
   'unicorn/require-array-join-separator': ['error'],
+  'unicorn/require-module-attributes': ['error'],
   'unicorn/require-module-specifiers': ['off'],
   'unicorn/require-number-to-fixed-digits-argument': ['error'],
   'unicorn/string-content': ['off'],
