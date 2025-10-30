@@ -10,7 +10,6 @@ const vitest: Linter.Config = {
     '**/*.spec.{ts,tsx,js,jsx}'
   ],
   plugins: {
-    // @ts-expect-error missing type
     vitest: vitestPlugin
   },
   rules
