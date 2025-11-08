@@ -1,3 +1,20 @@
+# [2.8.0](https://github.com/Delemangi/eslint-config-imperium/compare/v2.7.0...v2.8.0) (2025-11-08)
+
+
+### Bug Fixes
+
+* **perfectionist:** resolve errors ([bb6bd70](https://github.com/Delemangi/eslint-config-imperium/commit/bb6bd7010e77e98f8b7882cc7f46de2abaf3ef7a))
+* **stylistic:** remove deprecated rule ([6532b6f](https://github.com/Delemangi/eslint-config-imperium/commit/6532b6f34487f120c38ac1a62d97255dfacc35f8))
+* **typescript:** bump ([e621b30](https://github.com/Delemangi/eslint-config-imperium/commit/e621b3015efd1d85c77fed9917339bf34410a2e6))
+* **typescript:** use correct types for parser and plugin ([7f544c4](https://github.com/Delemangi/eslint-config-imperium/commit/7f544c49afb436b8345dcfac565c0fd672f0cfc5))
+* **vitest:** remove ts directive ([ef3f718](https://github.com/Delemangi/eslint-config-imperium/commit/ef3f718f52a34876e8da700394db63812569026d))
+
+
+### Features
+
+* **base:** bump unicorn and support new rules ([a00649b](https://github.com/Delemangi/eslint-config-imperium/commit/a00649b00fd9cd76ab1f5719b9a54a599ef01f5f))
+* **base:** support new unicorn rules ([fd925c3](https://github.com/Delemangi/eslint-config-imperium/commit/fd925c312095c91000bad0451f9a97c3f09e4acf))
+
 # [2.7.0](https://github.com/Delemangi/eslint-config-imperium/compare/v2.6.0...v2.7.0) (2025-08-09)
 
 
