@@ -1,3 +1,17 @@
+# [3.0.0](https://github.com/Delemangi/eslint-config-imperium/compare/v2.8.0...v3.0.0) (2025-12-13)
+
+
+### Features
+
+* support new rules found by the completeness test ([aa730b1](https://github.com/Delemangi/eslint-config-imperium/commit/aa730b11bd49f7edb2fc442a06fea1e5e6af7de8))
+* **vitest:** support new rules ([188b454](https://github.com/Delemangi/eslint-config-imperium/commit/188b45489cbf70c0954eee152aa18bb485141432))
+
+
+### BREAKING CHANGES
+
+* the completeness test found a large amount of unconfigured rules which are now
+included and feature big differences in linter expectations
+
 # [2.8.0](https://github.com/Delemangi/eslint-config-imperium/compare/v2.7.0...v2.8.0) (2025-11-08)
 
 
