@@ -183,6 +183,7 @@ const typescriptEslintRules = {
   '@typescript-eslint/no-unsafe-type-assertion': ['off'],
   '@typescript-eslint/no-unsafe-unary-minus': ['error'],
   '@typescript-eslint/no-unused-expressions': ['error'],
+  '@typescript-eslint/no-unused-private-class-members': ['error'],
   '@typescript-eslint/no-unused-vars': ['error', 'all'],
   '@typescript-eslint/no-use-before-define': [
     'error',
@@ -234,7 +235,6 @@ const typescriptEslintRules = {
       types: 'never'
     }
   ],
-  '@typescript-eslint/typedef': ['off'],
   '@typescript-eslint/unbound-method': ['error'],
   '@typescript-eslint/unified-signatures': ['error'],
   '@typescript-eslint/use-unknown-in-catch-callback-variable': ['error']

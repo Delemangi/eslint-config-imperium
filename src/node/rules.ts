@@ -46,7 +46,8 @@ const unicornRules = {
   'unicorn/no-process-exit': ['warn'],
   'unicorn/prefer-json-parse-buffer': ['off'],
   'unicorn/prefer-module': ['error'],
-  'unicorn/prefer-node-protocol': ['error']
+  'unicorn/prefer-node-protocol': ['error'],
+  'unicorn/prefer-top-level-await': ['error']
 } satisfies Linter.Config['rules'];
 
 export default {

@@ -448,6 +448,7 @@ const regexpRules = {
   'regexp/no-empty-character-class': ['error'],
   'regexp/no-empty-group': ['error'],
   'regexp/no-empty-lookarounds-assertion': ['error'],
+  'regexp/no-empty-string-literal': ['error'],
   'regexp/no-escape-backspace': ['error'],
   'regexp/no-extra-lookaround-assertions': ['error'],
   'regexp/no-invalid-regexp': ['error'],

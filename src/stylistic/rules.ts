@@ -62,6 +62,7 @@ const stylisticRules = {
   ],
   '@stylistic/dot-location': ['error', 'property'],
   '@stylistic/eol-last': ['error'],
+  '@stylistic/exp-list-style': ['error'],
   '@stylistic/function-call-argument-newline': ['error', 'consistent'],
   '@stylistic/function-call-spacing': [
     'error',
