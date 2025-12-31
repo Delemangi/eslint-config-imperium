@@ -33,6 +33,7 @@ This package is modular and includes several configurations intended to be enabl
 - [`browser`](./src/browser/index.ts) - Browser environment configuration
 - [`node`](./src/node/index.ts) - Node environment configuration
 - [`react`](./src/react/index.ts) - React configuration
+- [`solid`](./src/solid/index.ts) - Solid configuration
 - [`typescript`](./src/typescript/index.ts) - TypeScript configuration
 - [`vitest`](./src/vitest/index.ts) - Vitest configuration
 
@@ -59,6 +60,7 @@ This is a list of the currently used ESLint plugins:
 - [`eslint-plugin-react-hooks`](https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks)
 - [`eslint-plugin-react-refresh`](https://github.com/ArnaudBarre/eslint-plugin-react-refresh)
 - [`eslint-plugin-regexp`](https://github.com/ota-meshi/eslint-plugin-regexp)
+- [`eslint-plugin-solid`](https://github.com/solidjs-community/eslint-plugin-solid)
 - [`eslint-plugin-unicorn`](https://github.com/sindresorhus/eslint-plugin-unicorn)
 
 ## Building
