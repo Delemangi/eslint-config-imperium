@@ -48,6 +48,12 @@ describe('Configurations', () => {
     expect(errors).toBe(0);
   });
 
+  it('should lint Solid configuration code without errors', async () => {
+    const errors = await getErrorsCount(['src/solid/*.ts']);
+
+    expect(errors).toBe(0);
+  });
+
   it('should lint Stylistic configuration code without errors', async () => {
     const errors = await getErrorsCount(['src/stylistic/*.ts']);
 

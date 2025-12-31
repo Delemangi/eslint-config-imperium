@@ -8,6 +8,7 @@ import reactPlugin from 'eslint-plugin-react';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import reactRefreshPlugin from 'eslint-plugin-react-refresh';
 import regexpPlugin from 'eslint-plugin-regexp';
+import solidPlugin from 'eslint-plugin-solid';
 import unicornPlugin from 'eslint-plugin-unicorn';
 import typescriptPlugin from 'typescript-eslint';
 import {
@@ -21,6 +22,7 @@ import browserRules from '../browser/rules.js';
 import nodeRules from '../node/rules.js';
 import prettierRules from '../prettier/rules.js';
 import reactRules from '../react/rules.js';
+import solidRules from '../solid/rules.js';
 import stylisticRules from '../stylistic/rules.js';
 import typescriptRules from '../typescript/rules.js';
 import vitestRules from '../vitest/rules.js';
@@ -33,6 +35,7 @@ const allConfiguredRules: Record<string, unknown> = {
   ...nodeRules,
   ...prettierRules,
   ...reactRules,
+  ...solidRules,
   ...stylisticRules,
   ...typescriptRules,
   ...vitestRules
@@ -85,6 +88,11 @@ const plugins: PluginTestCase[] = [
     name: 'react-refresh',
     prefix: 'react-refresh',
     rules: reactRefreshPlugin.rules as PluginRules
+  },
+  {
+    name: 'solid',
+    prefix: 'solid',
+    rules: solidPlugin.rules as PluginRules
   },
   {
     name: 'stylistic',

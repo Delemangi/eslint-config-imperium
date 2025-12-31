@@ -5,7 +5,7 @@ import {
   it
 } from 'vitest';
 
-import { prettier } from '../index.js';
+import { prettier, solid } from '../index.js';
 
 const eslint = new ESLint();
 
@@ -75,6 +75,24 @@ describe('Rules', () => {
     expect(results[0]?.messages[1]?.ruleId).toBe('react/self-closing-comp');
     expect(results[0]?.messages[2]?.ruleId).toBe('@stylistic/jsx-self-closing-comp');
     expect(results[0]?.messages[3]?.ruleId).toBe('react/no-children-prop');
+  });
+
+  it('should verify Solid configuration rules', async () => {
+    const solidEslint = new ESLint({
+      overrideConfig: [solid]
+    });
+    const results = await solidEslint.lintFiles(['src/test/cases/solid.tsx']);
+
+    expect(results[0]?.errorCount).toBe(8);
+
+    expect(results[0]?.messages[0]?.ruleId).toBe('react/prefer-read-only-props');
+    expect(results[0]?.messages[1]?.ruleId).toBe('solid/no-destructure');
+    expect(results[0]?.messages[2]?.ruleId).toBe('arrow-body-style');
+    expect(results[0]?.messages[3]?.ruleId).toBe('solid/no-react-specific-props');
+    expect(results[0]?.messages[4]?.ruleId).toBe('@stylistic/jsx-quotes');
+    expect(results[0]?.messages[5]?.ruleId).toBe('react/button-has-type');
+    expect(results[0]?.messages[6]?.ruleId).toBe('solid/no-array-handlers');
+    expect(results[0]?.messages[7]?.ruleId).toBe('@stylistic/jsx-one-expression-per-line');
   });
 
   it('should verify Stylistic configuration rules', async () => {
