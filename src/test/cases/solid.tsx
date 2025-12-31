@@ -8,7 +8,8 @@ export const Component = ({ count }: Props) => {
   return (
     <div key="test">
       {/* solid/no-array-handlers - array handler in event */}
-      <button onClick={[() => {}, count]}>Click</button>
+      {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+      <button onClick={[() => {}, count] as any}>Click</button>
     </div>
   );
 };
