@@ -1,6 +1,8 @@
 import { ESLint } from 'eslint';
 import {
-  describe, expect, it
+  describe,
+  expect,
+  it
 } from 'vitest';
 
 const eslint = new ESLint();
