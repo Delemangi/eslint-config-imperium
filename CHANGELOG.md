@@ -1,3 +1,18 @@
+# [3.1.0](https://github.com/Delemangi/eslint-config-imperium/compare/v3.0.0...v3.1.0) (2025-12-31)
+
+
+### Bug Fixes
+
+* **perfectionist:** types ([b9390b9](https://github.com/Delemangi/eslint-config-imperium/commit/b9390b98e969eea04cebc3adbffc5a680658a7dc))
+* **solid:** resolve linter issues ([9fa1847](https://github.com/Delemangi/eslint-config-imperium/commit/9fa1847401d325fd7966c205d973af8592243216))
+
+
+### Features
+
+* **solid:** add new ruleset ([8966186](https://github.com/Delemangi/eslint-config-imperium/commit/8966186056fd1c9eede3c6b1354eedfb65b8a2de))
+* **typescript:** support new rules ([0429bee](https://github.com/Delemangi/eslint-config-imperium/commit/0429beec5e43e244ef5ae5dd02605d86d5f40856))
+* **vitest:** update rules ([c2723ba](https://github.com/Delemangi/eslint-config-imperium/commit/c2723badd2a5d8d08b05ad268d477e3fd056ba4f))
+
 # [3.0.0](https://github.com/Delemangi/eslint-config-imperium/compare/v2.8.0...v3.0.0) (2025-12-13)
 
 
