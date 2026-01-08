@@ -77,6 +77,7 @@
   },
   "scripts": {
     "build": "rimraf lib && tsc",
+    "check": "tsc --noEmit",
     "commit": "cz",
     "commitlint": "commitlint --edit",
     "format": "eslint --ignore-pattern \"**/test/*\" --fix .",
