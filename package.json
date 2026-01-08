@@ -34,8 +34,6 @@
   "devDependencies": {
     "@commitlint/cli": "^20.2.0",
     "@commitlint/config-conventional": "^20.2.0",
-    "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/git": "^10.0.1",
     "@types/eslint": "^9.6.1",
     "@types/eslint-config-prettier": "^6.11.3",
     "@types/node": "^24.10.4",
@@ -77,6 +75,7 @@
   },
   "scripts": {
     "build": "rimraf lib && tsc",
+    "check": "tsc --noEmit",
     "commit": "cz",
     "commitlint": "commitlint --edit",
     "format": "eslint --ignore-pattern \"**/test/*\" --fix .",
@@ -92,5 +91,5 @@
   },
   "type": "module",
   "types": "lib/index.d.ts",
-  "version": "3.1.0"
+  "version": "0.0.0"
 }
