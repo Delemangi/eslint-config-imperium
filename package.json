@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@stylistic/eslint-plugin": "^5.6.1",
-    "@vitest/eslint-plugin": "^1.5.2",
+    "@vitest/eslint-plugin": "^1.6.6",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-n": "^17.23.1",
     "eslint-plugin-perfectionist": "^5.3.0",
@@ -22,18 +22,18 @@
     "eslint-plugin-promise": "^7.2.1",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
-    "eslint-plugin-react-refresh": "^0.4.20",
+    "eslint-plugin-react-refresh": "^0.4.26",
     "eslint-plugin-regexp": "^2.10.0",
     "eslint-plugin-solid": "^0.14.5",
     "eslint-plugin-unicorn": "^62.0.0",
     "globals": "^17.0.0",
     "prettier": "^3.7.4",
-    "typescript-eslint": "^8.50.0"
+    "typescript-eslint": "^8.52.0"
   },
   "description": "Comprehensive ESLint configuration",
   "devDependencies": {
-    "@commitlint/cli": "^20.2.0",
-    "@commitlint/config-conventional": "^20.2.0",
+    "@commitlint/cli": "^20.3.0",
+    "@commitlint/config-conventional": "^20.3.0",
     "@types/eslint": "^9.6.1",
     "@types/eslint-config-prettier": "^6.11.3",
     "@types/node": "^24.10.4",
