@@ -73,6 +73,7 @@ const vitestRules = {
   'vitest/require-hook': ['off'],
   'vitest/require-local-test-context-for-concurrent-snapshots': ['error'],
   'vitest/require-mock-type-parameters': ['error'],
+  'vitest/require-test-timeout': ['off'],
   'vitest/require-to-throw-message': ['off'],
   'vitest/require-top-level-describe': ['off'],
   'vitest/valid-describe-callback': ['error'],
