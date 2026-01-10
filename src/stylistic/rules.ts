@@ -125,7 +125,6 @@ const stylisticRules = {
   ],
   '@stylistic/jsx-quotes': ['error', 'prefer-single'],
   '@stylistic/jsx-self-closing-comp': ['error'],
-  '@stylistic/jsx-sort-props': ['error'],
   '@stylistic/jsx-tag-spacing': [
     'error',
     {
