@@ -227,6 +227,7 @@ const typescriptEslintRules = {
   '@typescript-eslint/restrict-template-expressions': ['error'],
   '@typescript-eslint/return-await': ['off'], // Interesting read: https://typescript-eslint.io/rules/return-await/
   '@typescript-eslint/strict-boolean-expressions': ['off'],
+  '@typescript-eslint/strict-void-return': ['error'],
   '@typescript-eslint/switch-exhaustiveness-check': ['off'],
   '@typescript-eslint/triple-slash-reference': [
     'error',
