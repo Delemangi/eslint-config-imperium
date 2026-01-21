@@ -27,7 +27,7 @@
     "eslint-plugin-solid": "^0.14.5",
     "eslint-plugin-unicorn": "^62.0.0",
     "globals": "^17.0.0",
-    "prettier": "^3.7.4",
+    "prettier": "^3.8.1",
     "typescript-eslint": "^8.53.0"
   },
   "description": "Comprehensive ESLint configuration",
@@ -36,7 +36,7 @@
     "@commitlint/config-conventional": "^20.3.0",
     "@types/eslint": "^9.6.1",
     "@types/eslint-config-prettier": "^6.11.3",
-    "@types/node": "^24.10.4",
+    "@types/node": "^24.10.9",
     "@types/react": "^19.2.7",
     "commitizen": "^4.3.1",
     "cz-conventional-changelog": "^3.3.0",
