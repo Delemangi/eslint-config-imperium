@@ -13,7 +13,7 @@
     }
   },
   "dependencies": {
-    "@stylistic/eslint-plugin": "^5.7.1",
+    "@stylistic/eslint-plugin": "^5.8.0",
     "@vitest/eslint-plugin": "^1.6.6",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-n": "^17.23.2",
