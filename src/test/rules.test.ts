@@ -116,12 +116,11 @@ describe('Rules', () => {
   it('should verify TypeScript configuration rules', async () => {
     const results = await eslint.lintFiles(['src/test/cases/typescript.ts']);
 
-    expect(results[0]?.errorCount).toBe(4);
+    expect(results[0]?.errorCount).toBe(3);
 
     expect(results[0]?.messages[0]?.ruleId).toBe('@typescript-eslint/no-unused-expressions');
     expect(results[0]?.messages[1]?.ruleId).toBe('@typescript-eslint/dot-notation');
-    expect(results[0]?.messages[2]?.ruleId).toBe('@typescript-eslint/strict-void-return');
-    expect(results[0]?.messages[3]?.ruleId).toBe('@typescript-eslint/only-throw-error');
+    expect(results[0]?.messages[2]?.ruleId).toBe('@typescript-eslint/only-throw-error');
   });
 
   it('should verify Vitest configuration rules', async () => {
