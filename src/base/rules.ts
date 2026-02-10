@@ -293,6 +293,7 @@ const unicornRules = {
     }
   ],
   'unicorn/import-style': ['off'],
+  'unicorn/isolated-functions': ['off'],
   'unicorn/new-for-builtins': ['error'],
   'unicorn/no-abusive-eslint-disable': ['error'],
   'unicorn/no-accessor-recursion': ['error'],
