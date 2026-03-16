@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@stylistic/eslint-plugin": "^5.9.0",
-    "@vitest/eslint-plugin": "^1.6.11",
+    "@vitest/eslint-plugin": "^1.6.12",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-n": "^17.24.0",
     "eslint-plugin-perfectionist": "^5.4.0",
@@ -28,12 +28,12 @@
     "eslint-plugin-unicorn": "^63.0.0",
     "globals": "^17.3.0",
     "prettier": "^3.8.1",
-    "typescript-eslint": "^8.56.1"
+    "typescript-eslint": "^8.57.1"
   },
   "description": "Comprehensive ESLint configuration",
   "devDependencies": {
-    "@commitlint/cli": "^20.4.1",
-    "@commitlint/config-conventional": "^20.4.2",
+    "@commitlint/cli": "^20.5.0",
+    "@commitlint/config-conventional": "^20.5.0",
     "@types/eslint": "^9.6.1",
     "@types/eslint-config-prettier": "^6.11.3",
     "@types/node": "^24.12.0",
