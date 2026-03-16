@@ -9,7 +9,7 @@ const typescript: Linter.Config = {
   languageOptions: {
     parser: typescriptPlugin.parser,
     parserOptions: {
-      project: true
+      projectService: true
     }
   },
   plugins: {
