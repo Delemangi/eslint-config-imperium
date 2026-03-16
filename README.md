@@ -45,6 +45,28 @@ This package is modular and includes several configurations intended to be enabl
 
 You should not enable `prettier` and `stylistic` at the same time.
 
+## Typed Linting
+
+The `typescript` and `auto` configurations use [`parserOptions.projectService`](https://typescript-eslint.io/packages/parser/#projectservice) to enable type-aware linting. This automatically finds the closest `tsconfig.json` for each file.
+
+If your editor or environment runs ESLint from a directory other than the project root, you may need to set `tsconfigRootDir` explicitly:
+
+```ts
+// eslint.config.js
+import { auto } from "eslint-config-imperium";
+
+export default [
+  ...auto,
+  {
+    languageOptions: {
+      parserOptions: {
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
+  },
+];
+```
+
 ## Plugins
 
 This is a list of the currently used ESLint plugins:
