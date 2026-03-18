@@ -1,3 +1,5 @@
+import type { Rule } from 'eslint';
+
 import stylisticPlugin from '@stylistic/eslint-plugin';
 import vitestPlugin from '@vitest/eslint-plugin';
 import nPlugin from 'eslint-plugin-n';
@@ -27,7 +29,7 @@ import stylisticRules from '../stylistic/rules.js';
 import typescriptRules from '../typescript/rules.js';
 import vitestRules from '../vitest/rules.js';
 
-type PluginRules = Record<string, { meta?: { deprecated?: unknown } }>;
+type PluginRules = Record<string, Pick<Rule.RuleModule, 'meta'>>;
 
 const allConfiguredRules: Record<string, unknown> = {
   ...baseRules,
@@ -47,68 +49,92 @@ type PluginTestCase = {
   rules: PluginRules;
 };
 
+const isPluginRules = (value: unknown): value is PluginRules => {
+  if (typeof value !== 'object' || value === null) {
+    return false;
+  }
+
+  return Object.values(value).every((rule) => typeof rule === 'object' && rule !== null);
+};
+
+const getPluginRules = (value: unknown, pluginName: string): PluginRules => {
+  if (!isPluginRules(value)) {
+    throw new TypeError(`Expected rules for plugin ${pluginName}`);
+  }
+
+  return value;
+};
+
+const isDeprecatedRule = (rule: Pick<Rule.RuleModule, 'meta'>): boolean => {
+  if (rule.meta === undefined) {
+    return false;
+  }
+
+  return 'deprecated' in rule.meta && Boolean(Reflect.get(rule.meta, 'deprecated'));
+};
+
 const plugins: PluginTestCase[] = [
   {
     name: 'promise',
     prefix: 'promise',
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    rules: promisePlugin.rules as PluginRules
+    rules: getPluginRules(promisePlugin.rules, 'promise')
   },
   {
     name: 'regexp',
     prefix: 'regexp',
-    rules: regexpPlugin.rules as PluginRules
+    rules: regexpPlugin.rules
   },
   {
     name: 'unicorn',
     prefix: 'unicorn',
-    rules: unicornPlugin.rules as PluginRules
+    rules: getPluginRules(unicornPlugin.rules, 'unicorn')
   },
   {
     name: 'n',
     prefix: 'n',
-    rules: nPlugin.rules as PluginRules
+    rules: getPluginRules(nPlugin.rules, 'n')
   },
   {
     name: 'prettier',
     prefix: 'prettier',
-    rules: prettierPlugin.rules as PluginRules
+    rules: getPluginRules(prettierPlugin.rules, 'prettier')
   },
   {
     name: 'react',
     prefix: 'react',
-    rules: reactPlugin.rules as PluginRules
+    rules: reactPlugin.rules
   },
   {
     name: 'react-hooks',
     prefix: 'react-hooks',
-    rules: reactHooksPlugin.rules as PluginRules
+    rules: reactHooksPlugin.rules
   },
   {
     name: 'react-refresh',
     prefix: 'react-refresh',
-    rules: reactRefreshPlugin.rules as PluginRules
+    rules: reactRefreshPlugin.rules
   },
   {
     name: 'solid',
     prefix: 'solid',
-    rules: solidPlugin.rules as PluginRules
+    rules: solidPlugin.rules
   },
   {
     name: 'stylistic',
     prefix: '@stylistic',
-    rules: stylisticPlugin.rules as PluginRules
+    rules: stylisticPlugin.rules
   },
   {
     name: 'typescript',
     prefix: '@typescript-eslint',
     // @ts-expect-error rules exist on the plugin
-    rules: typescriptPlugin.plugin.rules as PluginRules
+    rules: getPluginRules(typescriptPlugin.plugin.rules, 'typescript')
   },
   {
     name: 'vitest',
     prefix: 'vitest',
-    rules: vitestPlugin.rules as PluginRules
+    rules: vitestPlugin.rules
   }
 ];
 
@@ -116,7 +142,7 @@ describe('Rules Completeness', () => {
   it.each(plugins)('should configure all available $name rules', ({ prefix, rules }) => {
     const availableRules: string[] = [];
     for (const [name, rule] of Object.entries(rules)) {
-      if (!rule.meta?.deprecated) {
+      if (!isDeprecatedRule(rule)) {
         availableRules.push(`${prefix}/${name}`);
       }
     }
@@ -134,7 +160,7 @@ describe('Rules Completeness', () => {
   }) => {
     const validRules = new Set<string>();
     for (const [ruleName, rule] of Object.entries(rules)) {
-      if (!rule.meta?.deprecated) {
+      if (!isDeprecatedRule(rule)) {
         validRules.add(`${prefix}/${ruleName}`);
         // For stylistic plugin, also add unprefixed version since rules can be used without js/ts/jsx prefix
         if (name === 'stylistic' && ruleName.includes('/')) {
