@@ -8,10 +8,7 @@ const stylisticRules = {
       multiline: true
     }
   ],
-  '@stylistic/array-bracket-spacing': [
-    'error',
-    'never'
-  ],
+  '@stylistic/array-bracket-spacing': ['error', 'never'],
   '@stylistic/array-element-newline': [
     'error',
     {
@@ -44,14 +41,8 @@ const stylisticRules = {
       before: false
     }
   ],
-  '@stylistic/comma-style': [
-    'error',
-    'last'
-  ],
-  '@stylistic/computed-property-spacing': [
-    'error',
-    'never'
-  ],
+  '@stylistic/comma-style': ['error', 'last'],
+  '@stylistic/computed-property-spacing': ['error', 'never'],
   '@stylistic/curly-newline': [
     'error',
     {
@@ -65,10 +56,7 @@ const stylisticRules = {
   '@stylistic/exp-jsx-props-style': ['error'],
   '@stylistic/exp-list-style': ['error'],
   '@stylistic/function-call-argument-newline': ['error', 'consistent'],
-  '@stylistic/function-call-spacing': [
-    'error',
-    'never'
-  ],
+  '@stylistic/function-call-spacing': ['error', 'never'],
   '@stylistic/function-paren-newline': [
     'error',
     {
@@ -90,10 +78,7 @@ const stylisticRules = {
       SwitchCase: 1
     }
   ],
-  '@stylistic/indent-binary-ops': [
-    'error',
-    2
-  ],
+  '@stylistic/indent-binary-ops': ['error', 2],
   '@stylistic/jsx-child-element-spacing': ['error'],
   '@stylistic/jsx-closing-bracket-location': ['error'],
   '@stylistic/jsx-closing-tag-location': ['error'],
@@ -161,10 +146,7 @@ const stylisticRules = {
     }
   ],
   '@stylistic/line-comment-position': ['off'], // Should this be disabled?
-  '@stylistic/linebreak-style': [
-    'error',
-    'unix'
-  ],
+  '@stylistic/linebreak-style': ['error', 'unix'],
   '@stylistic/lines-around-comment': ['off'], // Should this be disabled?
   '@stylistic/lines-between-class-members': [
     'error',
@@ -331,10 +313,7 @@ const stylisticRules = {
     }
   ],
   '@stylistic/template-curly-spacing': ['error', 'never'],
-  '@stylistic/template-tag-spacing': [
-    'error',
-    'never'
-  ],
+  '@stylistic/template-tag-spacing': ['error', 'never'],
   '@stylistic/type-annotation-spacing': [
     'error',
     {
@@ -361,8 +340,4 @@ const stylisticRules = {
   ]
 } satisfies Linter.Config['rules'];
 
-const rules = {
-  ...stylisticRules
-} satisfies Linter.Config['rules'];
-
-export default rules;
+export default stylisticRules;

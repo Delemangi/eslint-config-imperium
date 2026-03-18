@@ -11,6 +11,4 @@ const unicornRules = {
   'unicorn/require-post-message-target-origin': ['off']
 } satisfies Linter.Config['rules'];
 
-export default {
-  ...unicornRules
-} satisfies Linter.Config['rules'];
+export default unicornRules;

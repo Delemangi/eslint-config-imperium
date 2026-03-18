@@ -8,9 +8,7 @@ const stylistic: Linter.Config = {
   plugins: {
     '@stylistic': stylisticPlugin
   },
-  rules: {
-    ...rules
-  }
+  rules
 };
 
 export default stylistic;

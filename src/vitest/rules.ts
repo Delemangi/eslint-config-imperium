@@ -83,8 +83,4 @@ const vitestRules = {
   'vitest/warn-todo': ['warn']
 } satisfies Linter.Config['rules'];
 
-const rules = {
-  ...vitestRules
-} satisfies Linter.Config['rules'];
-
-export default rules;
+export default vitestRules;

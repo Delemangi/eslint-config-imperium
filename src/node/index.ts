@@ -1,4 +1,5 @@
-import { type Linter } from 'eslint';
+import type { Linter } from 'eslint';
+
 import nPlugin from 'eslint-plugin-n';
 import unicornPlugin from 'eslint-plugin-unicorn';
 import globals from 'globals';

@@ -24,4 +24,4 @@ const solidRules = {
 
 export default {
   ...solidRules
-} as Linter.Config['rules'];
+} satisfies Linter.Config['rules'];
