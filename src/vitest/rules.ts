@@ -76,6 +76,7 @@ const vitestRules = {
   'vitest/require-test-timeout': ['off'],
   'vitest/require-to-throw-message': ['off'],
   'vitest/require-top-level-describe': ['off'],
+  'vitest/unbound-method': ['error'],
   'vitest/valid-describe-callback': ['error'],
   'vitest/valid-expect': ['error'],
   'vitest/valid-expect-in-promise': ['error'],
