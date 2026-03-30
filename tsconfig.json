@@ -2,16 +2,17 @@
   "compilerOptions": {
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
+    "declaration": true,
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
     "exactOptionalPropertyTypes": true,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
-    "lib": [
-      "ESNext",
-      "DOM"
-    ],
     "jsx": "react-jsx",
+    "lib": [
+      "DOM",
+      "ESNext"
+    ],
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "noFallthroughCasesInSwitch": true,
@@ -26,7 +27,9 @@
     "rootDir": "src",
     "strict": true,
     "target": "ESNext",
-    "declaration": true
+    "types": [
+      "node"
+    ]
   },
   "exclude": [
     "**/*.js",
