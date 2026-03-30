@@ -275,6 +275,7 @@ const unicornRules = {
   'unicorn/consistent-empty-array-spread': ['error'],
   'unicorn/consistent-existence-index-check': ['error'],
   'unicorn/consistent-function-scoping': ['error'],
+  'unicorn/consistent-template-literal-escape': ['error'],
   'unicorn/custom-error-definition': ['error'],
   'unicorn/empty-brace-spaces': ['error'],
   'unicorn/error-message': ['error'],
@@ -347,6 +348,7 @@ const unicornRules = {
   'unicorn/no-useless-collection-argument': ['error'],
   'unicorn/no-useless-error-capture-stack-trace': ['error'],
   'unicorn/no-useless-fallback-in-spread': ['error'],
+  'unicorn/no-useless-iterator-to-array': ['error'],
   'unicorn/no-useless-length-check': ['error'],
   'unicorn/no-useless-promise-resolve-reject': ['error'],
   'unicorn/no-useless-spread': ['error'],
@@ -397,6 +399,7 @@ const unicornRules = {
   'unicorn/prefer-response-static-json': ['error'],
   'unicorn/prefer-set-has': ['error'],
   'unicorn/prefer-set-size': ['error'],
+  'unicorn/prefer-simple-condition-first': ['error'],
   'unicorn/prefer-single-call': ['error'],
   'unicorn/prefer-spread': ['off'], // Should this be disabled?
   'unicorn/prefer-string-raw': ['error'],
@@ -416,6 +419,7 @@ const unicornRules = {
   'unicorn/require-number-to-fixed-digits-argument': ['error'],
   'unicorn/string-content': ['off'],
   'unicorn/switch-case-braces': ['error', 'avoid'],
+  'unicorn/switch-case-break-position': ['error'],
   'unicorn/template-indent': ['error'],
   'unicorn/text-encoding-identifier-case': ['error'],
   'unicorn/throw-new-error': ['error']
