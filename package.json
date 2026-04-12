@@ -52,9 +52,9 @@
     "node": "^22 || ^24"
   },
   "files": [
-    "lib",
     "!**/*.test.*",
-    "!test"
+    "!test",
+    "lib"
   ],
   "homepage": "https://github.com/Delemangi/eslint-config-imperium",
   "keywords": [
@@ -81,10 +81,10 @@
     "format": "eslint --ignore-pattern \"**/test/*\" --fix .",
     "format:dev": "npm run build && npm run format",
     "lint": "eslint . --ignore-pattern \"**/test/*\" --no-warn-ignored --cache",
-    "lint:test": "eslint \"**/test/*\" --no-warn-ignored --cache",
     "lint:dev": "npm run build && npm run lint",
-    "prepare": "husky",
+    "lint:test": "eslint \"**/test/*\" --no-warn-ignored --cache",
     "package": "npm run build && npm pack",
+    "prepare": "husky",
     "release": "npm run build && semantic-release",
     "release:dry": "npm run build && npm run release -- --dry-run",
     "test": "vitest run --exclude lib"
