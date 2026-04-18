@@ -27,6 +27,18 @@ describe('Rules', () => {
     expect(messages[2]?.ruleId).toBe('eqeqeq');
   });
 
+  it('should verify eslint-comments configuration rules', async () => {
+    const results = await eslint.lintFiles(['src/test/cases/eslint-comments.ts']);
+    const messages = filterMessages(results, '@eslint-community/eslint-comments/');
+
+    expect(messages).toHaveLength(4);
+
+    expect(messages[0]?.ruleId).toBe('@eslint-community/eslint-comments/require-description');
+    expect(messages[1]?.ruleId).toBe('@eslint-community/eslint-comments/require-description');
+    expect(messages[2]?.ruleId).toBe('@eslint-community/eslint-comments/disable-enable-pair');
+    expect(messages[3]?.ruleId).toBe('@eslint-community/eslint-comments/no-unused-enable');
+  });
+
   it('should verify browser configuration rules', async () => {
     const results = await eslint.lintFiles(['src/test/cases/browser.ts']);
     const messages = filterMessages(results, 'unicorn/');
@@ -137,7 +149,7 @@ describe('Rules', () => {
     expect(messages).toHaveLength(7);
 
     expect(messages[0]?.ruleId).toBe('sonarjs/no-duplicated-branches');
-    expect(messages[1]?.ruleId).toBe('sonarjs/no-collapsible-if'); // eslint-disable-line sonarjs/no-duplicate-string
+    expect(messages[1]?.ruleId).toBe('sonarjs/no-collapsible-if'); // eslint-disable-line sonarjs/no-duplicate-string -- rule IDs are necessarily repeated
     expect(messages[2]?.ruleId).toBe('sonarjs/no-collapsible-if');
     expect(messages[3]?.ruleId).toBe('sonarjs/no-collapsible-if');
     expect(messages[4]?.ruleId).toBe('sonarjs/no-collapsible-if');

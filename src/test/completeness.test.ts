@@ -1,5 +1,6 @@
 import type { Rule } from 'eslint';
 
+import eslintCommentsPlugin from '@eslint-community/eslint-plugin-eslint-comments';
 import stylisticPlugin from '@stylistic/eslint-plugin';
 import vitestPlugin from '@vitest/eslint-plugin';
 import { importX as importXPlugin } from 'eslint-plugin-import-x';
@@ -83,9 +84,14 @@ const isDeprecatedRule = (rule: Pick<Rule.RuleModule, 'meta'>): boolean => {
 
 const plugins: PluginTestCase[] = [
   {
+    name: 'eslint-comments',
+    prefix: '@eslint-community/eslint-comments',
+    rules: getPluginRules(eslintCommentsPlugin.rules, 'eslint-comments')
+  },
+  {
     name: 'promise',
     prefix: 'promise',
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- plugin lacks type definitions
     rules: getPluginRules(promisePlugin.rules, 'promise')
   },
   {
@@ -96,7 +102,7 @@ const plugins: PluginTestCase[] = [
   {
     name: 'security',
     prefix: 'security',
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- plugin lacks type definitions
     rules: getPluginRules(securityPlugin.rules, 'security')
   },
   {
