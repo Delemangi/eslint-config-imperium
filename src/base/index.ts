@@ -1,5 +1,6 @@
 import type { ESLint, Linter } from 'eslint';
 
+import eslintCommentsPlugin from '@eslint-community/eslint-plugin-eslint-comments';
 import { importX as importXPlugin } from 'eslint-plugin-import-x';
 // @ts-expect-error missing types
 import promisePlugin from 'eslint-plugin-promise';
@@ -20,8 +21,9 @@ const base: Linter.Config = {
     }
   },
   plugins: {
+    '@eslint-community/eslint-comments': eslintCommentsPlugin,
     'import-x': importXPlugin,
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- plugin lacks type definitions
     promise: promisePlugin,
     regexp: regexpPlugin,
     security: securityPlugin as ESLint.Plugin,

@@ -8,7 +8,7 @@ export const Component = ({ count }: Props) => {
   return (
     <div key="test">
       {/* solid/no-array-handlers - array handler in event */}
-      {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+      {/* eslint-disable-next-line @typescript-eslint/no-explicit-any -- testing requires loose typing */}
       <button onClick={[() => {}, count] as any}>Click</button>
     </div>
   );
