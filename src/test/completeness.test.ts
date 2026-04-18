@@ -8,6 +8,7 @@ import jsdocPlugin from 'eslint-plugin-jsdoc';
 // @ts-expect-error missing types
 import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
 import nPlugin from 'eslint-plugin-n';
+import noBarrelFilesPlugin from 'eslint-plugin-no-barrel-files';
 import prettierPlugin from 'eslint-plugin-prettier';
 // @ts-expect-error missing types
 import promisePlugin from 'eslint-plugin-promise';
@@ -136,6 +137,11 @@ const plugins: PluginTestCase[] = [
     name: 'jsdoc',
     prefix: 'jsdoc',
     rules: getPluginRules(jsdocPlugin.rules, 'jsdoc')
+  },
+  {
+    name: 'no-barrel-files',
+    prefix: 'no-barrel-files',
+    rules: getPluginRules(noBarrelFilesPlugin.rules, 'no-barrel-files')
   },
   {
     name: 'jsx-a11y',

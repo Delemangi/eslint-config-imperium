@@ -60,6 +60,14 @@ describe('Rules', () => {
     expect(messages[3]?.ruleId).toBe('jsdoc/require-returns');
   });
 
+  it('should verify no-barrel-files configuration rules', async () => {
+    const results = await eslint.lintFiles(['src/test/cases/no-barrel-files.ts']);
+    const messages = filterMessages(results, 'no-barrel-files/');
+
+    expect(messages.length).toBeGreaterThanOrEqual(1);
+    expect(messages[0]?.ruleId).toBe('no-barrel-files/no-barrel-files');
+  });
+
   it('should verify browser configuration rules', async () => {
     const results = await eslint.lintFiles(['src/test/cases/browser.ts']);
     const messages = filterMessages(results, 'unicorn/');
