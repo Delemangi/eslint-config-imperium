@@ -19,6 +19,7 @@ import securityPlugin from 'eslint-plugin-security';
 import solidPlugin from 'eslint-plugin-solid';
 import sonarjsPlugin from 'eslint-plugin-sonarjs';
 import unicornPlugin from 'eslint-plugin-unicorn';
+import unusedImportsPlugin from 'eslint-plugin-unused-imports';
 import typescriptPlugin from 'typescript-eslint';
 import {
   describe,
@@ -114,6 +115,11 @@ const plugins: PluginTestCase[] = [
     name: 'unicorn',
     prefix: 'unicorn',
     rules: getPluginRules(unicornPlugin.rules, 'unicorn')
+  },
+  {
+    name: 'unused-imports',
+    prefix: 'unused-imports',
+    rules: getPluginRules(unusedImportsPlugin.rules, 'unused-imports')
   },
   {
     name: 'n',

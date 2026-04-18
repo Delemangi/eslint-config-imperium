@@ -39,6 +39,15 @@ describe('Rules', () => {
     expect(messages[3]?.ruleId).toBe('@eslint-community/eslint-comments/no-unused-enable');
   });
 
+  it('should verify unused-imports configuration rules', async () => {
+    const results = await eslint.lintFiles(['src/test/cases/unused-imports.ts']);
+    const messages = filterMessages(results, 'unused-imports/');
+
+    expect(messages).toHaveLength(1);
+
+    expect(messages[0]?.ruleId).toBe('unused-imports/no-unused-imports');
+  });
+
   it('should verify browser configuration rules', async () => {
     const results = await eslint.lintFiles(['src/test/cases/browser.ts']);
     const messages = filterMessages(results, 'unicorn/');
