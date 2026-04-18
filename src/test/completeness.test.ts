@@ -2,10 +2,11 @@ import type { Rule } from 'eslint';
 
 import stylisticPlugin from '@stylistic/eslint-plugin';
 import vitestPlugin from '@vitest/eslint-plugin';
-import nPlugin from 'eslint-plugin-n';
-import prettierPlugin from 'eslint-plugin-prettier';
+import { importX as importXPlugin } from 'eslint-plugin-import-x';
 // @ts-expect-error missing types
 import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
+import nPlugin from 'eslint-plugin-n';
+import prettierPlugin from 'eslint-plugin-prettier';
 // @ts-expect-error missing types
 import promisePlugin from 'eslint-plugin-promise';
 import reactPlugin from 'eslint-plugin-react';
@@ -26,6 +27,7 @@ import {
 
 import baseRules from '../base/rules.js';
 import browserRules from '../browser/rules.js';
+import importXRules from '../import-x/rules.js';
 import jsxA11yRules from '../jsx-a11y/rules.js';
 import nodeRules from '../node/rules.js';
 import prettierRules from '../prettier/rules.js';
@@ -42,6 +44,7 @@ type PluginRules = Record<string, Pick<Rule.RuleModule, 'meta'>>;
 const allConfiguredRules: Record<string, unknown> = {
   ...baseRules,
   ...browserRules,
+  ...importXRules,
   ...jsxA11yRules,
   ...nodeRules,
   ...prettierRules,
@@ -116,6 +119,11 @@ const plugins: PluginTestCase[] = [
     name: 'n',
     prefix: 'n',
     rules: getPluginRules(nPlugin.rules, 'n')
+  },
+  {
+    name: 'import-x',
+    prefix: 'import-x',
+    rules: getPluginRules(importXPlugin.rules, 'import-x')
   },
   {
     name: 'jsx-a11y',

@@ -5,7 +5,7 @@ import {
   it
 } from 'vitest';
 
-import { jsxA11y, prettier, security, sonarjs, solid } from '../index.js';
+import { importX, jsxA11y, prettier, security, sonarjs, solid } from '../index.js';
 
 const eslint = new ESLint();
 
@@ -36,6 +36,25 @@ describe('Rules', () => {
     expect(messages[0]?.ruleId).toBe('unicorn/prefer-dom-node-append');
     expect(messages[1]?.ruleId).toBe('unicorn/prefer-dom-node-text-content');
     expect(messages[2]?.ruleId).toBe('unicorn/prefer-query-selector');
+  });
+
+  it('should verify import-x configuration rules', async () => {
+    const importXEslint = new ESLint({
+      overrideConfig: [importX]
+    });
+    const results = await importXEslint.lintFiles(['src/test/cases/import-x.ts']);
+    const messages = filterMessages(results, 'import-x/');
+
+    expect(messages).toHaveLength(8);
+
+    expect(messages[0]?.ruleId).toBe('import-x/first');
+    expect(messages[1]?.ruleId).toBe('import-x/no-duplicates');
+    expect(messages[2]?.ruleId).toBe('import-x/first');
+    expect(messages[3]?.ruleId).toBe('import-x/no-duplicates');
+    expect(messages[4]?.ruleId).toBe('import-x/first');
+    expect(messages[5]?.ruleId).toBe('import-x/newline-after-import');
+    expect(messages[6]?.ruleId).toBe('import-x/no-empty-named-blocks');
+    expect(messages[7]?.ruleId).toBe('import-x/no-mutable-exports');
   });
 
   it('should verify jsx-a11y configuration rules', async () => {
