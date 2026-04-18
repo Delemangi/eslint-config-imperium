@@ -75,10 +75,12 @@ export default [
 
 This is a list of the currently used ESLint plugins:
 
+- [`@eslint-community/eslint-plugin-eslint-comments`](https://github.com/eslint-community/eslint-plugin-eslint-comments)
 - [`@stylistic/eslint-plugin`](https://github.com/eslint-stylistic/eslint-stylistic)
 - [`@typescript-eslint/eslint-plugin`](https://github.com/typescript-eslint/typescript-eslint)
 - [`@vitest/eslint-plugin`](https://github.com/vitest-dev/eslint-plugin-vitest)
 - [`eslint-plugin-import-x`](https://github.com/un-ts/eslint-plugin-import-x)
+- [`eslint-plugin-jsdoc`](https://github.com/gajus/eslint-plugin-jsdoc)
 - [`eslint-plugin-jsx-a11y`](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y)
 - [`eslint-plugin-n`](https://github.com/eslint-community/eslint-plugin-n)
 - [`eslint-plugin-perfectionist`](https://github.com/azat-io/eslint-plugin-perfectionist)
@@ -92,6 +94,7 @@ This is a list of the currently used ESLint plugins:
 - [`eslint-plugin-solid`](https://github.com/solidjs-community/eslint-plugin-solid)
 - [`eslint-plugin-sonarjs`](https://github.com/SonarSource/SonarJS)
 - [`eslint-plugin-unicorn`](https://github.com/sindresorhus/eslint-plugin-unicorn)
+- [`eslint-plugin-unused-imports`](https://github.com/sweepline/eslint-plugin-unused-imports)
 
 ## Building
 
