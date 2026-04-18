@@ -14,6 +14,7 @@ export const auto: Linter.Config[] = [
 
 export { default as base } from './base/index.js';
 export { default as browser } from './browser/index.js';
+export { default as importX } from './import-x/index.js';
 export { default as jsxA11y } from './jsx-a11y/index.js';
 export { default as node } from './node/index.js';
 export { default as perfectionist } from './perfectionist/index.js';
