@@ -45,6 +45,13 @@ This package is modular and includes several configurations intended to be enabl
 
 You should not enable `prettier` and `stylistic` at the same time.
 
+### Code Quality
+
+- [`importX`](./src/import-x/index.ts) - Import/export validation and conventions
+- [`jsxA11y`](./src/jsx-a11y/index.ts) - JSX accessibility rules
+- [`security`](./src/security/index.ts) - Security vulnerability detection
+- [`sonarjs`](./src/sonarjs/index.ts) - Code smell and bug detection
+
 ## Typed Linting
 
 The `typescript` and `auto` configurations use [`parserOptions.projectService`](https://typescript-eslint.io/packages/parser/#projectservice) to enable type-aware linting. This automatically finds the closest `tsconfig.json` for each file.
@@ -74,6 +81,8 @@ This is a list of the currently used ESLint plugins:
 - [`@stylistic/eslint-plugin`](https://github.com/eslint-stylistic/eslint-stylistic)
 - [`@typescript-eslint/eslint-plugin`](https://github.com/typescript-eslint/typescript-eslint)
 - [`@vitest/eslint-plugin`](https://github.com/vitest-dev/eslint-plugin-vitest)
+- [`eslint-plugin-import-x`](https://github.com/un-ts/eslint-plugin-import-x)
+- [`eslint-plugin-jsx-a11y`](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y)
 - [`eslint-plugin-n`](https://github.com/eslint-community/eslint-plugin-n)
 - [`eslint-plugin-perfectionist`](https://github.com/azat-io/eslint-plugin-perfectionist)
 - [`eslint-plugin-prettier`](https://github.com/prettier/eslint-plugin-prettier)
@@ -82,7 +91,9 @@ This is a list of the currently used ESLint plugins:
 - [`eslint-plugin-react-hooks`](https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks)
 - [`eslint-plugin-react-refresh`](https://github.com/ArnaudBarre/eslint-plugin-react-refresh)
 - [`eslint-plugin-regexp`](https://github.com/ota-meshi/eslint-plugin-regexp)
+- [`eslint-plugin-security`](https://github.com/eslint-community/eslint-plugin-security)
 - [`eslint-plugin-solid`](https://github.com/solidjs-community/eslint-plugin-solid)
+- [`eslint-plugin-sonarjs`](https://github.com/SonarSource/SonarJS)
 - [`eslint-plugin-unicorn`](https://github.com/sindresorhus/eslint-plugin-unicorn)
 
 ## Building
