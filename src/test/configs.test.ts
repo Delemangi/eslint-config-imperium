@@ -26,6 +26,12 @@ describe('Configurations', () => {
     expect(errors).toBe(0);
   });
 
+  it('should lint jsx-a11y configuration code without errors', async () => {
+    const errors = await getErrorsCount(['src/jsx-a11y/*.ts']);
+
+    expect(errors).toBe(0);
+  });
+
   it('should lint Node configuration code without errors', async () => {
     const errors = await getErrorsCount(['src/node/*.ts']);
 

@@ -5,7 +5,7 @@ import {
   it
 } from 'vitest';
 
-import { prettier, solid } from '../index.js';
+import { jsxA11y, prettier, solid } from '../index.js';
 
 const eslint = new ESLint();
 
@@ -28,6 +28,23 @@ describe('Rules', () => {
     expect(results[0]?.messages[0]?.ruleId).toBe('unicorn/prefer-dom-node-append');
     expect(results[0]?.messages[1]?.ruleId).toBe('unicorn/prefer-dom-node-text-content');
     expect(results[0]?.messages[2]?.ruleId).toBe('unicorn/prefer-query-selector');
+  });
+
+  it('should verify jsx-a11y configuration rules', async () => {
+    const jsxA11yEslint = new ESLint({
+      overrideConfig: [jsxA11y]
+    });
+    const results = await jsxA11yEslint.lintFiles(['src/test/cases/jsx-a11y.tsx']);
+
+    expect(results[0]?.errorCount).toBe(7);
+
+    expect(results[0]?.messages[0]?.ruleId).toBe('jsx-a11y/alt-text');
+    expect(results[0]?.messages[1]?.ruleId).toBe('jsx-a11y/click-events-have-key-events');
+    expect(results[0]?.messages[2]?.ruleId).toBe('jsx-a11y/no-static-element-interactions');
+    expect(results[0]?.messages[3]?.ruleId).toBe('@stylistic/jsx-newline');
+    expect(results[0]?.messages[4]?.ruleId).toBe('@stylistic/jsx-newline');
+    expect(results[0]?.messages[5]?.ruleId).toBe('jsx-a11y/no-noninteractive-tabindex');
+    expect(results[0]?.messages[6]?.ruleId).toBe('jsx-a11y/tabindex-no-positive');
   });
 
   it('should verify Node configuration rules', async () => {

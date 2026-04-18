@@ -5,6 +5,8 @@ import vitestPlugin from '@vitest/eslint-plugin';
 import nPlugin from 'eslint-plugin-n';
 import prettierPlugin from 'eslint-plugin-prettier';
 // @ts-expect-error missing types
+import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
+// @ts-expect-error missing types
 import promisePlugin from 'eslint-plugin-promise';
 import reactPlugin from 'eslint-plugin-react';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
@@ -21,6 +23,7 @@ import {
 
 import baseRules from '../base/rules.js';
 import browserRules from '../browser/rules.js';
+import jsxA11yRules from '../jsx-a11y/rules.js';
 import nodeRules from '../node/rules.js';
 import prettierRules from '../prettier/rules.js';
 import reactRules from '../react/rules.js';
@@ -34,6 +37,7 @@ type PluginRules = Record<string, Pick<Rule.RuleModule, 'meta'>>;
 const allConfiguredRules: Record<string, unknown> = {
   ...baseRules,
   ...browserRules,
+  ...jsxA11yRules,
   ...nodeRules,
   ...prettierRules,
   ...reactRules,
@@ -94,6 +98,11 @@ const plugins: PluginTestCase[] = [
     name: 'n',
     prefix: 'n',
     rules: getPluginRules(nPlugin.rules, 'n')
+  },
+  {
+    name: 'jsx-a11y',
+    prefix: 'jsx-a11y',
+    rules: getPluginRules(jsxA11yPlugin.rules, 'jsx-a11y')
   },
   {
     name: 'prettier',
