@@ -893,6 +893,10 @@ const unusedImportsRules = {
   'unused-imports/no-unused-vars': ['off']
 } satisfies Linter.Config['rules'];
 
+const noBarrelFilesRules = {
+  'no-barrel-files/no-barrel-files': ['error']
+} satisfies Linter.Config['rules'];
+
 const jsdocRules = {
   'jsdoc/check-access': ['error'],
   'jsdoc/check-alignment': ['error'],
@@ -985,6 +989,7 @@ export default {
   ...eslintLayoutRules,
   ...importXRules,
   ...jsdocRules,
+  ...noBarrelFilesRules,
   ...promiseRules,
   ...regexpRules,
   ...securityRules,

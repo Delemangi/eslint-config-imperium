@@ -3,6 +3,7 @@ import type { ESLint, Linter } from 'eslint';
 import eslintCommentsPlugin from '@eslint-community/eslint-plugin-eslint-comments';
 import { importX as importXPlugin } from 'eslint-plugin-import-x';
 import jsdocPlugin from 'eslint-plugin-jsdoc';
+import noBarrelFilesPlugin from 'eslint-plugin-no-barrel-files';
 // @ts-expect-error missing types
 import promisePlugin from 'eslint-plugin-promise';
 import regexpPlugin from 'eslint-plugin-regexp';
@@ -26,6 +27,7 @@ const base: Linter.Config = {
     '@eslint-community/eslint-comments': eslintCommentsPlugin,
     'import-x': importXPlugin,
     jsdoc: jsdocPlugin,
+    'no-barrel-files': noBarrelFilesPlugin as ESLint.Plugin,
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- plugin lacks type definitions
     promise: promisePlugin,
     regexp: regexpPlugin,

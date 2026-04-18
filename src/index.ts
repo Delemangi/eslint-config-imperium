@@ -1,3 +1,4 @@
+/* eslint-disable no-barrel-files/no-barrel-files -- package entry point, not a barrel file */
 import type { Linter } from 'eslint';
 
 import base from './base/index.js';
