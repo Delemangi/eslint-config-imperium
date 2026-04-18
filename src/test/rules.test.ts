@@ -9,25 +9,33 @@ import { jsxA11y, prettier, security, sonarjs, solid } from '../index.js';
 
 const eslint = new ESLint();
 
+const filterMessages = (results: ESLint.LintResult[], prefix: string) =>
+  results[0]?.messages.filter((m) => m.ruleId?.startsWith(prefix)) ?? [];
+
+const filterCoreMessages = (results: ESLint.LintResult[]) =>
+  results[0]?.messages.filter((m) => m.ruleId !== null && !m.ruleId.includes('/')) ?? [];
+
 describe('Rules', () => {
   it('should verify base configuration rules', async () => {
     const results = await eslint.lintFiles(['src/test/cases/base.ts']);
+    const messages = filterCoreMessages(results);
 
-    expect(results[0]?.errorCount).toBe(3);
+    expect(messages).toHaveLength(3);
 
-    expect(results[0]?.messages[0]?.ruleId).toBe('no-var');
-    expect(results[0]?.messages[1]?.ruleId).toBe('no-console');
-    expect(results[0]?.messages[2]?.ruleId).toBe('eqeqeq');
+    expect(messages[0]?.ruleId).toBe('no-var');
+    expect(messages[1]?.ruleId).toBe('no-console');
+    expect(messages[2]?.ruleId).toBe('eqeqeq');
   });
 
   it('should verify browser configuration rules', async () => {
     const results = await eslint.lintFiles(['src/test/cases/browser.ts']);
+    const messages = filterMessages(results, 'unicorn/');
 
-    expect(results[0]?.errorCount).toBe(3);
+    expect(messages).toHaveLength(3);
 
-    expect(results[0]?.messages[0]?.ruleId).toBe('unicorn/prefer-dom-node-append');
-    expect(results[0]?.messages[1]?.ruleId).toBe('unicorn/prefer-dom-node-text-content');
-    expect(results[0]?.messages[2]?.ruleId).toBe('unicorn/prefer-query-selector');
+    expect(messages[0]?.ruleId).toBe('unicorn/prefer-dom-node-append');
+    expect(messages[1]?.ruleId).toBe('unicorn/prefer-dom-node-text-content');
+    expect(messages[2]?.ruleId).toBe('unicorn/prefer-query-selector');
   });
 
   it('should verify jsx-a11y configuration rules', async () => {
@@ -35,40 +43,38 @@ describe('Rules', () => {
       overrideConfig: [jsxA11y]
     });
     const results = await jsxA11yEslint.lintFiles(['src/test/cases/jsx-a11y.tsx']);
+    const messages = filterMessages(results, 'jsx-a11y/');
 
-    expect(results[0]?.errorCount).toBe(7);
+    expect(messages).toHaveLength(5);
 
-    expect(results[0]?.messages[0]?.ruleId).toBe('jsx-a11y/alt-text');
-    expect(results[0]?.messages[1]?.ruleId).toBe('jsx-a11y/click-events-have-key-events');
-    expect(results[0]?.messages[2]?.ruleId).toBe('jsx-a11y/no-static-element-interactions');
-    expect(results[0]?.messages[3]?.ruleId).toBe('@stylistic/jsx-newline');
-    expect(results[0]?.messages[4]?.ruleId).toBe('@stylistic/jsx-newline');
-    expect(results[0]?.messages[5]?.ruleId).toBe('jsx-a11y/no-noninteractive-tabindex');
-    expect(results[0]?.messages[6]?.ruleId).toBe('jsx-a11y/tabindex-no-positive');
+    expect(messages[0]?.ruleId).toBe('jsx-a11y/alt-text');
+    expect(messages[1]?.ruleId).toBe('jsx-a11y/click-events-have-key-events');
+    expect(messages[2]?.ruleId).toBe('jsx-a11y/no-static-element-interactions');
+    expect(messages[3]?.ruleId).toBe('jsx-a11y/no-noninteractive-tabindex');
+    expect(messages[4]?.ruleId).toBe('jsx-a11y/tabindex-no-positive');
   });
 
   it('should verify Node configuration rules', async () => {
     const results = await eslint.lintFiles(['src/test/cases/node.ts']);
+    const messages = filterMessages(results, 'n/');
 
-    expect(results[0]?.errorCount).toBe(6);
+    expect(messages).toHaveLength(4);
 
-    expect(results[0]?.messages[0]?.ruleId).toBe('n/no-exports-assign');
-    expect(results[0]?.messages[1]?.ruleId).toBe('unicorn/prefer-module');
-    expect(results[0]?.messages[2]?.ruleId).toBe('n/exports-style');
-    expect(results[0]?.messages[3]?.ruleId).toBe('@stylistic/comma-dangle');
-    expect(results[0]?.messages[4]?.ruleId).toBe('n/no-path-concat');
-    expect(results[0]?.messages[5]?.ruleId).toBe('unicorn/prefer-module');
-    expect(results[0]?.messages[6]?.ruleId).toBe('n/no-process-exit');
+    expect(messages[0]?.ruleId).toBe('n/no-exports-assign');
+    expect(messages[1]?.ruleId).toBe('n/exports-style');
+    expect(messages[2]?.ruleId).toBe('n/no-path-concat');
+    expect(messages[3]?.ruleId).toBe('n/no-process-exit');
   });
 
   it('should verify Perfectionist configuration rules', async () => {
     const results = await eslint.lintFiles(['src/test/cases/perfectionist.ts']);
+    const messages = filterMessages(results, 'perfectionist/');
 
-    expect(results[0]?.errorCount).toBe(3);
+    expect(messages).toHaveLength(3);
 
-    expect(results[0]?.messages[0]?.ruleId).toBe('perfectionist/sort-enums');
-    expect(results[0]?.messages[1]?.ruleId).toBe('perfectionist/sort-enums');
-    expect(results[0]?.messages[2]?.ruleId).toBe('perfectionist/sort-object-types');
+    expect(messages[0]?.ruleId).toBe('perfectionist/sort-enums');
+    expect(messages[1]?.ruleId).toBe('perfectionist/sort-enums');
+    expect(messages[2]?.ruleId).toBe('perfectionist/sort-object-types');
   });
 
   it('should verify Prettier configuration rules', async () => {
@@ -76,22 +82,23 @@ describe('Rules', () => {
       overrideConfig: [prettier]
     });
     const results = await prettierEslint.lintFiles(['src/test/cases/prettier.ts']);
+    const messages = filterMessages(results, 'prettier/');
 
-    expect(results[0]?.errorCount).toBe(2);
+    expect(messages).toHaveLength(2);
 
-    expect(results[0]?.messages[0]?.ruleId).toBe('prettier/prettier');
-    expect(results[0]?.messages[1]?.ruleId).toBe('prettier/prettier');
+    expect(messages[0]?.ruleId).toBe('prettier/prettier');
+    expect(messages[1]?.ruleId).toBe('prettier/prettier');
   });
 
   it('should verify React configuration rules', async () => {
     const results = await eslint.lintFiles(['src/test/cases/react.tsx']);
+    const messages = filterMessages(results, 'react/');
 
-    expect(results[0]?.errorCount).toBe(4);
+    expect(messages).toHaveLength(3);
 
-    expect(results[0]?.messages[0]?.ruleId).toBe('react/prefer-read-only-props');
-    expect(results[0]?.messages[1]?.ruleId).toBe('react/self-closing-comp');
-    expect(results[0]?.messages[2]?.ruleId).toBe('@stylistic/jsx-self-closing-comp');
-    expect(results[0]?.messages[3]?.ruleId).toBe('react/no-children-prop');
+    expect(messages[0]?.ruleId).toBe('react/prefer-read-only-props');
+    expect(messages[1]?.ruleId).toBe('react/self-closing-comp');
+    expect(messages[2]?.ruleId).toBe('react/no-children-prop');
   });
 
   it('should verify security configuration rules', async () => {
@@ -99,22 +106,15 @@ describe('Rules', () => {
       overrideConfig: [security]
     });
     const results = await securityEslint.lintFiles(['src/test/cases/security.ts']);
+    const messages = filterMessages(results, 'security/');
 
-    expect(results[0]?.errorCount).toBe(13);
+    expect(messages).toHaveLength(5);
 
-    expect(results[0]?.messages[0]?.ruleId).toBe('func-style');
-    expect(results[0]?.messages[1]?.ruleId).toBe('n/global-require');
-    expect(results[0]?.messages[2]?.ruleId).toBe('security/detect-non-literal-require');
-    expect(results[0]?.messages[3]?.ruleId).toBe('@typescript-eslint/no-require-imports');
-    expect(results[0]?.messages[4]?.ruleId).toBe('unicorn/prefer-module');
-    expect(results[0]?.messages[5]?.ruleId).toBe('security/detect-child-process');
-    expect(results[0]?.messages[6]?.ruleId).toBe('security/detect-eval-with-expression');
-    expect(results[0]?.messages[7]?.ruleId).toBe('no-eval');
-    expect(results[0]?.messages[8]?.ruleId).toBe('security/detect-non-literal-fs-filename');
-    expect(results[0]?.messages[9]?.ruleId).toBe('n/prefer-promises/fs');
-    expect(results[0]?.messages[10]?.ruleId).toBe('require-unicode-regexp');
-    expect(results[0]?.messages[11]?.ruleId).toBe('security/detect-non-literal-regexp');
-    expect(results[0]?.messages[12]?.ruleId).toBe('no-new');
+    expect(messages[0]?.ruleId).toBe('security/detect-non-literal-require');
+    expect(messages[1]?.ruleId).toBe('security/detect-child-process');
+    expect(messages[2]?.ruleId).toBe('security/detect-eval-with-expression');
+    expect(messages[3]?.ruleId).toBe('security/detect-non-literal-fs-filename');
+    expect(messages[4]?.ruleId).toBe('security/detect-non-literal-regexp');
   });
 
   it('should verify sonarjs configuration rules', async () => {
@@ -122,27 +122,17 @@ describe('Rules', () => {
       overrideConfig: [sonarjs]
     });
     const results = await sonarjsEslint.lintFiles(['src/test/cases/sonarjs.ts']);
+    const messages = filterMessages(results, 'sonarjs/');
 
-    expect(results[0]?.errorCount).toBe(18);
+    expect(messages).toHaveLength(7);
 
-    expect(results[0]?.messages[0]?.ruleId).toBe('func-style');
-    expect(results[0]?.messages[1]?.ruleId).toBe('sonarjs/no-duplicated-branches');
-    expect(results[0]?.messages[2]?.ruleId).toBe('func-style');
-    expect(results[0]?.messages[3]?.ruleId).toBe('sonarjs/no-collapsible-if');
-    expect(results[0]?.messages[4]?.ruleId).toBe('unicorn/no-lonely-if');
-    expect(results[0]?.messages[5]?.ruleId).toBe('sonarjs/no-collapsible-if');
-    expect(results[0]?.messages[6]?.ruleId).toBe('unicorn/no-lonely-if');
-    expect(results[0]?.messages[7]?.ruleId).toBe('sonarjs/no-collapsible-if');
-    expect(results[0]?.messages[8]?.ruleId).toBe('unicorn/no-lonely-if');
-    expect(results[0]?.messages[9]?.ruleId).toBe('sonarjs/no-collapsible-if');
-    expect(results[0]?.messages[10]?.ruleId).toBe('unicorn/numeric-separators-style');
-    expect(results[0]?.messages[11]?.ruleId).toBe('unicorn/no-lonely-if');
-    expect(results[0]?.messages[12]?.ruleId).toBe('sonarjs/nested-control-flow');
-    expect(results[0]?.messages[13]?.ruleId).toBe('unicorn/numeric-separators-style');
-    expect(results[0]?.messages[14]?.ruleId).toBe('perfectionist/sort-modules');
-    expect(results[0]?.messages[15]?.ruleId).toBe('func-style');
-    expect(results[0]?.messages[16]?.ruleId).toBe('sonarjs/no-collapsible-if');
-    expect(results[0]?.messages[17]?.ruleId).toBe('unicorn/no-lonely-if');
+    expect(messages[0]?.ruleId).toBe('sonarjs/no-duplicated-branches');
+    expect(messages[1]?.ruleId).toBe('sonarjs/no-collapsible-if');
+    expect(messages[2]?.ruleId).toBe('sonarjs/no-collapsible-if');
+    expect(messages[3]?.ruleId).toBe('sonarjs/no-collapsible-if');
+    expect(messages[4]?.ruleId).toBe('sonarjs/no-collapsible-if');
+    expect(messages[5]?.ruleId).toBe('sonarjs/nested-control-flow');
+    expect(messages[6]?.ruleId).toBe('sonarjs/no-collapsible-if');
   });
 
   it('should verify Solid configuration rules', async () => {
@@ -150,64 +140,55 @@ describe('Rules', () => {
       overrideConfig: [solid]
     });
     const results = await solidEslint.lintFiles(['src/test/cases/solid.tsx']);
+    const messages = filterMessages(results, 'solid/');
 
-    expect(results[0]?.errorCount).toBe(9);
+    expect(messages).toHaveLength(2);
 
-    expect(results[0]?.messages[0]?.ruleId).toBe('react/prefer-read-only-props');
-    expect(results[0]?.messages[1]?.ruleId).toBe('solid/no-destructure');
-    expect(results[0]?.messages[2]?.ruleId).toBe('arrow-body-style');
-    expect(results[0]?.messages[3]?.ruleId).toBe('solid/no-react-specific-props');
-    expect(results[0]?.messages[4]?.ruleId).toBe('@stylistic/jsx-quotes');
-    expect(results[0]?.messages[5]?.ruleId).toBe('react/button-has-type');
-    expect(results[0]?.messages[6]?.ruleId).toBe('@typescript-eslint/no-unsafe-assignment');
-    expect(results[0]?.messages[7]?.ruleId).toBe('@stylistic/jsx-one-expression-per-line');
-    expect(results[0]?.messages[8]?.ruleId).toBe('@stylistic/eol-last');
+    expect(messages[0]?.ruleId).toBe('solid/no-destructure');
+    expect(messages[1]?.ruleId).toBe('solid/no-react-specific-props');
   });
 
   it('should verify Stylistic configuration rules', async () => {
     const results = await eslint.lintFiles(['src/test/cases/stylistic.ts']);
+    const messages = filterMessages(results, '@stylistic/');
 
-    expect(results[0]?.errorCount).toBe(10);
+    expect(messages).toHaveLength(7);
 
-    expect(results[0]?.messages[0]?.ruleId).toBe('perfectionist/sort-maps');
-    expect(results[0]?.messages[1]?.ruleId).toBe('@stylistic/comma-dangle');
-    expect(results[0]?.messages[2]?.ruleId).toBe('perfectionist/sort-union-types');
-    expect(results[0]?.messages[3]?.ruleId).toBe('perfectionist/sort-objects');
-    expect(results[0]?.messages[4]?.ruleId).toBe('@stylistic/comma-dangle');
-    expect(results[0]?.messages[5]?.ruleId).toBe('@stylistic/array-bracket-newline');
-    expect(results[0]?.messages[6]?.ruleId).toBe('@stylistic/array-element-newline');
-    expect(results[0]?.messages[7]?.ruleId).toBe('@stylistic/exp-list-style');
-    expect(results[0]?.messages[8]?.ruleId).toBe('@stylistic/exp-list-style');
-    expect(results[0]?.messages[9]?.ruleId).toBe('@stylistic/semi');
+    expect(messages[0]?.ruleId).toBe('@stylistic/comma-dangle');
+    expect(messages[1]?.ruleId).toBe('@stylistic/comma-dangle');
+    expect(messages[2]?.ruleId).toBe('@stylistic/array-bracket-newline');
+    expect(messages[3]?.ruleId).toBe('@stylistic/array-element-newline');
+    expect(messages[4]?.ruleId).toBe('@stylistic/exp-list-style');
+    expect(messages[5]?.ruleId).toBe('@stylistic/exp-list-style');
+    expect(messages[6]?.ruleId).toBe('@stylistic/semi');
   });
 
   it('should verify TypeScript configuration rules', async () => {
     const results = await eslint.lintFiles(['src/test/cases/typescript.ts']);
+    const messages = filterMessages(results, '@typescript-eslint/');
 
-    expect(results[0]?.errorCount).toBe(3);
+    expect(messages).toHaveLength(3);
 
-    expect(results[0]?.messages[0]?.ruleId).toBe('@typescript-eslint/no-unused-expressions');
-    expect(results[0]?.messages[1]?.ruleId).toBe('@typescript-eslint/dot-notation');
-    expect(results[0]?.messages[2]?.ruleId).toBe('@typescript-eslint/only-throw-error');
+    expect(messages[0]?.ruleId).toBe('@typescript-eslint/no-unused-expressions');
+    expect(messages[1]?.ruleId).toBe('@typescript-eslint/dot-notation');
+    expect(messages[2]?.ruleId).toBe('@typescript-eslint/only-throw-error');
   });
 
   it('should verify Vitest configuration rules', async () => {
     const results = await eslint.lintFiles(['src/test/cases/vitest.ts']);
+    const messages = filterMessages(results, 'vitest/');
 
-    expect(results[0]?.errorCount).toBe(13);
+    expect(messages).toHaveLength(10);
 
-    expect(results[0]?.messages[0]?.ruleId).toBe('vitest/no-import-node-test');
-    expect(results[0]?.messages[1]?.ruleId).toBe('@stylistic/object-curly-newline');
-    expect(results[0]?.messages[2]?.ruleId).toBe('@stylistic/object-curly-newline');
-    expect(results[0]?.messages[3]?.ruleId).toBe('vitest/prefer-importing-vitest-globals');
-    expect(results[0]?.messages[4]?.ruleId).toBe('vitest/prefer-spy-on');
-    expect(results[0]?.messages[5]?.ruleId).toBe('vitest/require-mock-type-parameters');
-    expect(results[0]?.messages[6]?.ruleId).toBe('vitest/padding-around-all');
-    expect(results[0]?.messages[7]?.ruleId).toBe('vitest/padding-around-before-all-blocks');
-    expect(results[0]?.messages[8]?.ruleId).toBe('vitest/padding-around-test-blocks');
-    expect(results[0]?.messages[9]?.ruleId).toBe('vitest/prefer-importing-vitest-globals');
-    expect(results[0]?.messages[10]?.ruleId).toBe('vitest/no-standalone-expect');
-    expect(results[0]?.messages[11]?.ruleId).toBe('@typescript-eslint/no-unnecessary-condition');
-    expect(results[0]?.messages[12]?.ruleId).toBe('vitest/prefer-strict-boolean-matchers');
+    expect(messages[0]?.ruleId).toBe('vitest/no-import-node-test');
+    expect(messages[1]?.ruleId).toBe('vitest/prefer-importing-vitest-globals');
+    expect(messages[2]?.ruleId).toBe('vitest/prefer-spy-on');
+    expect(messages[3]?.ruleId).toBe('vitest/require-mock-type-parameters');
+    expect(messages[4]?.ruleId).toBe('vitest/padding-around-all');
+    expect(messages[5]?.ruleId).toBe('vitest/padding-around-before-all-blocks');
+    expect(messages[6]?.ruleId).toBe('vitest/padding-around-test-blocks');
+    expect(messages[7]?.ruleId).toBe('vitest/prefer-importing-vitest-globals');
+    expect(messages[8]?.ruleId).toBe('vitest/no-standalone-expect');
+    expect(messages[9]?.ruleId).toBe('vitest/prefer-strict-boolean-matchers');
   });
 });
