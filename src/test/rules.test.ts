@@ -48,6 +48,18 @@ describe('Rules', () => {
     expect(messages[0]?.ruleId).toBe('unused-imports/no-unused-imports');
   });
 
+  it('should verify jsdoc configuration rules', async () => {
+    const results = await eslint.lintFiles(['src/test/cases/jsdoc.ts']);
+    const messages = filterMessages(results, 'jsdoc/');
+
+    expect(messages).toHaveLength(4);
+
+    expect(messages[0]?.ruleId).toBe('jsdoc/require-param');
+    expect(messages[1]?.ruleId).toBe('jsdoc/require-returns');
+    expect(messages[2]?.ruleId).toBe('jsdoc/require-param-description');
+    expect(messages[3]?.ruleId).toBe('jsdoc/require-returns');
+  });
+
   it('should verify browser configuration rules', async () => {
     const results = await eslint.lintFiles(['src/test/cases/browser.ts']);
     const messages = filterMessages(results, 'unicorn/');

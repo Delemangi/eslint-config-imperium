@@ -4,6 +4,7 @@ import eslintCommentsPlugin from '@eslint-community/eslint-plugin-eslint-comment
 import stylisticPlugin from '@stylistic/eslint-plugin';
 import vitestPlugin from '@vitest/eslint-plugin';
 import { importX as importXPlugin } from 'eslint-plugin-import-x';
+import jsdocPlugin from 'eslint-plugin-jsdoc';
 // @ts-expect-error missing types
 import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
 import nPlugin from 'eslint-plugin-n';
@@ -130,6 +131,11 @@ const plugins: PluginTestCase[] = [
     name: 'import-x',
     prefix: 'import-x',
     rules: getPluginRules(importXPlugin.rules, 'import-x')
+  },
+  {
+    name: 'jsdoc',
+    prefix: 'jsdoc',
+    rules: getPluginRules(jsdocPlugin.rules, 'jsdoc')
   },
   {
     name: 'jsx-a11y',
