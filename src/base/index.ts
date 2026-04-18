@@ -2,6 +2,7 @@ import type { ESLint, Linter } from 'eslint';
 
 import eslintCommentsPlugin from '@eslint-community/eslint-plugin-eslint-comments';
 import { importX as importXPlugin } from 'eslint-plugin-import-x';
+import jsdocPlugin from 'eslint-plugin-jsdoc';
 // @ts-expect-error missing types
 import promisePlugin from 'eslint-plugin-promise';
 import regexpPlugin from 'eslint-plugin-regexp';
@@ -24,6 +25,7 @@ const base: Linter.Config = {
   plugins: {
     '@eslint-community/eslint-comments': eslintCommentsPlugin,
     'import-x': importXPlugin,
+    jsdoc: jsdocPlugin,
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- plugin lacks type definitions
     promise: promisePlugin,
     regexp: regexpPlugin,
@@ -55,6 +57,9 @@ const base: Linter.Config = {
     },
     'import-x/resolver': {
       typescript: true
+    },
+    jsdoc: {
+      mode: 'typescript'
     }
   }
 };
