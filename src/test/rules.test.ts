@@ -5,7 +5,7 @@ import {
   it
 } from 'vitest';
 
-import { jsxA11y, prettier, solid } from '../index.js';
+import { jsxA11y, prettier, security, solid } from '../index.js';
 
 const eslint = new ESLint();
 
@@ -92,6 +92,29 @@ describe('Rules', () => {
     expect(results[0]?.messages[1]?.ruleId).toBe('react/self-closing-comp');
     expect(results[0]?.messages[2]?.ruleId).toBe('@stylistic/jsx-self-closing-comp');
     expect(results[0]?.messages[3]?.ruleId).toBe('react/no-children-prop');
+  });
+
+  it('should verify security configuration rules', async () => {
+    const securityEslint = new ESLint({
+      overrideConfig: [security]
+    });
+    const results = await securityEslint.lintFiles(['src/test/cases/security.ts']);
+
+    expect(results[0]?.errorCount).toBe(13);
+
+    expect(results[0]?.messages[0]?.ruleId).toBe('func-style');
+    expect(results[0]?.messages[1]?.ruleId).toBe('n/global-require');
+    expect(results[0]?.messages[2]?.ruleId).toBe('security/detect-non-literal-require');
+    expect(results[0]?.messages[3]?.ruleId).toBe('@typescript-eslint/no-require-imports');
+    expect(results[0]?.messages[4]?.ruleId).toBe('unicorn/prefer-module');
+    expect(results[0]?.messages[5]?.ruleId).toBe('security/detect-child-process');
+    expect(results[0]?.messages[6]?.ruleId).toBe('security/detect-eval-with-expression');
+    expect(results[0]?.messages[7]?.ruleId).toBe('no-eval');
+    expect(results[0]?.messages[8]?.ruleId).toBe('security/detect-non-literal-fs-filename');
+    expect(results[0]?.messages[9]?.ruleId).toBe('n/prefer-promises/fs');
+    expect(results[0]?.messages[10]?.ruleId).toBe('require-unicode-regexp');
+    expect(results[0]?.messages[11]?.ruleId).toBe('security/detect-non-literal-regexp');
+    expect(results[0]?.messages[12]?.ruleId).toBe('no-new');
   });
 
   it('should verify Solid configuration rules', async () => {

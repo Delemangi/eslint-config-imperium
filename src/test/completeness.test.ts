@@ -12,6 +12,8 @@ import reactPlugin from 'eslint-plugin-react';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import reactRefreshPlugin from 'eslint-plugin-react-refresh';
 import regexpPlugin from 'eslint-plugin-regexp';
+// @ts-expect-error missing types
+import securityPlugin from 'eslint-plugin-security';
 import solidPlugin from 'eslint-plugin-solid';
 import unicornPlugin from 'eslint-plugin-unicorn';
 import typescriptPlugin from 'typescript-eslint';
@@ -27,6 +29,7 @@ import jsxA11yRules from '../jsx-a11y/rules.js';
 import nodeRules from '../node/rules.js';
 import prettierRules from '../prettier/rules.js';
 import reactRules from '../react/rules.js';
+import securityRules from '../security/rules.js';
 import solidRules from '../solid/rules.js';
 import stylisticRules from '../stylistic/rules.js';
 import typescriptRules from '../typescript/rules.js';
@@ -41,6 +44,7 @@ const allConfiguredRules: Record<string, unknown> = {
   ...nodeRules,
   ...prettierRules,
   ...reactRules,
+  ...securityRules,
   ...solidRules,
   ...stylisticRules,
   ...typescriptRules,
@@ -88,6 +92,12 @@ const plugins: PluginTestCase[] = [
     name: 'regexp',
     prefix: 'regexp',
     rules: regexpPlugin.rules
+  },
+  {
+    name: 'security',
+    prefix: 'security',
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    rules: getPluginRules(securityPlugin.rules, 'security')
   },
   {
     name: 'unicorn',
