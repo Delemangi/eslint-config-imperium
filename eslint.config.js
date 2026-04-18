@@ -2,7 +2,7 @@ import { base, browser, node, react, typescript, vitest, perfectionist, stylisti
 
 export default [
   { ignores: ["**/*.js", "lib"] },
-  base,
+  ...base,
   browser,
   node,
   perfectionist,

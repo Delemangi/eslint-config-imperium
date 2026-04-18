@@ -64,4 +64,25 @@ const base: Linter.Config = {
   }
 };
 
-export default base;
+const jsdocJsOverrides: Linter.Config = {
+  files: ['**/*.{js,jsx,mjs,cjs}'],
+  rules: {
+    'jsdoc/no-undefined-types': ['error'],
+    'jsdoc/require-param-type': ['error'],
+    'jsdoc/require-property-type': ['error'],
+    'jsdoc/require-returns-type': ['error']
+  }
+};
+
+const jsdocTsOverrides: Linter.Config = {
+  files: ['**/*.{ts,tsx,mts,cts}'],
+  rules: {
+    'jsdoc/no-types': ['error']
+  }
+};
+
+export default [
+  base,
+  jsdocJsOverrides,
+  jsdocTsOverrides
+] satisfies Linter.Config[];

@@ -6,7 +6,7 @@ import stylistic from './stylistic/index.js';
 import typescript from './typescript/index.js';
 
 export const auto: Linter.Config[] = [
-  base,
+  ...base,
   typescript,
   stylistic,
   perfectionist
