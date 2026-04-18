@@ -21,6 +21,7 @@ export { default as prettier } from './prettier/index.js';
 export { default as react } from './react/index.js';
 export { default as security } from './security/index.js';
 export { default as solid } from './solid/index.js';
+export { default as sonarjs } from './sonarjs/index.js';
 export { default as stylistic } from './stylistic/index.js';
 export { default as typescript } from './typescript/index.js';
 export { default as vitest } from './vitest/index.js';
