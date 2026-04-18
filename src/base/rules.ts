@@ -888,6 +888,11 @@ const eslintCommentsRules = {
   '@eslint-community/eslint-comments/require-description': ['error']
 } satisfies Linter.Config['rules'];
 
+const unusedImportsRules = {
+  'unused-imports/no-unused-imports': ['error'],
+  'unused-imports/no-unused-vars': ['off']
+} satisfies Linter.Config['rules'];
+
 export default {
   ...eslintCommentsRules,
   ...eslintRules,
@@ -898,5 +903,6 @@ export default {
   ...regexpRules,
   ...securityRules,
   ...sonarjsRules,
-  ...unicornRules
+  ...unicornRules,
+  ...unusedImportsRules
 } satisfies Linter.Config['rules'];

@@ -9,6 +9,7 @@ import regexpPlugin from 'eslint-plugin-regexp';
 import securityPlugin from 'eslint-plugin-security';
 import sonarjsPlugin from 'eslint-plugin-sonarjs';
 import unicornPlugin from 'eslint-plugin-unicorn';
+import unusedImportsPlugin from 'eslint-plugin-unused-imports';
 import globals from 'globals';
 
 import rules from './rules.js';
@@ -28,7 +29,8 @@ const base: Linter.Config = {
     regexp: regexpPlugin,
     security: securityPlugin as ESLint.Plugin,
     sonarjs: sonarjsPlugin,
-    unicorn: unicornPlugin
+    unicorn: unicornPlugin,
+    'unused-imports': unusedImportsPlugin
   },
   rules,
   settings: {
