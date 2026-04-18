@@ -13,6 +13,7 @@
     }
   },
   "dependencies": {
+    "@eslint-community/eslint-plugin-eslint-comments": "^4.7.1",
     "@stylistic/eslint-plugin": "^5.10.0",
     "@vitest/eslint-plugin": "^1.6.16",
     "eslint-config-prettier": "^10.1.8",
