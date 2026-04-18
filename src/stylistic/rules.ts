@@ -120,6 +120,7 @@ const stylisticRules = {
       closingSlash: 'never'
     }
   ],
+  /* eslint-disable sonarjs/no-duplicate-string */
   '@stylistic/jsx-wrap-multilines': [
     'error',
     {
@@ -131,6 +132,7 @@ const stylisticRules = {
       return: 'parens-new-line'
     }
   ],
+  /* eslint-enable sonarjs/no-duplicate-string */
   '@stylistic/key-spacing': [
     'error',
     {

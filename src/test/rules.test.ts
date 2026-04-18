@@ -5,7 +5,7 @@ import {
   it
 } from 'vitest';
 
-import { importX, jsxA11y, prettier, security, sonarjs, solid } from '../index.js';
+import { jsxA11y, prettier, solid } from '../index.js';
 
 const eslint = new ESLint();
 
@@ -39,10 +39,7 @@ describe('Rules', () => {
   });
 
   it('should verify import-x configuration rules', async () => {
-    const importXEslint = new ESLint({
-      overrideConfig: [importX]
-    });
-    const results = await importXEslint.lintFiles(['src/test/cases/import-x.ts']);
+    const results = await eslint.lintFiles(['src/test/cases/import-x.ts']);
     const messages = filterMessages(results, 'import-x/');
 
     expect(messages).toHaveLength(8);
@@ -121,10 +118,7 @@ describe('Rules', () => {
   });
 
   it('should verify security configuration rules', async () => {
-    const securityEslint = new ESLint({
-      overrideConfig: [security]
-    });
-    const results = await securityEslint.lintFiles(['src/test/cases/security.ts']);
+    const results = await eslint.lintFiles(['src/test/cases/security.ts']);
     const messages = filterMessages(results, 'security/');
 
     expect(messages).toHaveLength(5);
@@ -137,16 +131,13 @@ describe('Rules', () => {
   });
 
   it('should verify sonarjs configuration rules', async () => {
-    const sonarjsEslint = new ESLint({
-      overrideConfig: [sonarjs]
-    });
-    const results = await sonarjsEslint.lintFiles(['src/test/cases/sonarjs.ts']);
+    const results = await eslint.lintFiles(['src/test/cases/sonarjs.ts']);
     const messages = filterMessages(results, 'sonarjs/');
 
     expect(messages).toHaveLength(7);
 
     expect(messages[0]?.ruleId).toBe('sonarjs/no-duplicated-branches');
-    expect(messages[1]?.ruleId).toBe('sonarjs/no-collapsible-if');
+    expect(messages[1]?.ruleId).toBe('sonarjs/no-collapsible-if'); // eslint-disable-line sonarjs/no-duplicate-string
     expect(messages[2]?.ruleId).toBe('sonarjs/no-collapsible-if');
     expect(messages[3]?.ruleId).toBe('sonarjs/no-collapsible-if');
     expect(messages[4]?.ruleId).toBe('sonarjs/no-collapsible-if');

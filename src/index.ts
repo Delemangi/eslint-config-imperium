@@ -14,15 +14,12 @@ export const auto: Linter.Config[] = [
 
 export { default as base } from './base/index.js';
 export { default as browser } from './browser/index.js';
-export { default as importX } from './import-x/index.js';
 export { default as jsxA11y } from './jsx-a11y/index.js';
 export { default as node } from './node/index.js';
 export { default as perfectionist } from './perfectionist/index.js';
 export { default as prettier } from './prettier/index.js';
 export { default as react } from './react/index.js';
-export { default as security } from './security/index.js';
 export { default as solid } from './solid/index.js';
-export { default as sonarjs } from './sonarjs/index.js';
 export { default as stylistic } from './stylistic/index.js';
 export { default as typescript } from './typescript/index.js';
 export { default as vitest } from './vitest/index.js';

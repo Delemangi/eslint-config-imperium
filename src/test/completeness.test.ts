@@ -15,8 +15,8 @@ import reactRefreshPlugin from 'eslint-plugin-react-refresh';
 import regexpPlugin from 'eslint-plugin-regexp';
 // @ts-expect-error missing types
 import securityPlugin from 'eslint-plugin-security';
-import sonarjsPlugin from 'eslint-plugin-sonarjs';
 import solidPlugin from 'eslint-plugin-solid';
+import sonarjsPlugin from 'eslint-plugin-sonarjs';
 import unicornPlugin from 'eslint-plugin-unicorn';
 import typescriptPlugin from 'typescript-eslint';
 import {
@@ -27,13 +27,10 @@ import {
 
 import baseRules from '../base/rules.js';
 import browserRules from '../browser/rules.js';
-import importXRules from '../import-x/rules.js';
 import jsxA11yRules from '../jsx-a11y/rules.js';
 import nodeRules from '../node/rules.js';
 import prettierRules from '../prettier/rules.js';
 import reactRules from '../react/rules.js';
-import securityRules from '../security/rules.js';
-import sonarjsRules from '../sonarjs/rules.js';
 import solidRules from '../solid/rules.js';
 import stylisticRules from '../stylistic/rules.js';
 import typescriptRules from '../typescript/rules.js';
@@ -44,13 +41,10 @@ type PluginRules = Record<string, Pick<Rule.RuleModule, 'meta'>>;
 const allConfiguredRules: Record<string, unknown> = {
   ...baseRules,
   ...browserRules,
-  ...importXRules,
   ...jsxA11yRules,
   ...nodeRules,
   ...prettierRules,
   ...reactRules,
-  ...securityRules,
-  ...sonarjsRules,
   ...solidRules,
   ...stylisticRules,
   ...typescriptRules,

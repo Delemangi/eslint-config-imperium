@@ -1,8 +1,12 @@
-import type { Linter } from 'eslint';
+import type { ESLint, Linter } from 'eslint';
 
+import { importX as importXPlugin } from 'eslint-plugin-import-x';
 // @ts-expect-error missing types
 import promisePlugin from 'eslint-plugin-promise';
 import regexpPlugin from 'eslint-plugin-regexp';
+// @ts-expect-error missing types
+import securityPlugin from 'eslint-plugin-security';
+import sonarjsPlugin from 'eslint-plugin-sonarjs';
 import unicornPlugin from 'eslint-plugin-unicorn';
 import globals from 'globals';
 
@@ -16,12 +20,39 @@ const base: Linter.Config = {
     }
   },
   plugins: {
+    'import-x': importXPlugin,
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     promise: promisePlugin,
     regexp: regexpPlugin,
+    security: securityPlugin as ESLint.Plugin,
+    sonarjs: sonarjsPlugin,
     unicorn: unicornPlugin
   },
-  rules
+  rules,
+  settings: {
+    'import-x/extensions': [
+      '.ts',
+      '.tsx',
+      '.cts',
+      '.mts',
+      '.js',
+      '.jsx',
+      '.cjs',
+      '.mjs'
+    ],
+    'import-x/external-module-folders': ['node_modules', 'node_modules/@types'],
+    'import-x/parsers': {
+      '@typescript-eslint/parser': [
+        '.ts',
+        '.tsx',
+        '.cts',
+        '.mts'
+      ]
+    },
+    'import-x/resolver': {
+      typescript: true
+    }
+  }
 };
 
 export default base;

@@ -26,12 +26,6 @@ describe('Configurations', () => {
     expect(errors).toBe(0);
   });
 
-  it('should lint import-x configuration code without errors', async () => {
-    const errors = await getErrorsCount(['src/import-x/*.ts']);
-
-    expect(errors).toBe(0);
-  });
-
   it('should lint jsx-a11y configuration code without errors', async () => {
     const errors = await getErrorsCount(['src/jsx-a11y/*.ts']);
 
@@ -58,18 +52,6 @@ describe('Configurations', () => {
 
   it('should lint React configuration code without errors', async () => {
     const errors = await getErrorsCount(['src/react/*.ts']);
-
-    expect(errors).toBe(0);
-  });
-
-  it('should lint Security configuration code without errors', async () => {
-    const errors = await getErrorsCount(['src/security/*.ts']);
-
-    expect(errors).toBe(0);
-  });
-
-  it('should lint SonarJS configuration code without errors', async () => {
-    const errors = await getErrorsCount(['src/sonarjs/*.ts']);
 
     expect(errors).toBe(0);
   });
