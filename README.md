@@ -45,12 +45,9 @@ This package is modular and includes several configurations intended to be enabl
 
 You should not enable `prettier` and `stylistic` at the same time.
 
-### Code Quality
+### Accessibility
 
-- [`importX`](./src/import-x/index.ts) - Import/export validation and conventions
 - [`jsxA11y`](./src/jsx-a11y/index.ts) - JSX accessibility rules
-- [`security`](./src/security/index.ts) - Security vulnerability detection
-- [`sonarjs`](./src/sonarjs/index.ts) - Code smell and bug detection
 
 ## Typed Linting
 
