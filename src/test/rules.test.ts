@@ -5,7 +5,7 @@ import {
   it
 } from 'vitest';
 
-import { jsxA11y, prettier, security, solid } from '../index.js';
+import { jsxA11y, prettier, security, sonarjs, solid } from '../index.js';
 
 const eslint = new ESLint();
 
@@ -115,6 +115,34 @@ describe('Rules', () => {
     expect(results[0]?.messages[10]?.ruleId).toBe('require-unicode-regexp');
     expect(results[0]?.messages[11]?.ruleId).toBe('security/detect-non-literal-regexp');
     expect(results[0]?.messages[12]?.ruleId).toBe('no-new');
+  });
+
+  it('should verify sonarjs configuration rules', async () => {
+    const sonarjsEslint = new ESLint({
+      overrideConfig: [sonarjs]
+    });
+    const results = await sonarjsEslint.lintFiles(['src/test/cases/sonarjs.ts']);
+
+    expect(results[0]?.errorCount).toBe(18);
+
+    expect(results[0]?.messages[0]?.ruleId).toBe('func-style');
+    expect(results[0]?.messages[1]?.ruleId).toBe('sonarjs/no-duplicated-branches');
+    expect(results[0]?.messages[2]?.ruleId).toBe('func-style');
+    expect(results[0]?.messages[3]?.ruleId).toBe('sonarjs/no-collapsible-if');
+    expect(results[0]?.messages[4]?.ruleId).toBe('unicorn/no-lonely-if');
+    expect(results[0]?.messages[5]?.ruleId).toBe('sonarjs/no-collapsible-if');
+    expect(results[0]?.messages[6]?.ruleId).toBe('unicorn/no-lonely-if');
+    expect(results[0]?.messages[7]?.ruleId).toBe('sonarjs/no-collapsible-if');
+    expect(results[0]?.messages[8]?.ruleId).toBe('unicorn/no-lonely-if');
+    expect(results[0]?.messages[9]?.ruleId).toBe('sonarjs/no-collapsible-if');
+    expect(results[0]?.messages[10]?.ruleId).toBe('unicorn/numeric-separators-style');
+    expect(results[0]?.messages[11]?.ruleId).toBe('unicorn/no-lonely-if');
+    expect(results[0]?.messages[12]?.ruleId).toBe('sonarjs/nested-control-flow');
+    expect(results[0]?.messages[13]?.ruleId).toBe('unicorn/numeric-separators-style');
+    expect(results[0]?.messages[14]?.ruleId).toBe('perfectionist/sort-modules');
+    expect(results[0]?.messages[15]?.ruleId).toBe('func-style');
+    expect(results[0]?.messages[16]?.ruleId).toBe('sonarjs/no-collapsible-if');
+    expect(results[0]?.messages[17]?.ruleId).toBe('unicorn/no-lonely-if');
   });
 
   it('should verify Solid configuration rules', async () => {

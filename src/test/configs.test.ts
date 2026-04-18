@@ -62,6 +62,12 @@ describe('Configurations', () => {
     expect(errors).toBe(0);
   });
 
+  it('should lint SonarJS configuration code without errors', async () => {
+    const errors = await getErrorsCount(['src/sonarjs/*.ts']);
+
+    expect(errors).toBe(0);
+  });
+
   it('should lint Solid configuration code without errors', async () => {
     const errors = await getErrorsCount(['src/solid/*.ts']);
 

@@ -14,6 +14,7 @@ import reactRefreshPlugin from 'eslint-plugin-react-refresh';
 import regexpPlugin from 'eslint-plugin-regexp';
 // @ts-expect-error missing types
 import securityPlugin from 'eslint-plugin-security';
+import sonarjsPlugin from 'eslint-plugin-sonarjs';
 import solidPlugin from 'eslint-plugin-solid';
 import unicornPlugin from 'eslint-plugin-unicorn';
 import typescriptPlugin from 'typescript-eslint';
@@ -30,6 +31,7 @@ import nodeRules from '../node/rules.js';
 import prettierRules from '../prettier/rules.js';
 import reactRules from '../react/rules.js';
 import securityRules from '../security/rules.js';
+import sonarjsRules from '../sonarjs/rules.js';
 import solidRules from '../solid/rules.js';
 import stylisticRules from '../stylistic/rules.js';
 import typescriptRules from '../typescript/rules.js';
@@ -45,6 +47,7 @@ const allConfiguredRules: Record<string, unknown> = {
   ...prettierRules,
   ...reactRules,
   ...securityRules,
+  ...sonarjsRules,
   ...solidRules,
   ...stylisticRules,
   ...typescriptRules,
@@ -98,6 +101,11 @@ const plugins: PluginTestCase[] = [
     prefix: 'security',
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     rules: getPluginRules(securityPlugin.rules, 'security')
+  },
+  {
+    name: 'sonarjs',
+    prefix: 'sonarjs',
+    rules: getPluginRules(sonarjsPlugin.rules, 'sonarjs')
   },
   {
     name: 'unicorn',
