@@ -1,5 +1,6 @@
 import type { Rule } from 'eslint';
 
+import e18ePlugin from '@e18e/eslint-plugin';
 import eslintCommentsPlugin from '@eslint-community/eslint-plugin-eslint-comments';
 import stylisticPlugin from '@stylistic/eslint-plugin';
 import vitestPlugin from '@vitest/eslint-plugin';
@@ -86,6 +87,11 @@ const isDeprecatedRule = (rule: Pick<Rule.RuleModule, 'meta'>): boolean => {
 };
 
 const plugins: PluginTestCase[] = [
+  {
+    name: 'e18e',
+    prefix: 'e18e',
+    rules: getPluginRules(e18ePlugin.rules, 'e18e')
+  },
   {
     name: 'eslint-comments',
     prefix: '@eslint-community/eslint-comments',

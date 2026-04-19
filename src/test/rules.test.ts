@@ -16,6 +16,16 @@ const filterCoreMessages = (results: ESLint.LintResult[]) =>
   results[0]?.messages.filter((m) => m.ruleId !== null && !m.ruleId.includes('/')) ?? [];
 
 describe('Rules', () => {
+  it('should verify e18e configuration rules', async () => {
+    const results = await eslint.lintFiles(['src/test/cases/e18e.ts']);
+    const messages = filterMessages(results, 'e18e/');
+
+    expect(messages).toHaveLength(2);
+
+    expect(messages[0]?.ruleId).toBe('e18e/prefer-array-to-sorted');
+    expect(messages[1]?.ruleId).toBe('e18e/prefer-array-to-reversed');
+  });
+
   it('should verify base configuration rules', async () => {
     const results = await eslint.lintFiles(['src/test/cases/base.ts']);
     const messages = filterCoreMessages(results);
