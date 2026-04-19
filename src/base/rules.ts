@@ -84,6 +84,12 @@ const eslintRules = {
       functions: false,
       variables: true
     }
+  ],
+  'preserve-caught-error': [
+    'error',
+    {
+      requireCatchParameter: true
+    }
   ]
 } satisfies Linter.Config['rules'];
 
