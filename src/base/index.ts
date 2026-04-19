@@ -5,10 +5,10 @@ import eslintCommentsPlugin from '@eslint-community/eslint-plugin-eslint-comment
 import { importX as importXPlugin } from 'eslint-plugin-import-x';
 import jsdocPlugin from 'eslint-plugin-jsdoc';
 import noBarrelFilesPlugin from 'eslint-plugin-no-barrel-files';
-// @ts-expect-error missing types
+// @ts-expect-error -- untyped plugin
 import promisePlugin from 'eslint-plugin-promise';
 import regexpPlugin from 'eslint-plugin-regexp';
-// @ts-expect-error missing types
+// @ts-expect-error -- untyped plugin
 import securityPlugin from 'eslint-plugin-security';
 import sonarjsPlugin from 'eslint-plugin-sonarjs';
 import unicornPlugin from 'eslint-plugin-unicorn';
@@ -30,7 +30,7 @@ const base: Linter.Config = {
     'import-x': importXPlugin,
     jsdoc: jsdocPlugin,
     'no-barrel-files': noBarrelFilesPlugin as ESLint.Plugin,
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- plugin lacks type definitions
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- untyped plugin
     promise: promisePlugin,
     regexp: regexpPlugin,
     security: securityPlugin as ESLint.Plugin,

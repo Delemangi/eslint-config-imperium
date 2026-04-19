@@ -18,7 +18,7 @@ const solid: Linter.Config = {
     }
   },
   plugins: {
-    // @ts-expect-error missing types
+    // @ts-expect-error -- untyped plugin
     solid: solidPlugin
   },
   rules

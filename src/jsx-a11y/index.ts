@@ -1,6 +1,6 @@
 import type { ESLint, Linter } from 'eslint';
 
-// @ts-expect-error missing types
+// @ts-expect-error -- untyped plugin
 import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
 
 import rules from './rules.js';

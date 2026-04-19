@@ -131,3 +131,6 @@ dist
 
 # Output
 lib/
+
+# Leftover plugin directories
+eslint-plugin-security/

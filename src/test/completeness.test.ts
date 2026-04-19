@@ -6,18 +6,18 @@ import stylisticPlugin from '@stylistic/eslint-plugin';
 import vitestPlugin from '@vitest/eslint-plugin';
 import { importX as importXPlugin } from 'eslint-plugin-import-x';
 import jsdocPlugin from 'eslint-plugin-jsdoc';
-// @ts-expect-error missing types
+// @ts-expect-error -- untyped plugin
 import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
 import nPlugin from 'eslint-plugin-n';
 import noBarrelFilesPlugin from 'eslint-plugin-no-barrel-files';
 import prettierPlugin from 'eslint-plugin-prettier';
-// @ts-expect-error missing types
+// @ts-expect-error -- untyped plugin
 import promisePlugin from 'eslint-plugin-promise';
 import reactPlugin from 'eslint-plugin-react';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import reactRefreshPlugin from 'eslint-plugin-react-refresh';
 import regexpPlugin from 'eslint-plugin-regexp';
-// @ts-expect-error missing types
+// @ts-expect-error -- untyped plugin
 import securityPlugin from 'eslint-plugin-security';
 import solidPlugin from 'eslint-plugin-solid';
 import sonarjsPlugin from 'eslint-plugin-sonarjs';
@@ -100,7 +100,7 @@ const plugins: PluginTestCase[] = [
   {
     name: 'promise',
     prefix: 'promise',
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- plugin lacks type definitions
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- untyped plugin
     rules: getPluginRules(promisePlugin.rules, 'promise')
   },
   {
@@ -111,7 +111,7 @@ const plugins: PluginTestCase[] = [
   {
     name: 'security',
     prefix: 'security',
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- plugin lacks type definitions
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- untyped plugin
     rules: getPluginRules(securityPlugin.rules, 'security')
   },
   {
