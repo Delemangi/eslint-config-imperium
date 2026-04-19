@@ -1,5 +1,6 @@
 import type { ESLint, Linter } from 'eslint';
 
+// eslint-disable-next-line e18e/ban-dependencies -- this config wraps eslint-plugin-react
 import reactPlugin from 'eslint-plugin-react';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import reactRefreshPlugin from 'eslint-plugin-react-refresh';

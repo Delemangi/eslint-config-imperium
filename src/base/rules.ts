@@ -1,3 +1,4 @@
+/* eslint-disable max-lines -- rules registry file */
 import type { Linter } from 'eslint';
 
 const eslintRules = {
@@ -897,6 +898,29 @@ const noBarrelFilesRules = {
   'no-barrel-files/no-barrel-files': ['error']
 } satisfies Linter.Config['rules'];
 
+const e18eRules = {
+  'e18e/ban-dependencies': ['error'],
+  'e18e/no-indexof-equality': ['off'],
+  'e18e/prefer-array-at': ['off'], // Handled by unicorn/prefer-at
+  'e18e/prefer-array-fill': ['error'],
+  'e18e/prefer-array-from-map': ['error'],
+  'e18e/prefer-array-some': ['off'], // Handled by unicorn/prefer-array-some
+  'e18e/prefer-array-to-reversed': ['error'],
+  'e18e/prefer-array-to-sorted': ['error'],
+  'e18e/prefer-array-to-spliced': ['error'],
+  'e18e/prefer-date-now': ['off'], // Handled by unicorn/prefer-date-now
+  'e18e/prefer-exponentiation-operator': ['off'], // Handled by prefer-exponentiation-operator
+  'e18e/prefer-includes': ['off'], // Handled by unicorn/prefer-includes
+  'e18e/prefer-inline-equality': ['off'],
+  'e18e/prefer-nullish-coalescing': ['off'], // Handled by @typescript-eslint/prefer-nullish-coalescing
+  'e18e/prefer-object-has-own': ['off'], // Handled by prefer-object-has-own
+  'e18e/prefer-regex-test': ['off'], // Handled by unicorn/prefer-regexp-test
+  'e18e/prefer-spread-syntax': ['off'], // Handled by prefer-spread
+  'e18e/prefer-static-regex': ['error'],
+  'e18e/prefer-timer-args': ['error'],
+  'e18e/prefer-url-canparse': ['error']
+} satisfies Linter.Config['rules'];
+
 const jsdocRules = {
   'jsdoc/check-access': ['error'],
   'jsdoc/check-alignment': ['error'],
@@ -983,6 +1007,7 @@ const jsdocRules = {
 } satisfies Linter.Config['rules'];
 
 export default {
+  ...e18eRules,
   ...eslintCommentsRules,
   ...eslintRules,
   ...eslintSuggestionsRules,

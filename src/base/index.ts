@@ -1,5 +1,6 @@
 import type { ESLint, Linter } from 'eslint';
 
+import e18ePlugin from '@e18e/eslint-plugin';
 import eslintCommentsPlugin from '@eslint-community/eslint-plugin-eslint-comments';
 import { importX as importXPlugin } from 'eslint-plugin-import-x';
 import jsdocPlugin from 'eslint-plugin-jsdoc';
@@ -25,6 +26,7 @@ const base: Linter.Config = {
   },
   plugins: {
     '@eslint-community/eslint-comments': eslintCommentsPlugin,
+    e18e: e18ePlugin,
     'import-x': importXPlugin,
     jsdoc: jsdocPlugin,
     'no-barrel-files': noBarrelFilesPlugin as ESLint.Plugin,
