@@ -147,9 +147,9 @@ const stylisticRules = {
       before: true
     }
   ],
-  '@stylistic/line-comment-position': ['off'], // Should this be disabled?
+  '@stylistic/line-comment-position': ['off'],
   '@stylistic/linebreak-style': ['error', 'unix'],
-  '@stylistic/lines-around-comment': ['off'], // Should this be disabled?
+  '@stylistic/lines-around-comment': ['off'],
   '@stylistic/lines-between-class-members': [
     'error',
     'always',

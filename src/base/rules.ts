@@ -33,7 +33,7 @@ const eslintRules = {
   'no-dupe-else-if': ['error'],
   'no-dupe-keys': ['error'],
   'no-duplicate-case': ['error'],
-  'no-duplicate-imports': ['error'], // Does this have a version with autofix?
+  'no-duplicate-imports': ['error'],
   'no-empty-character-class': ['error'],
   'no-empty-pattern': ['error'],
   'no-ex-assign': ['error'],
@@ -75,7 +75,7 @@ const eslintRules = {
     }
   ],
   'no-unused-private-class-members': ['error'],
-  'no-unused-vars': ['error', 'all'], // Should the option be 'all'?
+  'no-unused-vars': ['error', 'all'],
   'no-use-before-define': [
     'error',
     {
@@ -91,7 +91,7 @@ const eslintSuggestionsRules = {
   'accessor-pairs': ['error'],
   'arrow-body-style': ['error', 'as-needed'],
   'block-scoped-var': ['error'],
-  camelcase: ['error'], // Should this be enabled?
+  camelcase: ['error'],
   'capitalized-comments': ['off'],
   'class-methods-use-this': ['error'],
   complexity: ['error', 30],
@@ -227,7 +227,7 @@ const eslintSuggestionsRules = {
       allowAsStatement: true
     }
   ],
-  'no-warning-comments': ['warn'], // Should this be enabled alongside 'unicorn/expiring-todo-comments'?
+  'no-warning-comments': ['warn'],
   'no-with': ['error'],
   'object-shorthand': ['error'],
   'one-var': ['error', 'never'],
@@ -251,7 +251,7 @@ const eslintSuggestionsRules = {
   'prefer-spread': ['error'],
   'prefer-template': ['error'],
   radix: ['error', 'as-needed'],
-  'require-await': ['error'], // Should this be enabled?
+  'require-await': ['error'],
   'require-unicode-regexp': ['error'],
   'require-yield': ['error'],
   'sort-imports': ['off'],
@@ -366,7 +366,7 @@ const unicornRules = {
       }
     }
   ],
-  'unicorn/prefer-add-event-listener': ['error'], // Should this be enabled?
+  'unicorn/prefer-add-event-listener': ['error'],
   'unicorn/prefer-array-find': ['error'],
   'unicorn/prefer-array-flat': ['error'],
   'unicorn/prefer-array-flat-map': ['error'],
@@ -402,7 +402,7 @@ const unicornRules = {
   'unicorn/prefer-set-size': ['error'],
   'unicorn/prefer-simple-condition-first': ['error'],
   'unicorn/prefer-single-call': ['error'],
-  'unicorn/prefer-spread': ['off'], // Should this be disabled?
+  'unicorn/prefer-spread': ['off'],
   'unicorn/prefer-string-raw': ['error'],
   'unicorn/prefer-string-replace-all': ['error'],
   'unicorn/prefer-string-slice': ['error'],
@@ -412,7 +412,7 @@ const unicornRules = {
   'unicorn/prefer-switch': ['error'],
   'unicorn/prefer-ternary': ['error'],
   'unicorn/prefer-type-error': ['error'],
-  'unicorn/prevent-abbreviations': ['off'], // Revisit this rule
+  'unicorn/prevent-abbreviations': ['off'],
   'unicorn/relative-url-style': ['error'],
   'unicorn/require-array-join-separator': ['error'],
   'unicorn/require-module-attributes': ['error'],

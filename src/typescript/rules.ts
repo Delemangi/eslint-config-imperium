@@ -52,9 +52,9 @@ const typescriptEslintRules = {
   ],
   '@typescript-eslint/default-param-last': ['error'],
   '@typescript-eslint/dot-notation': ['error'],
-  '@typescript-eslint/explicit-function-return-type': ['off'], // Should this be disabled?
+  '@typescript-eslint/explicit-function-return-type': ['off'],
   '@typescript-eslint/explicit-member-accessibility': ['off'],
-  '@typescript-eslint/explicit-module-boundary-types': ['off'], // Should this be disabled?
+  '@typescript-eslint/explicit-module-boundary-types': ['off'],
   '@typescript-eslint/init-declarations': ['off'],
   '@typescript-eslint/max-params': ['warn', { max: 3 }],
   '@typescript-eslint/member-ordering': ['off'],
@@ -62,7 +62,7 @@ const typescriptEslintRules = {
     'error',
     'property'
   ],
-  '@typescript-eslint/naming-convention': ['off'], // Should this be disabled?
+  '@typescript-eslint/naming-convention': ['off'],
   '@typescript-eslint/no-array-constructor': ['error'],
   '@typescript-eslint/no-array-delete': ['error'],
   '@typescript-eslint/no-base-to-string': [
@@ -225,7 +225,7 @@ const typescriptEslintRules = {
   '@typescript-eslint/require-await': ['error'],
   '@typescript-eslint/restrict-plus-operands': ['error'],
   '@typescript-eslint/restrict-template-expressions': ['error'],
-  '@typescript-eslint/return-await': ['off'], // Interesting read: https://typescript-eslint.io/rules/return-await/
+  '@typescript-eslint/return-await': ['off'],
   '@typescript-eslint/strict-boolean-expressions': ['off'],
   '@typescript-eslint/strict-void-return': ['off'],
   '@typescript-eslint/switch-exhaustiveness-check': ['off'],
