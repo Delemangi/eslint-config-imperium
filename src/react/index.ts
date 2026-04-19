@@ -1,7 +1,6 @@
 import type { ESLint, Linter } from 'eslint';
 
-// eslint-disable-next-line e18e/ban-dependencies -- this config wraps eslint-plugin-react
-import reactPlugin from 'eslint-plugin-react';
+import eslintReact from '@eslint-react/eslint-plugin';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import reactRefreshPlugin from 'eslint-plugin-react-refresh';
 import globals from 'globals';
@@ -21,16 +20,12 @@ const react: Linter.Config = {
     }
   },
   plugins: {
-    react: reactPlugin as ESLint.Plugin,
-    'react-hooks': reactHooksPlugin as ESLint.Plugin,
+    ...eslintReact.configs['recommended-type-checked'].plugins,
+    'react-hooks': reactHooksPlugin as unknown as ESLint.Plugin,
     'react-refresh': reactRefreshPlugin
   },
   rules,
-  settings: {
-    react: {
-      version: 'detect'
-    }
-  }
+  settings: eslintReact.configs['recommended-type-checked'].settings ?? {}
 };
 
 export default react;

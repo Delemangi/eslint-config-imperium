@@ -2,6 +2,7 @@ import type { ESLint, Linter } from 'eslint';
 
 import e18ePlugin from '@e18e/eslint-plugin';
 import eslintCommentsPlugin from '@eslint-community/eslint-plugin-eslint-comments';
+import { fixupPluginRules } from '@eslint/compat';
 import { importX as importXPlugin } from 'eslint-plugin-import-x';
 import jsdocPlugin from 'eslint-plugin-jsdoc';
 import noBarrelFilesPlugin from 'eslint-plugin-no-barrel-files';
@@ -30,8 +31,8 @@ const base: Linter.Config = {
     'import-x': importXPlugin,
     jsdoc: jsdocPlugin,
     'no-barrel-files': noBarrelFilesPlugin as ESLint.Plugin,
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- untyped plugin
-    promise: promisePlugin,
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- untyped plugin
+    promise: fixupPluginRules(promisePlugin),
     regexp: regexpPlugin,
     security: securityPlugin as ESLint.Plugin,
     sonarjs: sonarjsPlugin,

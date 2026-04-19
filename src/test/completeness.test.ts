@@ -2,6 +2,7 @@ import type { Rule } from 'eslint';
 
 import e18ePlugin from '@e18e/eslint-plugin';
 import eslintCommentsPlugin from '@eslint-community/eslint-plugin-eslint-comments';
+import eslintReactPlugin from '@eslint-react/eslint-plugin';
 import stylisticPlugin from '@stylistic/eslint-plugin';
 import vitestPlugin from '@vitest/eslint-plugin';
 import { importX as importXPlugin } from 'eslint-plugin-import-x';
@@ -13,7 +14,6 @@ import noBarrelFilesPlugin from 'eslint-plugin-no-barrel-files';
 import prettierPlugin from 'eslint-plugin-prettier';
 // @ts-expect-error -- untyped plugin
 import promisePlugin from 'eslint-plugin-promise';
-import reactPlugin from 'eslint-plugin-react';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import reactRefreshPlugin from 'eslint-plugin-react-refresh';
 import regexpPlugin from 'eslint-plugin-regexp';
@@ -84,6 +84,17 @@ const isDeprecatedRule = (rule: Pick<Rule.RuleModule, 'meta'>): boolean => {
   }
 
   return 'deprecated' in rule.meta && Boolean(Reflect.get(rule.meta, 'deprecated'));
+};
+
+const getEslintReactRules = (): PluginRules => {
+  const rules: PluginRules = {};
+  for (const [name, rule] of Object.entries(eslintReactPlugin.rules ?? {})) {
+    if (!name.startsWith('x-')) {
+      rules[name] = rule as Pick<Rule.RuleModule, 'meta'>;
+    }
+  }
+
+  return rules;
 };
 
 const plugins: PluginTestCase[] = [
@@ -160,9 +171,9 @@ const plugins: PluginTestCase[] = [
     rules: getPluginRules(prettierPlugin.rules, 'prettier')
   },
   {
-    name: 'react',
-    prefix: 'react',
-    rules: reactPlugin.rules
+    name: '@eslint-react',
+    prefix: '@eslint-react',
+    rules: getEslintReactRules()
   },
   {
     name: 'react-hooks',
@@ -221,7 +232,6 @@ describe('Rules Completeness', () => {
     for (const [ruleName, rule] of Object.entries(rules)) {
       if (!isDeprecatedRule(rule)) {
         validRules.add(`${prefix}/${ruleName}`);
-        // For stylistic plugin, also add unprefixed version since rules can be used without js/ts/jsx prefix
         if (name === 'stylistic' && ruleName.includes('/')) {
           const unprefixedName = ruleName.split('/').slice(1)
             .join('/');

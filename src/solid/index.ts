@@ -1,5 +1,6 @@
 import type { Linter } from 'eslint';
 
+import { fixupPluginRules } from '@eslint/compat';
 import solidPlugin from 'eslint-plugin-solid';
 import globals from 'globals';
 
@@ -19,7 +20,7 @@ const solid: Linter.Config = {
   },
   plugins: {
     // @ts-expect-error -- untyped plugin
-    solid: solidPlugin
+    solid: fixupPluginRules(solidPlugin)
   },
   rules
 };

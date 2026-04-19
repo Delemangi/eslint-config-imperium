@@ -1,9 +1,9 @@
-type Props = {
-  enabled: boolean;
+export const Component = () => {
+  return <div children="text"></div>;
 };
 
-export const Component = ({ enabled }: Props) => {
-  const message = enabled ? 'Enabled' : 'Disabled';
+export const Nested = () => {
+  const Inner = () => <span>nested</span>;
 
-  return <div children={message}></div>;
+  return <Inner />;
 };

@@ -159,13 +159,13 @@ describe('Rules', () => {
 
   it('should verify React configuration rules', async () => {
     const results = await eslint.lintFiles(['src/test/cases/react.tsx']);
-    const messages = filterMessages(results, 'react/');
+    const messages = filterMessages(results, '@eslint-react/');
 
     expect(messages).toHaveLength(3);
 
-    expect(messages[0]?.ruleId).toBe('react/prefer-read-only-props');
-    expect(messages[1]?.ruleId).toBe('react/self-closing-comp');
-    expect(messages[2]?.ruleId).toBe('react/no-children-prop');
+    expect(messages[0]?.ruleId).toBe('@eslint-react/jsx-no-children-prop');
+    expect(messages[1]?.ruleId).toBe('@eslint-react/component-hook-factories');
+    expect(messages[2]?.ruleId).toBe('@eslint-react/no-nested-component-definitions');
   });
 
   it('should verify security configuration rules', async () => {

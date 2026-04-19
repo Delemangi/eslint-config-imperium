@@ -1,5 +1,6 @@
-import type { ESLint, Linter } from 'eslint';
+import type { Linter } from 'eslint';
 
+import { fixupPluginRules } from '@eslint/compat';
 // @ts-expect-error -- untyped plugin
 import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
 
@@ -15,7 +16,8 @@ const jsxA11y: Linter.Config = {
     }
   },
   plugins: {
-    'jsx-a11y': jsxA11yPlugin as ESLint.Plugin
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- untyped plugin
+    'jsx-a11y': fixupPluginRules(jsxA11yPlugin)
   },
   rules
 };

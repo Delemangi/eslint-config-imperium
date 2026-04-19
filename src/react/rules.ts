@@ -1,180 +1,111 @@
 import type { Linter } from 'eslint';
 
-const reactRules = {
-  'react/boolean-prop-naming': ['error'],
-  'react/button-has-type': ['error'],
-  'react/checked-requires-onchange-or-readonly': ['off'],
-  'react/default-props-match-prop-types': ['off'],
-  'react/destructuring-assignment': [
-    'error',
-    'always',
-    {
-      destructureInSignature: 'always'
-    }
-  ],
-  'react/display-name': [
-    'error',
-    {
-      checkContextObjects: true
-    }
-  ],
-  'react/forbid-component-props': ['off'],
-  'react/forbid-dom-props': ['off'],
-  'react/forbid-elements': ['off'],
-  'react/forbid-foreign-prop-types': ['off'],
-  'react/forbid-prop-types': ['off'],
-  'react/forward-ref-uses-ref': ['error'],
-  'react/function-component-definition': [
-    'error',
-    {
-      namedComponents: 'arrow-function',
-      unnamedComponents: 'arrow-function'
-    }
-  ],
-  'react/hook-use-state': ['error'],
-  'react/iframe-missing-sandbox': ['error'],
-  'react/jsx-boolean-value': ['error', 'never'],
-  'react/jsx-child-element-spacing': ['off'],
-  'react/jsx-closing-bracket-location': ['error', 'line-aligned'],
-  'react/jsx-closing-tag-location': ['error'],
-  'react/jsx-curly-brace-presence': [
-    'error',
-    {
-      children: 'never',
-      props: 'never'
-    }
-  ],
-  'react/jsx-curly-newline': ['error'],
-  'react/jsx-curly-spacing': [
-    'error',
-    'never',
-    {
-      allowMultiline: true
-    }
-  ],
-  'react/jsx-equals-spacing': ['error', 'never'],
-  'react/jsx-filename-extension': ['off'],
-  'react/jsx-first-prop-new-line': ['error', 'multiline-multiprop'],
-  'react/jsx-fragments': ['error', 'syntax'],
-  'react/jsx-handler-names': [
-    'error',
-    {
-      checkInlineFunction: false,
-      checkLocalVariables: false,
-      eventHandlerPrefix: 'handle',
-      eventHandlerPropPrefix: 'on'
-    }
-  ],
-  'react/jsx-indent': ['error', 2],
-  'react/jsx-indent-props': ['error', 2],
-  'react/jsx-key': [
-    'error',
-    {
-      checkFragmentShorthand: true,
-      checkKeyMustBeforeSpread: true
-    }
-  ],
-  'react/jsx-max-depth': ['off'],
-  'react/jsx-max-props-per-line': [
-    'error',
-    {
-      maximum: 3,
-      when: 'multiline'
-    }
-  ],
-  'react/jsx-newline': [
-    'error',
-    {
-      prevent: true
-    }
-  ],
-  'react/jsx-no-bind': [
-    'error',
-    {
-      allowArrowFunctions: true,
-      allowBind: false,
-      ignoreRefs: true
-    }
-  ],
-  'react/jsx-no-comment-textnodes': ['error'],
-  'react/jsx-no-constructed-context-values': ['error'],
-  'react/jsx-no-duplicate-props': ['error'],
-  'react/jsx-no-leaked-render': ['error'],
-  'react/jsx-no-literals': ['off'],
-  'react/jsx-no-script-url': ['error'],
-  'react/jsx-no-target-blank': ['error'],
-  'react/jsx-no-undef': ['error'],
-  'react/jsx-no-useless-fragment': ['error'],
-  'react/jsx-one-expression-per-line': ['off'],
-  'react/jsx-pascal-case': ['error'],
-  'react/jsx-props-no-multi-spaces': ['error'],
-  'react/jsx-props-no-spread-multi': ['error'],
-  'react/jsx-props-no-spreading': ['off'],
-  'react/jsx-sort-props': ['off'],
-  'react/jsx-tag-spacing': [
-    'error',
-    {
-      afterOpening: 'never',
-      beforeSelfClosing: 'always',
-      closingSlash: 'never'
-    }
-  ],
-  'react/jsx-uses-react': ['error'],
-  'react/jsx-uses-vars': ['error'],
-  'react/jsx-wrap-multilines': ['off'],
-  'react/no-access-state-in-setstate': ['error'],
-  'react/no-adjacent-inline-elements': ['error'],
-  'react/no-array-index-key': ['error'],
-  'react/no-arrow-function-lifecycle': ['error'],
-  'react/no-children-prop': ['error'],
-  'react/no-danger': ['error'],
-  'react/no-danger-with-children': ['error'],
-  'react/no-deprecated': ['error'],
-  'react/no-did-mount-set-state': ['error'],
-  'react/no-did-update-set-state': ['error'],
-  'react/no-direct-mutation-state': ['error'],
-  'react/no-find-dom-node': ['error'],
-  'react/no-invalid-html-attribute': ['error'],
-  'react/no-is-mounted': ['error'],
-  'react/no-multi-comp': ['off'],
-  'react/no-namespace': ['error'],
-  'react/no-object-type-as-default-prop': ['error'],
-  'react/no-redundant-should-component-update': ['error'],
-  'react/no-render-return-value': ['error'],
-  'react/no-set-state': ['off'],
-  'react/no-string-refs': ['error'],
-  'react/no-this-in-sfc': ['error'],
-  'react/no-typos': ['error'],
-  'react/no-unescaped-entities': ['error'],
-  'react/no-unknown-property': ['error'],
-  'react/no-unsafe': ['error'],
-  'react/no-unstable-nested-components': ['error'],
-  'react/no-unused-class-component-methods': ['error'],
-  'react/no-unused-prop-types': ['error'],
-  'react/no-unused-state': ['error'],
-  'react/no-will-update-set-state': ['error'],
-  'react/prefer-es6-class': ['error'],
-  'react/prefer-exact-props': ['error'],
-  'react/prefer-read-only-props': ['error'],
-  'react/prefer-stateless-function': [
-    'error',
-    {
-      ignorePureComponents: true
-    }
-  ],
-  'react/prop-types': ['error'],
-  'react/react-in-jsx-scope': ['off'],
-  'react/require-default-props': ['off'],
-  'react/require-optimization': ['off'],
-  'react/require-render-return': ['error'],
-  'react/self-closing-comp': ['error'],
-  'react/sort-comp': ['off'],
-  'react/sort-default-props': ['off'],
-  'react/sort-prop-types': ['off'],
-  'react/state-in-constructor': ['error'],
-  'react/static-property-placement': ['off'],
-  'react/style-prop-object': ['error'],
-  'react/void-dom-elements-no-children': ['error']
+const eslintReactRules = {
+  '@eslint-react/component-hook-factories': ['error'],
+  '@eslint-react/error-boundaries': ['error'],
+  '@eslint-react/exhaustive-deps': ['off'],
+  '@eslint-react/immutability': ['off'],
+  '@eslint-react/no-access-state-in-setstate': ['error'],
+  '@eslint-react/no-array-index-key': ['error'],
+  '@eslint-react/no-children-count': ['error'],
+  '@eslint-react/no-children-for-each': ['error'],
+  '@eslint-react/no-children-map': ['error'],
+  '@eslint-react/no-children-only': ['error'],
+  '@eslint-react/no-children-to-array': ['error'],
+  '@eslint-react/no-class-component': ['error'],
+  '@eslint-react/no-clone-element': ['error'],
+  '@eslint-react/no-component-will-mount': ['error'],
+  '@eslint-react/no-component-will-receive-props': ['error'],
+  '@eslint-react/no-component-will-update': ['error'],
+  '@eslint-react/no-context-provider': ['error'],
+  '@eslint-react/no-create-ref': ['error'],
+  '@eslint-react/no-direct-mutation-state': ['error'],
+  '@eslint-react/no-duplicate-key': ['error'],
+  '@eslint-react/no-forward-ref': ['error'],
+  '@eslint-react/no-implicit-children': ['error'],
+  '@eslint-react/no-implicit-key': ['error'],
+  '@eslint-react/no-implicit-ref': ['error'],
+  '@eslint-react/no-leaked-conditional-rendering': ['error'],
+  '@eslint-react/no-missing-component-display-name': ['error'],
+  '@eslint-react/no-missing-context-display-name': ['error'],
+  '@eslint-react/no-missing-key': ['error'],
+  '@eslint-react/no-misused-capture-owner-stack': ['error'],
+  '@eslint-react/no-nested-component-definitions': ['error'],
+  '@eslint-react/no-nested-lazy-component-declarations': ['error'],
+  '@eslint-react/no-redundant-should-component-update': ['error'],
+  '@eslint-react/no-set-state-in-component-did-mount': ['error'],
+  '@eslint-react/no-set-state-in-component-did-update': ['error'],
+  '@eslint-react/no-set-state-in-component-will-update': ['error'],
+  '@eslint-react/no-unnecessary-use-callback': ['error'],
+  '@eslint-react/no-unnecessary-use-memo': ['error'],
+  '@eslint-react/no-unnecessary-use-prefix': ['error'],
+  '@eslint-react/no-unsafe-component-will-mount': ['error'],
+  '@eslint-react/no-unsafe-component-will-receive-props': ['error'],
+  '@eslint-react/no-unsafe-component-will-update': ['error'],
+  '@eslint-react/no-unstable-context-value': ['error'],
+  '@eslint-react/no-unstable-default-props': ['error'],
+  '@eslint-react/no-unused-class-component-members': ['error'],
+  '@eslint-react/no-unused-props': ['off'],
+  '@eslint-react/no-unused-state': ['error'],
+  '@eslint-react/no-use-context': ['off'],
+  '@eslint-react/prefer-destructuring-assignment': ['error'],
+  '@eslint-react/prefer-namespace-import': ['off'],
+  '@eslint-react/purity': ['off'],
+  '@eslint-react/refs': ['off'],
+  '@eslint-react/rules-of-hooks': ['off'],
+  '@eslint-react/set-state-in-effect': ['off'],
+  '@eslint-react/set-state-in-render': ['off'],
+  '@eslint-react/unsupported-syntax': ['off'],
+  '@eslint-react/use-memo': ['off'],
+  '@eslint-react/use-state': ['error']
+} satisfies Linter.Config['rules'];
+
+const eslintReactJsxRules = {
+  '@eslint-react/jsx-no-children-prop': ['error'],
+  '@eslint-react/jsx-no-children-prop-with-children': ['error'],
+  '@eslint-react/jsx-no-comment-textnodes': ['error'],
+  '@eslint-react/jsx-no-key-after-spread': ['error'],
+  '@eslint-react/jsx-no-leaked-dollar': ['error'],
+  '@eslint-react/jsx-no-leaked-semicolon': ['error'],
+  '@eslint-react/jsx-no-namespace': ['error'],
+  '@eslint-react/jsx-no-useless-fragment': ['error']
+} satisfies Linter.Config['rules'];
+
+const eslintReactDomRules = {
+  '@eslint-react/dom-no-dangerously-set-innerhtml': ['error'],
+  '@eslint-react/dom-no-dangerously-set-innerhtml-with-children': ['error'],
+  '@eslint-react/dom-no-find-dom-node': ['error'],
+  '@eslint-react/dom-no-flush-sync': ['error'],
+  '@eslint-react/dom-no-hydrate': ['error'],
+  '@eslint-react/dom-no-missing-button-type': ['error'],
+  '@eslint-react/dom-no-missing-iframe-sandbox': ['error'],
+  '@eslint-react/dom-no-render': ['error'],
+  '@eslint-react/dom-no-render-return-value': ['error'],
+  '@eslint-react/dom-no-script-url': ['error'],
+  '@eslint-react/dom-no-string-style-prop': ['error'],
+  '@eslint-react/dom-no-unknown-property': ['error'],
+  '@eslint-react/dom-no-unsafe-iframe-sandbox': ['error'],
+  '@eslint-react/dom-no-unsafe-target-blank': ['error'],
+  '@eslint-react/dom-no-use-form-state': ['error'],
+  '@eslint-react/dom-no-void-elements-with-children': ['error'],
+  '@eslint-react/dom-prefer-namespace-import': ['off']
+} satisfies Linter.Config['rules'];
+
+const eslintReactWebApiRules = {
+  '@eslint-react/web-api-no-leaked-event-listener': ['error'],
+  '@eslint-react/web-api-no-leaked-interval': ['error'],
+  '@eslint-react/web-api-no-leaked-resize-observer': ['error'],
+  '@eslint-react/web-api-no-leaked-timeout': ['error']
+} satisfies Linter.Config['rules'];
+
+const eslintReactRscRules = {
+  '@eslint-react/rsc-function-definition': ['off']
+} satisfies Linter.Config['rules'];
+
+const eslintReactNamingConventionRules = {
+  '@eslint-react/naming-convention-context-name': ['error'],
+  '@eslint-react/naming-convention-id-name': ['error'],
+  '@eslint-react/naming-convention-ref-name': ['error']
 } satisfies Linter.Config['rules'];
 
 const reactHooksRules = {
@@ -218,7 +149,12 @@ const reactRefreshRules = {
 } satisfies Linter.Config['rules'];
 
 const rules = {
-  ...reactRules,
+  ...eslintReactRules,
+  ...eslintReactJsxRules,
+  ...eslintReactDomRules,
+  ...eslintReactWebApiRules,
+  ...eslintReactRscRules,
+  ...eslintReactNamingConventionRules,
   ...reactHooksRules,
   ...reactRefreshRules
 } satisfies Linter.Config['rules'];

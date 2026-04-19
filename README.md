@@ -2,7 +2,7 @@
 
 This is a strict configuration for [ESLint](https://github.com/eslint/eslint). It is meant for those who have never found a linter annoying before.
 
-Currently supports ESLint v9 and the flat config only.
+Currently supports ESLint v10 with the flat config only.
 
 ## Quickstart
 
@@ -77,6 +77,8 @@ This is a list of the currently used ESLint plugins:
 
 - [`@e18e/eslint-plugin`](https://github.com/e18e/eslint-plugin)
 - [`@eslint-community/eslint-plugin-eslint-comments`](https://github.com/eslint-community/eslint-plugin-eslint-comments)
+- [`@eslint-react/eslint-plugin`](https://github.com/Rel1cx/eslint-react)
+- [`@eslint/compat`](https://github.com/eslint/rewrite/tree/main/packages/compat)
 - [`@stylistic/eslint-plugin`](https://github.com/eslint-stylistic/eslint-stylistic)
 - [`@typescript-eslint/eslint-plugin`](https://github.com/typescript-eslint/typescript-eslint)
 - [`@vitest/eslint-plugin`](https://github.com/vitest-dev/eslint-plugin-vitest)
@@ -88,7 +90,6 @@ This is a list of the currently used ESLint plugins:
 - [`eslint-plugin-perfectionist`](https://github.com/azat-io/eslint-plugin-perfectionist)
 - [`eslint-plugin-prettier`](https://github.com/prettier/eslint-plugin-prettier)
 - [`eslint-plugin-promise`](https://github.com/eslint-community/eslint-plugin-promise)
-- [`eslint-plugin-react`](https://github.com/jsx-eslint/eslint-plugin-react)
 - [`eslint-plugin-react-hooks`](https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks)
 - [`eslint-plugin-react-refresh`](https://github.com/ArnaudBarre/eslint-plugin-react-refresh)
 - [`eslint-plugin-regexp`](https://github.com/ota-meshi/eslint-plugin-regexp)
