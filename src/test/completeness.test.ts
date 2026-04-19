@@ -5,7 +5,6 @@ import eslintCommentsPlugin from '@eslint-community/eslint-plugin-eslint-comment
 import eslintReactPlugin from '@eslint-react/eslint-plugin';
 import stylisticPlugin from '@stylistic/eslint-plugin';
 import vitestPlugin from '@vitest/eslint-plugin';
-import { builtinRules } from 'eslint/use-at-your-own-risk';
 import { importX as importXPlugin } from 'eslint-plugin-import-x';
 import jsdocPlugin from 'eslint-plugin-jsdoc';
 // @ts-expect-error -- untyped plugin
@@ -26,6 +25,7 @@ import sonarjsPlugin from 'eslint-plugin-sonarjs';
 import tailwindPlugin from 'eslint-plugin-tailwindcss';
 import unicornPlugin from 'eslint-plugin-unicorn';
 import unusedImportsPlugin from 'eslint-plugin-unused-imports';
+import { builtinRules } from 'eslint/use-at-your-own-risk';
 import typescriptPlugin from 'typescript-eslint';
 import {
   describe,
@@ -89,6 +89,18 @@ const isDeprecatedRule = (rule: Pick<Rule.RuleModule, 'meta'>): boolean => {
   }
 
   return 'deprecated' in rule.meta && Boolean(Reflect.get(rule.meta, 'deprecated'));
+};
+
+const isRuleDisabled = (config: unknown): boolean => {
+  if (config === 'off' || config === 0) {
+    return true;
+  }
+
+  if (Array.isArray(config)) {
+    return config[0] === 'off' || config[0] === 0;
+  }
+
+  return false;
 };
 
 const getEslintReactRules = (): PluginRules => {
@@ -168,6 +180,7 @@ const plugins: PluginTestCase[] = [
   {
     name: 'jsx-a11y',
     prefix: 'jsx-a11y',
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- untyped plugin
     rules: getPluginRules(jsxA11yPlugin.rules, 'jsx-a11y')
   },
   {
@@ -224,11 +237,10 @@ describe('Rules Completeness', () => {
     const configuredRuleNames = Object.keys(allConfiguredRules);
     const missingRules: string[] = [];
 
+    // eslint-disable-next-line @typescript-eslint/no-deprecated -- no replacement API exists in ESLint v10
     for (const [name, rule] of builtinRules) {
-      if (!name.includes('/') && !isDeprecatedRule(rule)) {
-        if (!configuredRuleNames.includes(name)) {
-          missingRules.push(name);
-        }
+      if (!name.includes('/') && !isDeprecatedRule(rule) && !configuredRuleNames.includes(name)) {
+        missingRules.push(name);
       }
     }
 
@@ -239,6 +251,7 @@ describe('Rules Completeness', () => {
     const validCoreRules = new Set<string>();
     const deprecatedCoreRules = new Set<string>();
 
+    // eslint-disable-next-line @typescript-eslint/no-deprecated -- no replacement API exists in ESLint v10
     for (const [name, rule] of builtinRules) {
       if (!name.includes('/')) {
         if (isDeprecatedRule(rule)) {
@@ -256,8 +269,7 @@ describe('Rules Completeness', () => {
       }
 
       const config = allConfiguredRules[rule];
-      const severity = Array.isArray(config) ? config[0] : config;
-      const isDisabled = severity === 'off' || severity === 0;
+      const isDisabled = isRuleDisabled(config);
 
       if (deprecatedCoreRules.has(rule)) {
         return !isDisabled;

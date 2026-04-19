@@ -1,5 +1,9 @@
 import { ESLint } from 'eslint';
-import { describe, expect, it } from 'vitest';
+import {
+  describe,
+  expect,
+  it
+} from 'vitest';
 
 const eslint = new ESLint();
 

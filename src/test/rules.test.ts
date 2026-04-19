@@ -5,16 +5,23 @@ import {
   it
 } from 'vitest';
 
-import { jsxA11y, prettier, solid } from '../index.js';
+import {
+  jsxA11y,
+  prettier,
+  solid
+} from '../index.js';
 
 const eslint = new ESLint();
 
-const filterMessages = (results: ESLint.LintResult[], prefix: string) =>
-  results[0]?.messages.filter((m) => m.ruleId?.startsWith(prefix)) ?? [];
+const filterMessages = function(results: ESLint.LintResult[], prefix: string) {
+  return results[0]?.messages.filter((m) => m.ruleId?.startsWith(prefix)) ?? [];
+};
 
-const filterCoreMessages = (results: ESLint.LintResult[]) =>
-  results[0]?.messages.filter((m) => m.ruleId !== null && !m.ruleId.includes('/')) ?? [];
+const filterCoreMessages = function(results: ESLint.LintResult[]) {
+  return results[0]?.messages.filter((m) => m.ruleId !== null && !m.ruleId.includes('/')) ?? [];
+};
 
+// eslint-disable-next-line max-lines-per-function -- test suite with 20+ plugin verifications
 describe('Rules', () => {
   it('should verify e18e configuration rules', async () => {
     const results = await eslint.lintFiles(['src/test/cases/e18e.ts']);
