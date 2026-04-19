@@ -21,6 +21,8 @@ import regexpPlugin from 'eslint-plugin-regexp';
 import securityPlugin from 'eslint-plugin-security';
 import solidPlugin from 'eslint-plugin-solid';
 import sonarjsPlugin from 'eslint-plugin-sonarjs';
+// @ts-expect-error -- untyped plugin
+import tailwindPlugin from 'eslint-plugin-tailwindcss';
 import unicornPlugin from 'eslint-plugin-unicorn';
 import unusedImportsPlugin from 'eslint-plugin-unused-imports';
 import typescriptPlugin from 'typescript-eslint';
@@ -38,6 +40,7 @@ import prettierRules from '../prettier/rules.js';
 import reactRules from '../react/rules.js';
 import solidRules from '../solid/rules.js';
 import stylisticRules from '../stylistic/rules.js';
+import tailwindRules from '../tailwind/rules.js';
 import typescriptRules from '../typescript/rules.js';
 import vitestRules from '../vitest/rules.js';
 
@@ -52,6 +55,7 @@ const allConfiguredRules: Record<string, unknown> = {
   ...reactRules,
   ...solidRules,
   ...stylisticRules,
+  ...tailwindRules,
   ...typescriptRules,
   ...vitestRules
 };
@@ -194,6 +198,12 @@ const plugins: PluginTestCase[] = [
     name: 'stylistic',
     prefix: '@stylistic',
     rules: stylisticPlugin.rules
+  },
+  {
+    name: 'tailwindcss',
+    prefix: 'tailwindcss',
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- untyped plugin
+    rules: getPluginRules(tailwindPlugin.rules, 'tailwindcss')
   },
   {
     name: 'typescript',

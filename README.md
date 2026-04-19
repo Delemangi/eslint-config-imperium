@@ -34,6 +34,7 @@ This package is modular and includes several configurations intended to be enabl
 - [`node`](./src/node/index.ts) - Node environment configuration
 - [`react`](./src/react/index.ts) - React configuration
 - [`solid`](./src/solid/index.ts) - Solid configuration
+- [`tailwind`](./src/tailwind/index.ts) - Tailwind CSS configuration
 - [`typescript`](./src/typescript/index.ts) - TypeScript configuration
 - [`vitest`](./src/vitest/index.ts) - Vitest configuration
 
@@ -96,6 +97,7 @@ This is a list of the currently used ESLint plugins:
 - [`eslint-plugin-security`](https://github.com/eslint-community/eslint-plugin-security)
 - [`eslint-plugin-solid`](https://github.com/solidjs-community/eslint-plugin-solid)
 - [`eslint-plugin-sonarjs`](https://github.com/SonarSource/SonarJS)
+- [`eslint-plugin-tailwindcss`](https://github.com/francoismassart/eslint-plugin-tailwindcss)
 - [`eslint-plugin-unicorn`](https://github.com/sindresorhus/eslint-plugin-unicorn)
 - [`eslint-plugin-unused-imports`](https://github.com/sweepline/eslint-plugin-unused-imports)
 
