@@ -85,10 +85,25 @@ const eslintRules = {
       variables: true
     }
   ],
+  'no-useless-backreference': ['error'],
   'preserve-caught-error': [
     'error',
     {
       requireCatchParameter: true
+    }
+  ],
+  'require-atomic-updates': ['error'],
+  'use-isnan': [
+    'error',
+    {
+      enforceForIndexOf: true,
+      enforceForSwitchCase: true
+    }
+  ],
+  'valid-typeof': [
+    'error',
+    {
+      requireStringLiterals: true
     }
   ]
 } satisfies Linter.Config['rules'];
@@ -218,6 +233,7 @@ const eslintSuggestionsRules = {
   'no-unneeded-ternary': ['error'],
   'no-unused-expressions': ['error'],
   'no-unused-labels': ['error'],
+  'no-useless-assignment': ['error'],
   'no-useless-call': ['error'],
   'no-useless-catch': ['error'],
   'no-useless-computed-key': ['error'],

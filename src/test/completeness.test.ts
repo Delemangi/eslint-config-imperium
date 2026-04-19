@@ -5,6 +5,7 @@ import eslintCommentsPlugin from '@eslint-community/eslint-plugin-eslint-comment
 import eslintReactPlugin from '@eslint-react/eslint-plugin';
 import stylisticPlugin from '@stylistic/eslint-plugin';
 import vitestPlugin from '@vitest/eslint-plugin';
+import { builtinRules } from 'eslint/use-at-your-own-risk';
 import { importX as importXPlugin } from 'eslint-plugin-import-x';
 import jsdocPlugin from 'eslint-plugin-jsdoc';
 // @ts-expect-error -- untyped plugin
@@ -219,6 +220,56 @@ const plugins: PluginTestCase[] = [
 ];
 
 describe('Rules Completeness', () => {
+  it('should configure all available core ESLint rules', () => {
+    const configuredRuleNames = Object.keys(allConfiguredRules);
+    const missingRules: string[] = [];
+
+    for (const [name, rule] of builtinRules) {
+      if (!name.includes('/') && !isDeprecatedRule(rule)) {
+        if (!configuredRuleNames.includes(name)) {
+          missingRules.push(name);
+        }
+      }
+    }
+
+    expect(missingRules, `The following core rules are not configured: ${missingRules.join(', ')}`).toStrictEqual([]);
+  });
+
+  it('should not have extraneous or deprecated core ESLint rules', () => {
+    const validCoreRules = new Set<string>();
+    const deprecatedCoreRules = new Set<string>();
+
+    for (const [name, rule] of builtinRules) {
+      if (!name.includes('/')) {
+        if (isDeprecatedRule(rule)) {
+          deprecatedCoreRules.add(name);
+        } else {
+          validCoreRules.add(name);
+        }
+      }
+    }
+
+    const configuredCoreRules = Object.keys(allConfiguredRules).filter((rule) => !rule.includes('/'));
+    const invalidRules = configuredCoreRules.filter((rule) => {
+      if (validCoreRules.has(rule)) {
+        return false;
+      }
+
+      const config = allConfiguredRules[rule];
+      const severity = Array.isArray(config) ? config[0] : config;
+      const isDisabled = severity === 'off' || severity === 0;
+
+      if (deprecatedCoreRules.has(rule)) {
+        return !isDisabled;
+      }
+
+      return !isDisabled;
+    });
+
+    expect(invalidRules, `The following core rules are extraneous or deprecated: ${invalidRules.join(', ')}`)
+      .toStrictEqual([]);
+  });
+
   it.each(plugins)('should configure all available $name rules', ({ prefix, rules }) => {
     const availableRules: string[] = [];
     for (const [name, rule] of Object.entries(rules)) {
