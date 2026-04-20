@@ -25,7 +25,7 @@ const typescriptEslintRules = {
   ],
   '@typescript-eslint/class-methods-use-this': ['off'],
   '@typescript-eslint/consistent-generic-constructors': ['error'],
-  '@typescript-eslint/consistent-indexed-object-style': ['off'],
+  '@typescript-eslint/consistent-indexed-object-style': ['error', 'record'],
   '@typescript-eslint/consistent-return': ['off'],
   '@typescript-eslint/consistent-type-assertions': [
     'error',
@@ -219,16 +219,30 @@ const typescriptEslintRules = {
   '@typescript-eslint/prefer-regexp-exec': ['error'],
   '@typescript-eslint/prefer-return-this-type': ['error'],
   '@typescript-eslint/prefer-string-starts-ends-with': ['error'],
-  '@typescript-eslint/promise-function-async': ['off'],
+  '@typescript-eslint/promise-function-async': ['error'],
   '@typescript-eslint/related-getter-setter-pairs': ['error'],
   '@typescript-eslint/require-array-sort-compare': ['error'],
   '@typescript-eslint/require-await': ['error'],
   '@typescript-eslint/restrict-plus-operands': ['error'],
   '@typescript-eslint/restrict-template-expressions': ['error'],
-  '@typescript-eslint/return-await': ['off'],
-  '@typescript-eslint/strict-boolean-expressions': ['off'],
+  '@typescript-eslint/return-await': ['error', 'in-try-catch'],
+  '@typescript-eslint/strict-boolean-expressions': [
+    'error',
+    {
+      allowNullableBoolean: true,
+      allowNullableObject: true,
+      allowNullableString: true,
+      allowNumber: true,
+      allowString: true
+    }
+  ],
   '@typescript-eslint/strict-void-return': ['off'],
-  '@typescript-eslint/switch-exhaustiveness-check': ['off'],
+  '@typescript-eslint/switch-exhaustiveness-check': [
+    'error',
+    {
+      requireDefaultForNonUnion: true
+    }
+  ],
   '@typescript-eslint/triple-slash-reference': [
     'error',
     {
@@ -243,6 +257,7 @@ const typescriptEslintRules = {
 } satisfies Linter.Config['rules'];
 
 const eslintDisabledRules = {
+  'default-case': ['off'],
   'default-param-last': ['off'],
   'dot-notation': ['off'],
   'max-params': ['off'],
