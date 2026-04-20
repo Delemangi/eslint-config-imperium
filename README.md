@@ -16,7 +16,7 @@ Currently supports ESLint v10 with the flat config only.
 // eslint.config.js
 import { auto } from "eslint-config-imperium";
 
-export default [auto, stylistic];
+export default auto;
 ```
 
 ## Configurations
@@ -31,12 +31,15 @@ This package is modular and includes several configurations intended to be enabl
 ### Frameworks / Environments
 
 - [`browser`](./src/browser/index.ts) - Browser environment configuration
+- [`next`](./src/next/index.ts) - Next.js configuration
 - [`node`](./src/node/index.ts) - Node environment configuration
 - [`react`](./src/react/index.ts) - React configuration
 - [`solid`](./src/solid/index.ts) - Solid configuration
 - [`tailwind`](./src/tailwind/index.ts) - Tailwind CSS configuration
+- [`tanstackQuery`](./src/tanstack-query/index.ts) - TanStack Query configuration
 - [`typescript`](./src/typescript/index.ts) - TypeScript configuration
 - [`vitest`](./src/vitest/index.ts) - Vitest configuration
+- [`vue`](./src/vue/index.ts) - Vue configuration
 
 ### Style
 
@@ -80,7 +83,9 @@ This is a list of the currently used ESLint plugins:
 - [`@eslint-community/eslint-plugin-eslint-comments`](https://github.com/eslint-community/eslint-plugin-eslint-comments)
 - [`@eslint-react/eslint-plugin`](https://github.com/Rel1cx/eslint-react)
 - [`@eslint/compat`](https://github.com/eslint/rewrite/tree/main/packages/compat)
+- [`@next/eslint-plugin-next`](https://github.com/vercel/next.js/tree/canary/packages/eslint-plugin-next)
 - [`@stylistic/eslint-plugin`](https://github.com/eslint-stylistic/eslint-stylistic)
+- [`@tanstack/eslint-plugin-query`](https://github.com/TanStack/query/tree/main/packages/eslint-plugin-query)
 - [`@typescript-eslint/eslint-plugin`](https://github.com/typescript-eslint/typescript-eslint)
 - [`@vitest/eslint-plugin`](https://github.com/vitest-dev/eslint-plugin-vitest)
 - [`eslint-plugin-import-x`](https://github.com/un-ts/eslint-plugin-import-x)
@@ -100,6 +105,7 @@ This is a list of the currently used ESLint plugins:
 - [`eslint-plugin-tailwindcss`](https://github.com/francoismassart/eslint-plugin-tailwindcss)
 - [`eslint-plugin-unicorn`](https://github.com/sindresorhus/eslint-plugin-unicorn)
 - [`eslint-plugin-unused-imports`](https://github.com/sweepline/eslint-plugin-unused-imports)
+- [`eslint-plugin-vue`](https://github.com/vuejs/eslint-plugin-vue)
 
 ## Building
 
