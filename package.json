@@ -17,7 +17,9 @@
     "@eslint-community/eslint-plugin-eslint-comments": "^4.7.1",
     "@eslint-react/eslint-plugin": "^4.2.3",
     "@eslint/compat": "^2.0.5",
+    "@next/eslint-plugin-next": "^16.2.4",
     "@stylistic/eslint-plugin": "^5.10.0",
+    "@tanstack/eslint-plugin-query": "^5.99.2",
     "@vitest/eslint-plugin": "^1.6.16",
     "eslint-config-prettier": "^10.1.8",
     "eslint-import-resolver-typescript": "^4.4.4",
@@ -38,9 +40,11 @@
     "eslint-plugin-tailwindcss": "^3.18.3",
     "eslint-plugin-unicorn": "^64.0.0",
     "eslint-plugin-unused-imports": "^4.4.1",
+    "eslint-plugin-vue": "^10.8.0",
     "globals": "^17.5.0",
     "prettier": "^3.8.3",
-    "typescript-eslint": "^8.58.2"
+    "typescript-eslint": "^8.58.2",
+    "vue-eslint-parser": "^10.4.0"
   },
   "description": "Comprehensive ESLint configuration",
   "devDependencies": {
