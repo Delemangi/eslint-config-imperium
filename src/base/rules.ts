@@ -127,7 +127,7 @@ const eslintSuggestionsRules = {
   'func-name-matching': ['error'],
   'func-names': ['error', 'never'],
   'func-style': ['error', 'expression'],
-  'grouped-accessor-pairs': [2, 'getBeforeSet'],
+  'grouped-accessor-pairs': ['error', 'getBeforeSet'],
   'guard-for-in': ['error'],
   'id-denylist': ['off'],
   'id-length': ['off'],
@@ -188,7 +188,7 @@ const eslintSuggestionsRules = {
   'no-loop-func': ['error'],
   'no-magic-numbers': ['off'],
   'no-multi-assign': ['error'],
-  'no-multi-str': ['off'],
+  'no-multi-str': ['error'],
   'no-negated-condition': ['off'], // Disabled in favor of 'unicorn/no-negated-condition'
   'no-nested-ternary': ['off'], // Disabled in favor of 'unicorn/no-nested-ternary'
   'no-new': ['error'],
@@ -380,7 +380,7 @@ const unicornRules = {
   'unicorn/no-zero-fractions': ['error'],
   'unicorn/number-literal-case': ['error'],
   'unicorn/numeric-separators-style': [
-    2,
+    'error',
     {
       number: {
         groupLength: 3,
@@ -404,7 +404,7 @@ const unicornRules = {
   'unicorn/prefer-default-parameters': ['error'],
   'unicorn/prefer-event-target': ['error'],
   'unicorn/prefer-export-from': ['error'],
-  'unicorn/prefer-global-this': ['off'],
+  'unicorn/prefer-global-this': ['error'],
   'unicorn/prefer-import-meta-properties': ['error'],
   'unicorn/prefer-includes': ['error'],
   'unicorn/prefer-logical-operator-over-ternary': ['error'],
@@ -573,7 +573,7 @@ const promiseRules = {
   'promise/no-return-wrap': ['error'],
   'promise/param-names': ['error'],
   'promise/prefer-await-to-callbacks': ['off'],
-  'promise/prefer-await-to-then': ['off'],
+  'promise/prefer-await-to-then': ['error'],
   'promise/prefer-catch': ['error'],
   'promise/spec-only': ['error'],
   'promise/valid-params': ['error']
@@ -634,7 +634,7 @@ const securityRules = {
   'security/detect-child-process': ['error'],
   'security/detect-disable-mustache-escape': ['off'],
   'security/detect-eval-with-expression': ['error'],
-  'security/detect-new-buffer': ['off'],
+  'security/detect-new-buffer': ['error'],
   'security/detect-no-csrf-before-method-override': ['off'],
   'security/detect-non-literal-fs-filename': ['error'],
   'security/detect-non-literal-regexp': ['error'],
@@ -751,7 +751,7 @@ const sonarjsRules = {
   'sonarjs/no-code-after-done': ['error'],
   'sonarjs/no-collapsible-if': ['error'],
   'sonarjs/no-collection-size-mischeck': ['error'],
-  'sonarjs/no-commented-code': ['off'],
+  'sonarjs/no-commented-code': ['warn'],
   'sonarjs/no-control-regex': ['off'],
   'sonarjs/no-dead-store': ['error'],
   'sonarjs/no-delete-var': ['off'],
