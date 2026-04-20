@@ -7,8 +7,11 @@ import {
 
 import {
   jsxA11y,
+  next,
   prettier,
-  solid
+  solid,
+  tanstackQuery,
+  vue
 } from '../index.js';
 
 const eslint = new ESLint();
@@ -258,5 +261,43 @@ describe('Rules', () => {
     expect(messages[7]?.ruleId).toBe('vitest/prefer-importing-vitest-globals');
     expect(messages[8]?.ruleId).toBe('vitest/no-standalone-expect');
     expect(messages[9]?.ruleId).toBe('vitest/prefer-strict-boolean-matchers');
+  });
+
+  it('should verify Next.js configuration rules', async () => {
+    const nextEslint = new ESLint({
+      overrideConfig: [next]
+    });
+    const results = await nextEslint.lintFiles(['src/test/cases/next.tsx']);
+    const messages = filterMessages(results, '@next/next/');
+
+    expect(messages.length).toBeGreaterThanOrEqual(2);
+
+    expect(messages[0]?.ruleId).toBe('@next/next/no-img-element');
+    expect(messages[1]?.ruleId).toBe('@next/next/no-sync-scripts');
+  });
+
+  it('should verify TanStack Query configuration rules', async () => {
+    const tanstackQueryEslint = new ESLint({
+      overrideConfig: [tanstackQuery]
+    });
+    const results = await tanstackQueryEslint.lintFiles(['src/test/cases/tanstack-query.tsx']);
+    const messages = filterMessages(results, '@tanstack/query/');
+
+    expect(messages.length).toBeGreaterThanOrEqual(1);
+
+    expect(messages[0]?.ruleId).toBe('@tanstack/query/stable-query-client');
+  });
+
+  it('should verify Vue configuration rules', async () => {
+    const vueEslint = new ESLint({
+      overrideConfig: [vue]
+    });
+    const results = await vueEslint.lintFiles(['src/test/cases/vue.vue']);
+    const messages = filterMessages(results, 'vue/');
+
+    expect(messages.length).toBeGreaterThanOrEqual(2);
+
+    expect(messages[0]?.ruleId).toBe('vue/multi-word-component-names');
+    expect(messages[1]?.ruleId).toBe('vue/html-button-has-type');
   });
 });

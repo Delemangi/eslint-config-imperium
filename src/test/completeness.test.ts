@@ -3,7 +3,9 @@ import type { Rule } from 'eslint';
 import e18ePlugin from '@e18e/eslint-plugin';
 import eslintCommentsPlugin from '@eslint-community/eslint-plugin-eslint-comments';
 import eslintReactPlugin from '@eslint-react/eslint-plugin';
+import nextPlugin from '@next/eslint-plugin-next';
 import stylisticPlugin from '@stylistic/eslint-plugin';
+import tanstackQueryPlugin from '@tanstack/eslint-plugin-query';
 import vitestPlugin from '@vitest/eslint-plugin';
 import { importX as importXPlugin } from 'eslint-plugin-import-x';
 import jsdocPlugin from 'eslint-plugin-jsdoc';
@@ -25,6 +27,7 @@ import sonarjsPlugin from 'eslint-plugin-sonarjs';
 import tailwindPlugin from 'eslint-plugin-tailwindcss';
 import unicornPlugin from 'eslint-plugin-unicorn';
 import unusedImportsPlugin from 'eslint-plugin-unused-imports';
+import vuePlugin from 'eslint-plugin-vue';
 import { builtinRules } from 'eslint/use-at-your-own-risk';
 import typescriptPlugin from 'typescript-eslint';
 import {
@@ -36,14 +39,17 @@ import {
 import baseRules from '../base/rules.js';
 import browserRules from '../browser/rules.js';
 import jsxA11yRules from '../jsx-a11y/rules.js';
+import nextRules from '../next/rules.js';
 import nodeRules from '../node/rules.js';
 import prettierRules from '../prettier/rules.js';
 import reactRules from '../react/rules.js';
 import solidRules from '../solid/rules.js';
 import stylisticRules from '../stylistic/rules.js';
 import tailwindRules from '../tailwind/rules.js';
+import tanstackQueryRules from '../tanstack-query/rules.js';
 import typescriptRules from '../typescript/rules.js';
 import vitestRules from '../vitest/rules.js';
+import vueRules from '../vue/rules.js';
 
 type PluginRules = Record<string, Pick<Rule.RuleModule, 'meta'>>;
 
@@ -51,14 +57,17 @@ const allConfiguredRules: Record<string, unknown> = {
   ...baseRules,
   ...browserRules,
   ...jsxA11yRules,
+  ...nextRules,
   ...nodeRules,
   ...prettierRules,
   ...reactRules,
   ...solidRules,
   ...stylisticRules,
   ...tailwindRules,
+  ...tanstackQueryRules,
   ...typescriptRules,
-  ...vitestRules
+  ...vitestRules,
+  ...vueRules
 };
 
 type PluginTestCase = {
@@ -184,6 +193,11 @@ const plugins: PluginTestCase[] = [
     rules: getPluginRules(jsxA11yPlugin.rules, 'jsx-a11y')
   },
   {
+    name: 'next',
+    prefix: '@next/next',
+    rules: getPluginRules(nextPlugin.rules, 'next')
+  },
+  {
     name: 'prettier',
     prefix: 'prettier',
     rules: getPluginRules(prettierPlugin.rules, 'prettier')
@@ -220,6 +234,11 @@ const plugins: PluginTestCase[] = [
     rules: getPluginRules(tailwindPlugin.rules, 'tailwindcss')
   },
   {
+    name: 'tanstack-query',
+    prefix: '@tanstack/query',
+    rules: getPluginRules(tanstackQueryPlugin.rules, 'tanstack-query')
+  },
+  {
     name: 'typescript',
     prefix: '@typescript-eslint',
     // @ts-expect-error rules exist on the plugin
@@ -229,6 +248,11 @@ const plugins: PluginTestCase[] = [
     name: 'vitest',
     prefix: 'vitest',
     rules: vitestPlugin.rules
+  },
+  {
+    name: 'vue',
+    prefix: 'vue',
+    rules: getPluginRules(vuePlugin.rules, 'vue')
   }
 ];
 
