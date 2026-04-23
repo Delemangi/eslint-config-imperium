@@ -116,7 +116,7 @@ const getEslintReactRules = (): PluginRules => {
   const rules: PluginRules = {};
   for (const [name, rule] of Object.entries(eslintReactPlugin.rules ?? {})) {
     if (!name.startsWith('x-')) {
-      rules[name] = rule as Pick<Rule.RuleModule, 'meta'>;
+      rules[name] = rule;
     }
   }
 
