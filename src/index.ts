@@ -25,6 +25,7 @@ export { default as solid } from './solid/index.js';
 export { default as stylistic } from './stylistic/index.js';
 export { default as tailwind } from './tailwind/index.js';
 export { default as tanstackQuery } from './tanstack-query/index.js';
+export { default as testingLibrary } from './testing-library/index.js';
 export { default as typescript } from './typescript/index.js';
 export { default as vitest } from './vitest/index.js';
 export { default as vue } from './vue/index.js';
