@@ -19,6 +19,8 @@ import { auto } from "eslint-config-imperium";
 export default auto;
 ```
 
+`auto` is the strict core preset of this package. It currently includes `base`, `typescript`, `stylistic`, and `perfectionist`. It does not detect frameworks or environments automatically.
+
 ## Configurations
 
 This package is modular and includes several configurations intended to be enabled for certain environments. If you don't know what you need, you should probably use [`auto`](./src/index.ts). Otherwise, pick a combination of the above configurations.
@@ -42,6 +44,8 @@ This package is modular and includes several configurations intended to be enabl
 - [`vitest`](./src/vitest/index.ts) - Vitest configuration
 - [`vue`](./src/vue/index.ts) - Vue configuration
 
+Framework modules are intentionally kept separate from runtime modules. Use `browser` or `node` when you want runtime globals and environment-specific rules, and then layer framework or library modules on top.
+
 ### Style
 
 - [`perfectionist`](./src/perfectionist/index.ts) - Perfectionist configuration for objects order
@@ -53,6 +57,73 @@ You should not enable `prettier` and `stylistic` at the same time.
 ### Accessibility
 
 - [`jsxA11y`](./src/jsx-a11y/index.ts) - JSX accessibility rules
+
+## Recommended Composition
+
+The package is designed to be composed explicitly. A few common combinations:
+
+### Browser TypeScript App
+
+```ts
+import { auto, browser } from "eslint-config-imperium";
+
+export default [
+  ...auto,
+  browser,
+];
+```
+
+### React App
+
+```ts
+import { auto, browser, jsxA11y, react } from "eslint-config-imperium";
+
+export default [
+  ...auto,
+  browser,
+  react,
+  jsxA11y,
+];
+```
+
+### Next.js App
+
+```ts
+import { auto, browser, jsxA11y, next, react } from "eslint-config-imperium";
+
+export default [
+  ...auto,
+  browser,
+  react,
+  next,
+  jsxA11y,
+];
+```
+
+### Node.js Library
+
+```ts
+import { auto, node } from "eslint-config-imperium";
+
+export default [
+  ...auto,
+  node,
+];
+```
+
+### Vitest + Testing Library
+
+```ts
+import { auto, browser, react, testingLibrary, vitest } from "eslint-config-imperium";
+
+export default [
+  ...auto,
+  browser,
+  react,
+  vitest,
+  testingLibrary,
+];
+```
 
 ## Typed Linting
 
