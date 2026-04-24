@@ -37,6 +37,7 @@ This package is modular and includes several configurations intended to be enabl
 - [`solid`](./src/solid/index.ts) - Solid configuration
 - [`tailwind`](./src/tailwind/index.ts) - Tailwind CSS configuration
 - [`tanstackQuery`](./src/tanstack-query/index.ts) - TanStack Query configuration
+- [`testingLibrary`](./src/testing-library/index.ts) - Testing Library configuration
 - [`typescript`](./src/typescript/index.ts) - TypeScript configuration
 - [`vitest`](./src/vitest/index.ts) - Vitest configuration
 - [`vue`](./src/vue/index.ts) - Vue configuration
@@ -103,6 +104,7 @@ This is a list of the currently used ESLint plugins:
 - [`eslint-plugin-solid`](https://github.com/solidjs-community/eslint-plugin-solid)
 - [`eslint-plugin-sonarjs`](https://github.com/SonarSource/SonarJS)
 - [`eslint-plugin-tailwindcss`](https://github.com/francoismassart/eslint-plugin-tailwindcss)
+- [`eslint-plugin-testing-library`](https://github.com/testing-library/eslint-plugin-testing-library)
 - [`eslint-plugin-unicorn`](https://github.com/sindresorhus/eslint-plugin-unicorn)
 - [`eslint-plugin-unused-imports`](https://github.com/sweepline/eslint-plugin-unused-imports)
 - [`eslint-plugin-vue`](https://github.com/vuejs/eslint-plugin-vue)
