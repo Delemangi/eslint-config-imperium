@@ -11,6 +11,7 @@ import {
   prettier,
   solid,
   tanstackQuery,
+  testingLibrary,
   vue
 } from '../index.js';
 
@@ -286,6 +287,34 @@ describe('Rules', () => {
     expect(messages.length).toBeGreaterThanOrEqual(1);
 
     expect(messages[0]?.ruleId).toBe('@tanstack/query/stable-query-client');
+  });
+
+  it('should verify Testing Library configuration rules', async () => {
+    const testingLibraryEslint = new ESLint({
+      overrideConfig: [
+        {
+          ...testingLibrary,
+          files: ['src/test/cases/testing-library.tsx']
+        }
+      ]
+    });
+    const results = await testingLibraryEslint.lintFiles(['src/test/cases/testing-library.tsx']);
+    const messages = filterMessages(results, 'testing-library/');
+
+    expect(messages).toHaveLength(12);
+
+    expect(messages[0]?.ruleId).toBe('testing-library/no-render-in-lifecycle');
+    expect(messages[1]?.ruleId).toBe('testing-library/no-await-sync-events');
+    expect(messages[2]?.ruleId).toBe('testing-library/prefer-screen-queries');
+    expect(messages[3]?.ruleId).toBe('testing-library/no-global-regexp-flag-in-query');
+    expect(messages[4]?.ruleId).toBe('testing-library/no-await-sync-queries');
+    expect(messages[5]?.ruleId).toBe('testing-library/await-async-utils');
+    expect(messages[6]?.ruleId).toBe('testing-library/no-wait-for-side-effects');
+    expect(messages[7]?.ruleId).toBe('testing-library/no-unnecessary-act');
+    expect(messages[8]?.ruleId).toBe('testing-library/await-async-utils');
+    expect(messages[9]?.ruleId).toBe('testing-library/no-node-access');
+    expect(messages[10]?.ruleId).toBe('testing-library/no-wait-for-snapshot');
+    expect(messages[11]?.ruleId).toBe('testing-library/no-node-access');
   });
 
   it('should verify Vue configuration rules', async () => {

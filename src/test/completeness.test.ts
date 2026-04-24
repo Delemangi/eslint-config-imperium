@@ -25,6 +25,7 @@ import solidPlugin from 'eslint-plugin-solid';
 import sonarjsPlugin from 'eslint-plugin-sonarjs';
 // @ts-expect-error -- untyped plugin
 import tailwindPlugin from 'eslint-plugin-tailwindcss';
+import testingLibraryPlugin from 'eslint-plugin-testing-library';
 import unicornPlugin from 'eslint-plugin-unicorn';
 import unusedImportsPlugin from 'eslint-plugin-unused-imports';
 import vuePlugin from 'eslint-plugin-vue';
@@ -47,6 +48,7 @@ import solidRules from '../solid/rules.js';
 import stylisticRules from '../stylistic/rules.js';
 import tailwindRules from '../tailwind/rules.js';
 import tanstackQueryRules from '../tanstack-query/rules.js';
+import testingLibraryRules from '../testing-library/rules.js';
 import typescriptRules from '../typescript/rules.js';
 import vitestRules from '../vitest/rules.js';
 import vueRules from '../vue/rules.js';
@@ -65,6 +67,7 @@ const allConfiguredRules: Record<string, unknown> = {
   ...stylisticRules,
   ...tailwindRules,
   ...tanstackQueryRules,
+  ...testingLibraryRules,
   ...typescriptRules,
   ...vitestRules,
   ...vueRules
@@ -237,6 +240,11 @@ const plugins: PluginTestCase[] = [
     name: 'tanstack-query',
     prefix: '@tanstack/query',
     rules: getPluginRules(tanstackQueryPlugin.rules, 'tanstack-query')
+  },
+  {
+    name: 'testing-library',
+    prefix: 'testing-library',
+    rules: getPluginRules(testingLibraryPlugin.rules, 'testing-library')
   },
   {
     name: 'typescript',

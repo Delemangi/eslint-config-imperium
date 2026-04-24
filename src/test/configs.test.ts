@@ -68,6 +68,12 @@ describe('Configurations', () => {
     expect(errors).toBe(0);
   });
 
+  it('should lint Testing Library configuration code without errors', async () => {
+    const errors = await getErrorsCount(['src/testing-library/*.ts']);
+
+    expect(errors).toBe(0);
+  });
+
   it('should lint TypeScript configuration code without errors', async () => {
     const errors = await getErrorsCount(['src/typescript/*.ts']);
 
