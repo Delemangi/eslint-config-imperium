@@ -1,9 +1,9 @@
 import type { Linter } from 'eslint';
 
 const eslintReactRules = {
-  '@eslint-react/component-hook-factories': ['error'],
   '@eslint-react/error-boundaries': ['error'],
   '@eslint-react/exhaustive-deps': ['off'],
+  '@eslint-react/globals': ['off'],
   '@eslint-react/immutability': ['off'],
   '@eslint-react/no-access-state-in-setstate': ['error'],
   '@eslint-react/no-array-index-key': ['error'],
@@ -32,12 +32,9 @@ const eslintReactRules = {
   '@eslint-react/no-misused-capture-owner-stack': ['error'],
   '@eslint-react/no-nested-component-definitions': ['error'],
   '@eslint-react/no-nested-lazy-component-declarations': ['error'],
-  '@eslint-react/no-redundant-should-component-update': ['error'],
   '@eslint-react/no-set-state-in-component-did-mount': ['error'],
   '@eslint-react/no-set-state-in-component-did-update': ['error'],
   '@eslint-react/no-set-state-in-component-will-update': ['error'],
-  '@eslint-react/no-unnecessary-use-callback': ['error'],
-  '@eslint-react/no-unnecessary-use-memo': ['error'],
   '@eslint-react/no-unnecessary-use-prefix': ['error'],
   '@eslint-react/no-unsafe-component-will-mount': ['error'],
   '@eslint-react/no-unsafe-component-will-receive-props': ['error'],
@@ -48,13 +45,12 @@ const eslintReactRules = {
   '@eslint-react/no-unused-props': ['off'],
   '@eslint-react/no-unused-state': ['error'],
   '@eslint-react/no-use-context': ['off'],
-  '@eslint-react/prefer-destructuring-assignment': ['error'],
-  '@eslint-react/prefer-namespace-import': ['off'],
   '@eslint-react/purity': ['off'],
   '@eslint-react/refs': ['off'],
   '@eslint-react/rules-of-hooks': ['off'],
   '@eslint-react/set-state-in-effect': ['off'],
   '@eslint-react/set-state-in-render': ['off'],
+  '@eslint-react/static-components': ['off'],
   '@eslint-react/unsupported-syntax': ['off'],
   '@eslint-react/use-memo': ['off'],
   '@eslint-react/use-state': ['error']
@@ -87,12 +83,12 @@ const eslintReactDomRules = {
   '@eslint-react/dom-no-unsafe-iframe-sandbox': ['error'],
   '@eslint-react/dom-no-unsafe-target-blank': ['error'],
   '@eslint-react/dom-no-use-form-state': ['error'],
-  '@eslint-react/dom-no-void-elements-with-children': ['error'],
-  '@eslint-react/dom-prefer-namespace-import': ['off']
+  '@eslint-react/dom-no-void-elements-with-children': ['error']
 } satisfies Linter.Config['rules'];
 
 const eslintReactWebApiRules = {
   '@eslint-react/web-api-no-leaked-event-listener': ['error'],
+  '@eslint-react/web-api-no-leaked-fetch': ['error'],
   '@eslint-react/web-api-no-leaked-interval': ['error'],
   '@eslint-react/web-api-no-leaked-resize-observer': ['error'],
   '@eslint-react/web-api-no-leaked-timeout': ['error']
