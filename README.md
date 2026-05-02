@@ -37,7 +37,7 @@ This package is modular and includes several configurations intended to be enabl
 - [`node`](./src/node/index.ts) - Node environment configuration
 - [`react`](./src/react/index.ts) - React configuration
 - [`solid`](./src/solid/index.ts) - Solid configuration
-- [`tailwind`](./src/tailwind/index.ts) - Tailwind CSS configuration
+- [`tailwind`](./src/tailwind/index.ts) - Tailwind CSS v3 configuration
 - [`tanstackQuery`](./src/tanstack-query/index.ts) - TanStack Query configuration
 - [`testingLibrary`](./src/testing-library/index.ts) - Testing Library configuration
 - [`typescript`](./src/typescript/index.ts) - TypeScript configuration
