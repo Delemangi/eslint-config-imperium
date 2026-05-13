@@ -49,7 +49,7 @@
   },
   "description": "Comprehensive ESLint configuration",
   "devDependencies": {
-    "@commitlint/cli": "^20.5.3",
+    "@commitlint/cli": "^21.0.1",
     "@commitlint/config-conventional": "^21.0.1",
     "@types/node": "^25.6.0",
     "@types/react": "^19.2.14",
