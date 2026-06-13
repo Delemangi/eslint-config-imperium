@@ -72,9 +72,8 @@
     "node": "^22 || ^24 || ^26"
   },
   "files": [
-    "!**/*.test.*",
-    "!test",
-    "lib"
+    "lib",
+    "!lib/test"
   ],
   "homepage": "https://github.com/Delemangi/eslint-config-imperium",
   "keywords": [
