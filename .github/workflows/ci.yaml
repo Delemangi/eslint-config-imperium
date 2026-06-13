@@ -12,8 +12,13 @@ permissions:
 
 jobs:
   lint-test:
-    name: Lint & Run Tests
+    name: Lint & Run Tests (Node ${{ matrix.node-version }})
     runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [22, 24, 26]
 
     steps:
       - name: Checkout Repository
@@ -22,7 +27,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: lts/*
+          node-version: ${{ matrix.node-version }}
 
       - name: Install Dependencies
         run: npm i
