@@ -1,0 +1,9 @@
+---
+const resolved = Astro.resolve('./image.png');
+---
+
+<button>Submit</button>
+
+<div set:html={'<b>unsafe</b>'}></div>
+
+<p set:text={resolved}></p>

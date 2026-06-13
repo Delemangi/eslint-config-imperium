@@ -7,6 +7,7 @@ import nextPlugin from '@next/eslint-plugin-next';
 import stylisticPlugin from '@stylistic/eslint-plugin';
 import tanstackQueryPlugin from '@tanstack/eslint-plugin-query';
 import vitestPlugin from '@vitest/eslint-plugin';
+import astroPlugin from 'eslint-plugin-astro';
 import { importX as importXPlugin } from 'eslint-plugin-import-x';
 import jsdocPlugin from 'eslint-plugin-jsdoc';
 // @ts-expect-error -- untyped plugin
@@ -23,6 +24,7 @@ import regexpPlugin from 'eslint-plugin-regexp';
 import securityPlugin from 'eslint-plugin-security';
 import solidPlugin from 'eslint-plugin-solid';
 import sonarjsPlugin from 'eslint-plugin-sonarjs';
+import sveltePlugin from 'eslint-plugin-svelte';
 // @ts-expect-error -- untyped plugin
 import tailwindPlugin from 'eslint-plugin-tailwindcss';
 import testingLibraryPlugin from 'eslint-plugin-testing-library';
@@ -37,6 +39,7 @@ import {
   it
 } from 'vitest';
 
+import astroRules from '../astro/rules.js';
 import baseRules from '../base/rules.js';
 import browserRules from '../browser/rules.js';
 import jsxA11yRules from '../jsx-a11y/rules.js';
@@ -46,6 +49,7 @@ import prettierRules from '../prettier/rules.js';
 import reactRules from '../react/rules.js';
 import solidRules from '../solid/rules.js';
 import stylisticRules from '../stylistic/rules.js';
+import svelteRules from '../svelte/rules.js';
 import tailwindRules from '../tailwind/rules.js';
 import tanstackQueryRules from '../tanstack-query/rules.js';
 import testingLibraryRules from '../testing-library/rules.js';
@@ -56,6 +60,7 @@ import vueRules from '../vue/rules.js';
 type PluginRules = Record<string, Pick<Rule.RuleModule, 'meta'>>;
 
 const allConfiguredRules: Record<string, unknown> = {
+  ...astroRules,
   ...baseRules,
   ...browserRules,
   ...jsxA11yRules,
@@ -65,6 +70,7 @@ const allConfiguredRules: Record<string, unknown> = {
   ...reactRules,
   ...solidRules,
   ...stylisticRules,
+  ...svelteRules,
   ...tailwindRules,
   ...tanstackQueryRules,
   ...testingLibraryRules,
@@ -261,6 +267,16 @@ const plugins: PluginTestCase[] = [
     name: 'vue',
     prefix: 'vue',
     rules: getPluginRules(vuePlugin.rules, 'vue')
+  },
+  {
+    name: 'svelte',
+    prefix: 'svelte',
+    rules: getPluginRules(sveltePlugin.rules, 'svelte')
+  },
+  {
+    name: 'astro',
+    prefix: 'astro',
+    rules: getPluginRules(astroPlugin.rules, 'astro')
   }
 ];
 

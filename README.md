@@ -32,11 +32,13 @@ This package is modular and includes several configurations intended to be enabl
 
 ### Frameworks / Environments
 
+- [`astro`](./src/astro/index.ts) - Astro configuration
 - [`browser`](./src/browser/index.ts) - Browser environment configuration
 - [`next`](./src/next/index.ts) - Next.js configuration
 - [`node`](./src/node/index.ts) - Node environment configuration
 - [`react`](./src/react/index.ts) - React configuration
 - [`solid`](./src/solid/index.ts) - Solid configuration
+- [`svelte`](./src/svelte/index.ts) - Svelte configuration
 - [`tailwind`](./src/tailwind/index.ts) - Tailwind CSS v3 configuration
 - [`tanstackQuery`](./src/tanstack-query/index.ts) - TanStack Query configuration
 - [`testingLibrary`](./src/testing-library/index.ts) - Testing Library configuration
@@ -125,6 +127,33 @@ export default [
 ];
 ```
 
+### Svelte App
+
+`svelte` is exported as an array of configs (it sets up the Svelte parser and processor), so spread it like `auto`:
+
+```ts
+import { auto, browser, svelte } from "eslint-config-imperium";
+
+export default [
+  ...auto,
+  browser,
+  ...svelte,
+];
+```
+
+### Astro App
+
+`astro` is also exported as an array of configs (it sets up the Astro parser, processor, and `<script>` handling), so spread it like `auto`:
+
+```ts
+import { astro, auto } from "eslint-config-imperium";
+
+export default [
+  ...auto,
+  ...astro,
+];
+```
+
 ## Typed Linting
 
 The `typescript` and `auto` configurations use [`parserOptions.projectService`](https://typescript-eslint.io/packages/parser/#projectservice) to enable type-aware linting. This automatically finds the closest `tsconfig.json` for each file.
@@ -160,6 +189,7 @@ This is a list of the currently used ESLint plugins:
 - [`@tanstack/eslint-plugin-query`](https://github.com/TanStack/query/tree/main/packages/eslint-plugin-query)
 - [`@typescript-eslint/eslint-plugin`](https://github.com/typescript-eslint/typescript-eslint)
 - [`@vitest/eslint-plugin`](https://github.com/vitest-dev/eslint-plugin-vitest)
+- [`eslint-plugin-astro`](https://github.com/ota-meshi/eslint-plugin-astro)
 - [`eslint-plugin-import-x`](https://github.com/un-ts/eslint-plugin-import-x)
 - [`eslint-plugin-jsdoc`](https://github.com/gajus/eslint-plugin-jsdoc)
 - [`eslint-plugin-jsx-a11y`](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y)
@@ -174,6 +204,7 @@ This is a list of the currently used ESLint plugins:
 - [`eslint-plugin-security`](https://github.com/eslint-community/eslint-plugin-security)
 - [`eslint-plugin-solid`](https://github.com/solidjs-community/eslint-plugin-solid)
 - [`eslint-plugin-sonarjs`](https://github.com/SonarSource/SonarJS)
+- [`eslint-plugin-svelte`](https://github.com/sveltejs/eslint-plugin-svelte)
 - [`eslint-plugin-tailwindcss`](https://github.com/francoismassart/eslint-plugin-tailwindcss)
 - [`eslint-plugin-testing-library`](https://github.com/testing-library/eslint-plugin-testing-library)
 - [`eslint-plugin-unicorn`](https://github.com/sindresorhus/eslint-plugin-unicorn)

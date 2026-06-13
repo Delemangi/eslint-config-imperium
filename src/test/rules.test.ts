@@ -6,10 +6,12 @@ import {
 } from 'vitest';
 
 import {
+  astro,
   jsxA11y,
   next,
   prettier,
   solid,
+  svelte,
   tanstackQuery,
   testingLibrary,
   vue
@@ -327,5 +329,34 @@ describe('Rules', () => {
 
     expect(messages[0]?.ruleId).toBe('vue/multi-word-component-names');
     expect(messages[1]?.ruleId).toBe('vue/html-button-has-type');
+  });
+
+  it('should verify Svelte configuration rules', async () => {
+    const svelteEslint = new ESLint({
+      overrideConfig: svelte
+    });
+    const results = await svelteEslint.lintFiles(['src/test/cases/svelte.svelte']);
+    const messages = filterMessages(results, 'svelte/');
+
+    expect(messages).toHaveLength(4);
+
+    expect(messages[0]?.ruleId).toBe('svelte/prefer-const');
+    expect(messages[1]?.ruleId).toBe('svelte/button-has-type');
+    expect(messages[2]?.ruleId).toBe('svelte/no-at-html-tags');
+    expect(messages[3]?.ruleId).toBe('svelte/require-each-key');
+  });
+
+  it('should verify Astro configuration rules', async () => {
+    const astroEslint = new ESLint({
+      overrideConfig: astro
+    });
+    const results = await astroEslint.lintFiles(['src/test/cases/astro.astro']);
+    const messages = filterMessages(results, 'astro/');
+
+    expect(messages).toHaveLength(3);
+
+    expect(messages[0]?.ruleId).toBe('astro/no-deprecated-astro-resolve');
+    expect(messages[1]?.ruleId).toBe('astro/no-set-html-directive');
+    expect(messages[2]?.ruleId).toBe('astro/no-set-text-directive');
   });
 });
