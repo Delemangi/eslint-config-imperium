@@ -14,6 +14,12 @@ const getErrorsCount = async (files: string[]) => {
 };
 
 describe('Configurations', () => {
+  it('should lint Astro configuration code without errors', async () => {
+    const errors = await getErrorsCount(['src/astro/*.ts']);
+
+    expect(errors).toBe(0);
+  });
+
   it('should lint base configuration code without errors', async () => {
     const errors = await getErrorsCount(['src/base/*.ts']);
 
@@ -70,6 +76,12 @@ describe('Configurations', () => {
 
   it('should lint Stylistic configuration code without errors', async () => {
     const errors = await getErrorsCount(['src/stylistic/*.ts']);
+
+    expect(errors).toBe(0);
+  });
+
+  it('should lint Svelte configuration code without errors', async () => {
+    const errors = await getErrorsCount(['src/svelte/*.ts']);
 
     expect(errors).toBe(0);
   });
