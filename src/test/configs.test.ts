@@ -32,6 +32,12 @@ describe('Configurations', () => {
     expect(errors).toBe(0);
   });
 
+  it('should lint Next.js configuration code without errors', async () => {
+    const errors = await getErrorsCount(['src/next/*.ts']);
+
+    expect(errors).toBe(0);
+  });
+
   it('should lint Node configuration code without errors', async () => {
     const errors = await getErrorsCount(['src/node/*.ts']);
 
@@ -68,6 +74,18 @@ describe('Configurations', () => {
     expect(errors).toBe(0);
   });
 
+  it('should lint Tailwind configuration code without errors', async () => {
+    const errors = await getErrorsCount(['src/tailwind/*.ts']);
+
+    expect(errors).toBe(0);
+  });
+
+  it('should lint TanStack Query configuration code without errors', async () => {
+    const errors = await getErrorsCount(['src/tanstack-query/*.ts']);
+
+    expect(errors).toBe(0);
+  });
+
   it('should lint Testing Library configuration code without errors', async () => {
     const errors = await getErrorsCount(['src/testing-library/*.ts']);
 
@@ -82,6 +100,12 @@ describe('Configurations', () => {
 
   it('should lint Vitest configuration code without errors', async () => {
     const errors = await getErrorsCount(['src/vitest/*.ts']);
+
+    expect(errors).toBe(0);
+  });
+
+  it('should lint Vue configuration code without errors', async () => {
+    const errors = await getErrorsCount(['src/vue/*.ts']);
 
     expect(errors).toBe(0);
   });
