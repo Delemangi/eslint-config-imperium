@@ -60,7 +60,7 @@ const deprecatedStylisticRules = new Set([
   '@stylistic/jsx-props-no-multi-spaces' // This rule doesn't exist in stylistic plugin
 ]);
 
-// Filter out stylistic rules with js/ts/jsx prefixes since we use unprefixed versions
+// Filter out stylistic rules with js/ts/JSX prefixes since we use unprefixed versions
 // eslint-config-prettier may include prefixed versions to turn them off, but we don't need them
 const isStylisticPrefixedRule = (key: string): boolean => {
   if (!key.startsWith('@stylistic/')) {
