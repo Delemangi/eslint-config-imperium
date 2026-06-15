@@ -957,6 +957,8 @@ const e18eRules = {
   'e18e/prefer-array-to-spliced': ['error'],
   'e18e/prefer-date-now': ['off'], // Handled by unicorn/prefer-date-now
   'e18e/prefer-exponentiation-operator': ['off'], // Handled by prefer-exponentiation-operator
+  'e18e/prefer-flatmap-over-map-flat': ['off'], // Handled by unicorn/prefer-array-flat-map
+  'e18e/prefer-get-or-insert': ['error'],
   'e18e/prefer-includes': ['off'], // Handled by unicorn/prefer-includes
   'e18e/prefer-includes-over-regex-test': ['error'],
   'e18e/prefer-inline-equality': ['off'],
