@@ -40,3 +40,16 @@ jobs:
 
       - name: Run Tests
         run: npm test
+
+  lint-test-required:
+    name: Lint & Run Tests
+    needs: lint-test
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify the matrix passed
+        run: |
+          if [ "${{ needs.lint-test.result }}" != "success" ]; then
+            echo "One or more Lint & Run Tests matrix jobs failed (result: ${{ needs.lint-test.result }})."
+            exit 1
+          fi
