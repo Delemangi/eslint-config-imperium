@@ -123,7 +123,8 @@ const isRuleDisabled = (config: unknown): boolean => {
 
 const getEslintReactRules = (): PluginRules => {
   const rules: PluginRules = {};
-  for (const [name, rule] of Object.entries(eslintReactPlugin.rules ?? {})) {
+  const ruleEntries = Object.entries(eslintReactPlugin.rules ?? {});
+  for (const [name, rule] of ruleEntries) {
     if (!name.startsWith('x-')) {
       rules[name] = rule;
     }
