@@ -7,6 +7,7 @@ const unicornRules = {
   'unicorn/no-incorrect-query-selector': ['error'],
   'unicorn/no-invalid-file-input-accept': ['error'],
   'unicorn/no-late-current-target-access': ['error'],
+  'unicorn/no-selector-as-dom-name': ['error'],
   'unicorn/no-unsafe-dom-html': ['error'],
   'unicorn/prefer-add-event-listener-options': ['error'],
   'unicorn/prefer-dom-node-append': ['error'],
