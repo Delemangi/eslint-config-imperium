@@ -40,7 +40,7 @@
     "eslint-plugin-solid": "^0.14.5",
     "eslint-plugin-sonarjs": "^4.0.3",
     "eslint-plugin-svelte": "^3.19.0",
-    "eslint-plugin-tailwindcss": "^3.18.3",
+    "eslint-plugin-tailwindcss": "^4.0.2",
     "eslint-plugin-testing-library": "^7.16.2",
     "eslint-plugin-unicorn": "^68.0.0",
     "eslint-plugin-unused-imports": "^4.4.1",
