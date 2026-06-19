@@ -352,13 +352,15 @@ describe('Rules Completeness', () => {
   }) => {
     const validRules = new Set<string>();
     for (const [ruleName, rule] of Object.entries(rules)) {
-      if (!isDeprecatedRule(rule)) {
-        validRules.add(`${prefix}/${ruleName}`);
-        if (name === 'stylistic' && ruleName.includes('/')) {
-          const unprefixedName = ruleName.split('/').slice(1)
-            .join('/');
-          validRules.add(`${prefix}/${unprefixedName}`);
-        }
+      if (isDeprecatedRule(rule)) {
+        continue;
+      }
+
+      validRules.add(`${prefix}/${ruleName}`);
+      if (name === 'stylistic' && ruleName.includes('/')) {
+        const unprefixedName = ruleName.split('/').slice(1)
+          .join('/');
+        validRules.add(`${prefix}/${unprefixedName}`);
       }
     }
 
