@@ -537,7 +537,6 @@ const unicornRules = {
   'unicorn/prefer-uint8array-base64': ['error'],
   'unicorn/prefer-unicode-code-point-escapes': ['error'],
   'unicorn/prefer-url-href': ['error'],
-  'unicorn/prevent-abbreviations': ['off'],
   'unicorn/relative-url-style': ['error'],
   'unicorn/require-array-join-separator': ['error'],
   'unicorn/require-array-sort-compare': ['off'], // Handled by @typescript-eslint/require-array-sort-compare
