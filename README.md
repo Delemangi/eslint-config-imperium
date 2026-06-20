@@ -39,7 +39,7 @@ This package is modular and includes several configurations intended to be enabl
 - [`react`](./src/react/index.ts) - React configuration
 - [`solid`](./src/solid/index.ts) - Solid configuration
 - [`svelte`](./src/svelte/index.ts) - Svelte configuration
-- [`tailwind`](./src/tailwind/index.ts) - Tailwind CSS v3 configuration
+- [`tailwind`](./src/tailwind/index.ts) - Tailwind CSS v4 configuration
 - [`tanstackQuery`](./src/tanstack-query/index.ts) - TanStack Query configuration
 - [`testingLibrary`](./src/testing-library/index.ts) - Testing Library configuration
 - [`typescript`](./src/typescript/index.ts) - TypeScript configuration
@@ -151,6 +151,28 @@ import { astro, auto } from "eslint-config-imperium";
 export default [
   ...auto,
   ...astro,
+];
+```
+
+### Tailwind App
+
+`tailwind` targets `.jsx`/`.tsx` files and requires [Tailwind CSS v4](https://tailwindcss.com) (v3 is no longer supported). The plugin resolves your Tailwind theme from a CSS entry at lint time, so set `settings.tailwindcss.cssConfigPath` to your Tailwind CSS file (it defaults to `src/style.css`). Without a resolvable entry, the class-aware rules will error.
+
+```ts
+import { auto, browser, react, tailwind } from "eslint-config-imperium";
+
+export default [
+  ...auto,
+  browser,
+  react,
+  tailwind,
+  {
+    settings: {
+      tailwindcss: {
+        cssConfigPath: "src/styles/globals.css",
+      },
+    },
+  },
 ];
 ```
 

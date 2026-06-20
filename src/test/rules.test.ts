@@ -12,6 +12,7 @@ import {
   prettier,
   solid,
   svelte,
+  tailwind,
   tanstackQuery,
   testingLibrary,
   vue
@@ -358,5 +359,29 @@ describe('Rules', () => {
     expect(messages[0]?.ruleId).toBe('astro/no-deprecated-astro-resolve');
     expect(messages[1]?.ruleId).toBe('astro/no-set-html-directive');
     expect(messages[2]?.ruleId).toBe('astro/no-set-text-directive');
+  });
+
+  it('should verify Tailwind configuration rules', async () => {
+    const tailwindEslint = new ESLint({
+      overrideConfig: [
+        tailwind,
+        {
+          settings: {
+            tailwindcss: {
+              cssConfigPath: 'src/test/cases/tailwind.css'
+            }
+          }
+        }
+      ]
+    });
+    const results = await tailwindEslint.lintFiles(['src/test/cases/tailwind.tsx']);
+    const messages = filterMessages(results, 'tailwindcss/');
+    const ruleIds = messages.map((message) => message.ruleId);
+
+    expect(messages.length).toBeGreaterThanOrEqual(3);
+
+    expect(ruleIds).toContain('tailwindcss/classnames-order');
+    expect(ruleIds).toContain('tailwindcss/no-contradicting-classname');
+    expect(ruleIds).toContain('tailwindcss/enforces-shorthand');
   });
 });
