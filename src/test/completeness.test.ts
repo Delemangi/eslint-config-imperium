@@ -25,7 +25,6 @@ import securityPlugin from 'eslint-plugin-security';
 import solidPlugin from 'eslint-plugin-solid';
 import sonarjsPlugin from 'eslint-plugin-sonarjs';
 import sveltePlugin from 'eslint-plugin-svelte';
-// @ts-expect-error -- untyped plugin
 import tailwindPlugin from 'eslint-plugin-tailwindcss';
 import testingLibraryPlugin from 'eslint-plugin-testing-library';
 import unicornPlugin from 'eslint-plugin-unicorn';
@@ -240,7 +239,6 @@ const plugins: PluginTestCase[] = [
   {
     name: 'tailwindcss',
     prefix: 'tailwindcss',
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- untyped plugin
     rules: getPluginRules(tailwindPlugin.rules, 'tailwindcss')
   },
   {

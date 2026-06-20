@@ -1,6 +1,5 @@
-import type { Linter } from 'eslint';
+import type { ESLint, Linter } from 'eslint';
 
-// @ts-expect-error -- untyped plugin
 import tailwindPlugin from 'eslint-plugin-tailwindcss';
 
 import rules from './rules.js';
@@ -15,8 +14,7 @@ const tailwind: Linter.Config = {
     }
   },
   plugins: {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- untyped plugin
-    tailwindcss: tailwindPlugin
+    tailwindcss: tailwindPlugin as unknown as ESLint.Plugin
   },
   rules
 };
