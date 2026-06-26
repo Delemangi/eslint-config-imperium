@@ -19,6 +19,7 @@ const svelteRules = {
   'svelte/max-lines-per-block': ['off'],
   'svelte/mustache-spacing': ['error'],
   'svelte/no-add-event-listener': ['error'],
+  'svelte/no-at-const-tags': ['error'],
   'svelte/no-at-debug-tags': ['error'],
   'svelte/no-at-html-tags': ['error'],
   'svelte/no-dom-manipulating': ['error'],
