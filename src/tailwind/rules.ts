@@ -4,6 +4,7 @@ const tailwindRules = {
   'tailwindcss/classnames-order': ['error'],
   'tailwindcss/enforces-negative-arbitrary-values': ['error'],
   'tailwindcss/enforces-shorthand': ['error'],
+  'tailwindcss/important-modifier-suffix': ['error'],
   'tailwindcss/no-arbitrary-value': ['off'],
   'tailwindcss/no-contradicting-classname': ['error'],
   'tailwindcss/no-custom-classname': ['error'],
