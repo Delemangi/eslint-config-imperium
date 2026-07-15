@@ -44,7 +44,6 @@ const astroRules = {
   'astro/no-deprecated-astro-resolve': ['error'],
   'astro/no-deprecated-getentrybyslug': ['error'],
   'astro/no-exports-from-components': ['error'],
-  'astro/no-omitted-end-tags': ['error'],
   'astro/no-prerender-export-outside-pages': ['error'],
   'astro/no-set-html-directive': ['error'],
   'astro/no-set-text-directive': ['error'],
@@ -55,8 +54,7 @@ const astroRules = {
   'astro/prefer-object-class-list': ['error'],
   'astro/prefer-split-class-list': ['error'],
   'astro/semi': ['off'],
-  'astro/sort-attributes': ['error'],
-  'astro/valid-compile': ['error']
+  'astro/sort-attributes': ['error']
 } satisfies Linter.Config['rules'];
 
 export default astroRules;
