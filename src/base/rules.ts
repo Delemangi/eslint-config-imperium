@@ -398,7 +398,7 @@ const unicornRules = {
   'unicorn/no-manually-wrapped-comments': ['off'],
   'unicorn/no-mismatched-map-key': ['error'],
   'unicorn/no-misrefactored-assignment': ['error'],
-  'unicorn/no-missing-local-resource': ['off'],
+  'unicorn/no-missing-local-resource': ['off'], // Markdown, HTML, and CSS resource files are not linted by base
   'unicorn/no-multiple-promise-resolver-calls': ['error'],
   'unicorn/no-named-default': ['error'],
   'unicorn/no-negated-array-predicate': ['error'],
@@ -416,7 +416,7 @@ const unicornRules = {
   'unicorn/no-optional-chaining-on-undeclared-variable': ['error'],
   'unicorn/no-redundant-comparison': ['error'],
   'unicorn/no-return-array-push': ['error'],
-  'unicorn/no-shorthand-property-overrides': ['error'],
+  'unicorn/no-shorthand-property-overrides': ['off'], // CSS files are not linted by base
   'unicorn/no-single-promise-in-promise-methods': ['error'],
   'unicorn/no-static-only-class': ['error'],
   'unicorn/no-subtraction-comparison': ['error'],
@@ -520,7 +520,7 @@ const unicornRules = {
   'unicorn/prefer-else-if': ['error'],
   'unicorn/prefer-error-is-error': ['off'], // Disabled by default upstream
   'unicorn/prefer-event-target': ['error'],
-  'unicorn/prefer-explicit-viewport-units': ['off'],
+  'unicorn/prefer-explicit-viewport-units': ['off'], // Requires a consumer-specific viewport unit policy
   'unicorn/prefer-export-from': ['error'],
   'unicorn/prefer-flat-math-min-max': ['error'],
   'unicorn/prefer-get-or-insert-computed': ['error'],
@@ -593,7 +593,7 @@ const unicornRules = {
   'unicorn/prefer-switch': ['error'],
   'unicorn/prefer-temporal': ['error'],
   'unicorn/prefer-ternary': ['error'],
-  'unicorn/prefer-then-catch': ['error'],
+  'unicorn/prefer-then-catch': ['off'], // Conflicts with promise/prefer-catch
   'unicorn/prefer-toggle-attribute': ['error'],
   'unicorn/prefer-type-error': ['error'],
   'unicorn/prefer-type-literal-last': ['error'],
@@ -607,7 +607,7 @@ const unicornRules = {
   'unicorn/relative-url-style': ['error'],
   'unicorn/require-array-join-separator': ['error'],
   'unicorn/require-array-sort-compare': ['off'], // Handled by @typescript-eslint/require-array-sort-compare
-  'unicorn/require-frontmatter-fields': ['off'],
+  'unicorn/require-frontmatter-fields': ['off'], // Requires consumer-specific frontmatter fields
   'unicorn/require-module-attributes': ['error'],
   'unicorn/require-module-specifiers': ['off'],
   'unicorn/require-number-to-fixed-digits-argument': ['error'],
@@ -731,7 +731,7 @@ const promiseRules = {
     }
   ],
   'promise/no-callback-in-promise': ['error'],
-  'promise/no-multiple-resolved': ['error'],
+  'promise/no-multiple-resolved': ['off'], // Handled by unicorn/no-multiple-promise-resolver-calls
   'promise/no-native': ['off'],
   'promise/no-nesting': ['error'],
   'promise/no-new-statics': ['error'],
