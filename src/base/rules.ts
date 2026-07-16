@@ -398,6 +398,8 @@ const unicornRules = {
   'unicorn/no-manually-wrapped-comments': ['off'],
   'unicorn/no-mismatched-map-key': ['error'],
   'unicorn/no-misrefactored-assignment': ['error'],
+  'unicorn/no-missing-local-resource': ['off'],
+  'unicorn/no-multiple-promise-resolver-calls': ['error'],
   'unicorn/no-named-default': ['error'],
   'unicorn/no-negated-array-predicate': ['error'],
   'unicorn/no-negated-comparison': ['error'],
@@ -414,6 +416,7 @@ const unicornRules = {
   'unicorn/no-optional-chaining-on-undeclared-variable': ['error'],
   'unicorn/no-redundant-comparison': ['error'],
   'unicorn/no-return-array-push': ['error'],
+  'unicorn/no-shorthand-property-overrides': ['error'],
   'unicorn/no-single-promise-in-promise-methods': ['error'],
   'unicorn/no-static-only-class': ['error'],
   'unicorn/no-subtraction-comparison': ['error'],
@@ -422,6 +425,7 @@ const unicornRules = {
   'unicorn/no-this-outside-of-class': ['error'],
   'unicorn/no-top-level-assignment-in-function': ['error'],
   'unicorn/no-top-level-side-effects': ['error'],
+  'unicorn/no-transition-all': ['error'],
   'unicorn/no-typeof-undefined': ['error'],
   'unicorn/no-uncalled-method': ['error'],
   'unicorn/no-undeclared-class-members': ['error'],
@@ -436,6 +440,7 @@ const unicornRules = {
   'unicorn/no-unnecessary-polyfills': ['error'],
   'unicorn/no-unnecessary-slice-end': ['error'],
   'unicorn/no-unnecessary-splice': ['error'],
+  'unicorn/no-unnecessary-string-trim': ['error'],
   'unicorn/no-unreadable-array-destructuring': ['error'],
   'unicorn/no-unreadable-for-of-expression': ['error'],
   'unicorn/no-unreadable-iife': ['error'],
@@ -462,6 +467,7 @@ const unicornRules = {
   'unicorn/no-useless-logical-operand': ['error'],
   'unicorn/no-useless-override': ['error'],
   'unicorn/no-useless-promise-resolve-reject': ['error'],
+  'unicorn/no-useless-re-export': ['error'],
   'unicorn/no-useless-recursion': ['error'],
   'unicorn/no-useless-spread': ['error'],
   'unicorn/no-useless-switch-case': ['error'],
@@ -514,6 +520,7 @@ const unicornRules = {
   'unicorn/prefer-else-if': ['error'],
   'unicorn/prefer-error-is-error': ['off'], // Disabled by default upstream
   'unicorn/prefer-event-target': ['error'],
+  'unicorn/prefer-explicit-viewport-units': ['off'],
   'unicorn/prefer-export-from': ['error'],
   'unicorn/prefer-flat-math-min-max': ['error'],
   'unicorn/prefer-get-or-insert-computed': ['error'],
@@ -586,6 +593,7 @@ const unicornRules = {
   'unicorn/prefer-switch': ['error'],
   'unicorn/prefer-temporal': ['error'],
   'unicorn/prefer-ternary': ['error'],
+  'unicorn/prefer-then-catch': ['error'],
   'unicorn/prefer-toggle-attribute': ['error'],
   'unicorn/prefer-type-error': ['error'],
   'unicorn/prefer-type-literal-last': ['error'],
@@ -599,6 +607,7 @@ const unicornRules = {
   'unicorn/relative-url-style': ['error'],
   'unicorn/require-array-join-separator': ['error'],
   'unicorn/require-array-sort-compare': ['off'], // Handled by @typescript-eslint/require-array-sort-compare
+  'unicorn/require-frontmatter-fields': ['off'],
   'unicorn/require-module-attributes': ['error'],
   'unicorn/require-module-specifiers': ['off'],
   'unicorn/require-number-to-fixed-digits-argument': ['error'],
@@ -616,10 +625,7 @@ const regexpRules = {
   'regexp/confusing-quantifier': ['error'],
   'regexp/control-character-escape': ['error'],
   'regexp/grapheme-string-literal': ['error'],
-  'regexp/hexadecimal-escape': [
-    'error',
-    'never'
-  ],
+  'regexp/hexadecimal-escape': ['error', 'never'],
   'regexp/letter-case': [
     'error',
     {
@@ -703,10 +709,7 @@ const regexpRules = {
   'regexp/sort-character-class-elements': ['off'],
   'regexp/sort-flags': ['error'],
   'regexp/strict': ['error'],
-  'regexp/unicode-escape': [
-    'error',
-    'unicodeEscape'
-  ],
+  'regexp/unicode-escape': ['error', 'unicodeEscape'],
   'regexp/unicode-property': [
     'error',
     {
@@ -1068,7 +1071,10 @@ const sonarjsRules = {
 } satisfies Linter.Config['rules'];
 
 const eslintCommentsRules = {
-  '@eslint-community/eslint-comments/disable-enable-pair': ['error', { allowWholeFile: true }],
+  '@eslint-community/eslint-comments/disable-enable-pair': [
+    'error',
+    { allowWholeFile: true }
+  ],
   '@eslint-community/eslint-comments/no-aggregating-enable': ['error'],
   '@eslint-community/eslint-comments/no-duplicate-disable': ['error'],
   '@eslint-community/eslint-comments/no-restricted-disable': ['off'],
