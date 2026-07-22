@@ -135,7 +135,6 @@ const typescriptEslintRules = {
   '@typescript-eslint/no-redeclare': ['off'],
   '@typescript-eslint/no-redundant-type-constituents': ['error'],
   '@typescript-eslint/no-require-imports': ['error'],
-  '@typescript-eslint/no-restricted-imports': ['off'],
   '@typescript-eslint/no-restricted-types': ['off'],
   '@typescript-eslint/no-shadow': [
     'error',
