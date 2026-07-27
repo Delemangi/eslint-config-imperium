@@ -1116,6 +1116,7 @@ const e18eRules = {
   'e18e/prefer-array-to-reversed': ['error'],
   'e18e/prefer-array-to-sorted': ['error'],
   'e18e/prefer-array-to-spliced': ['error'],
+  'e18e/prefer-charcode-at-in-loop': ['off'], // Conflicts with unicorn/prefer-code-point
   'e18e/prefer-date-now': ['off'], // Handled by unicorn/prefer-date-now
   'e18e/prefer-exponentiation-operator': ['off'], // Handled by prefer-exponentiation-operator
   'e18e/prefer-flatmap-over-map-flat': ['off'], // Handled by unicorn/prefer-array-flat-map
@@ -1126,10 +1127,12 @@ const e18eRules = {
   'e18e/prefer-nullish-coalescing': ['off'], // Handled by @typescript-eslint/prefer-nullish-coalescing
   'e18e/prefer-object-has-own': ['off'], // Handled by prefer-object-has-own
   'e18e/prefer-regex-test': ['off'], // Handled by unicorn/prefer-regexp-test
+  'e18e/prefer-slice-over-split-index': ['error'],
   'e18e/prefer-spread-syntax': ['off'], // Handled by prefer-spread
   'e18e/prefer-static-collator': ['error'],
   'e18e/prefer-static-regex': ['error'],
   'e18e/prefer-string-fromcharcode': ['error'],
+  'e18e/prefer-throw-if-no-entry': ['error'],
   'e18e/prefer-timer-args': ['error'],
   'e18e/prefer-url-canparse': ['error']
 } satisfies Linter.Config['rules'];
