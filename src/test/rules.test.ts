@@ -5,6 +5,7 @@ import {
   it
 } from 'vitest';
 
+import baseRules from '../base/rules.js';
 import {
   astro,
   jsxA11y,
@@ -25,7 +26,9 @@ const filterMessages = function(results: ESLint.LintResult[], prefix: string) {
 };
 
 const filterCoreMessages = function(results: ESLint.LintResult[]) {
-  return results[0]?.messages.filter((m) => m.ruleId !== null && !m.ruleId.includes('/')) ?? [];
+  return (
+    results[0]?.messages.filter((m) => m.ruleId !== null && !m.ruleId.includes('/')) ?? []
+  );
 };
 
 // eslint-disable-next-line max-lines-per-function -- test suite with 20+ plugin verifications
@@ -90,6 +93,13 @@ describe('Rules', () => {
 
     expect(messages.length).toBeGreaterThanOrEqual(1);
     expect(messages[0]?.ruleId).toBe('no-barrel-files/no-barrel-files');
+  });
+
+  it('should preserve aliases when fixing barrel imports', () => {
+    expect(baseRules['no-barrel-files/prefer-source-imports']).toStrictEqual([
+      'error',
+      { fixStyle: 'preserve-alias' }
+    ]);
   });
 
   it('should verify browser configuration rules', async () => {

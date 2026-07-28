@@ -1101,7 +1101,11 @@ const unusedImportsRules = {
 } satisfies Linter.Config['rules'];
 
 const noBarrelFilesRules = {
-  'no-barrel-files/no-barrel-files': ['error']
+  'no-barrel-files/no-barrel-files': ['error'],
+  'no-barrel-files/prefer-source-imports': [
+    'error',
+    { fixStyle: 'preserve-alias' }
+  ]
 } satisfies Linter.Config['rules'];
 
 const e18eRules = {
