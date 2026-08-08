@@ -15,6 +15,7 @@ const nextRules = {
   '@next/next/no-head-import-in-document': ['error'],
   '@next/next/no-html-link-for-pages': ['error'],
   '@next/next/no-img-element': ['error'],
+  '@next/next/no-location-assign-relative-destination': ['error'],
   '@next/next/no-page-custom-font': ['error'],
   '@next/next/no-script-component-in-head': ['error'],
   '@next/next/no-styled-jsx-in-document': ['error'],
