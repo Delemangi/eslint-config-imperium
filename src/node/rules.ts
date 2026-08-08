@@ -47,6 +47,7 @@ const nRules = {
 const unicornRules = {
   'unicorn/consistent-json-file-read': ['error'],
   'unicorn/no-process-exit': ['warn'],
+  'unicorn/no-unsafe-sqlite-interpolation': ['error'],
   'unicorn/prefer-module': ['error'],
   'unicorn/prefer-node-protocol': ['error'],
   'unicorn/prefer-top-level-await': ['error']
