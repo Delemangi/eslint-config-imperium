@@ -293,6 +293,7 @@ const unicornRules = {
   'unicorn/catch-error-name': ['error', { name: 'error' }],
   'unicorn/class-reference-in-static-methods': ['error'],
   'unicorn/comment-content': ['error'],
+  'unicorn/consistent-arrow-return-style': ['off'], // Conflicts with arrow-body-style
   'unicorn/consistent-assert': ['off'],
   'unicorn/consistent-boolean-name': ['off'],
   'unicorn/consistent-class-member-order': ['off'], // conflicts with perfectionist/sort-classes
@@ -330,6 +331,7 @@ const unicornRules = {
   'unicorn/id-match': ['off'],
   'unicorn/import-style': ['off'],
   'unicorn/isolated-functions': ['off'],
+  'unicorn/iteration-fallback-style': ['error', 'fallback'],
   'unicorn/logical-assignment-operators': ['off'], // Handled by logical-assignment-operators
   'unicorn/max-nested-calls': ['off'],
   'unicorn/name-replacements': ['off'],
@@ -358,6 +360,7 @@ const unicornRules = {
   'unicorn/no-async-promise-finally': ['error'],
   'unicorn/no-await-expression-member': ['error'],
   'unicorn/no-await-in-promise-methods': ['error'],
+  'unicorn/no-barrel-files': ['off'], // Handled by no-barrel-files/no-barrel-files
   'unicorn/no-blob-to-file': ['error'],
   'unicorn/no-boolean-sort-comparator': ['error'],
   'unicorn/no-break-in-nested-loop': ['error'],
@@ -612,6 +615,7 @@ const unicornRules = {
   'unicorn/require-module-specifiers': ['off'],
   'unicorn/require-number-to-fixed-digits-argument': ['error'],
   'unicorn/require-proxy-trap-boolean-return': ['error'],
+  'unicorn/single-line-block-comment-style': ['error', 'single-line'],
   'unicorn/string-content': ['off'],
   'unicorn/switch-case-braces': ['error', 'avoid'],
   'unicorn/switch-case-break-position': ['error'],
