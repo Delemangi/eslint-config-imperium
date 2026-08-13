@@ -38,7 +38,9 @@ const nRules = {
   'n/prefer-global/timers': ['error'],
   'n/prefer-global/url': ['error'],
   'n/prefer-global/url-search-params': ['error'],
+  'n/prefer-import/assert-strict': ['error'],
   'n/prefer-node-protocol': ['error'],
+  'n/prefer-process-get-builtin-module': ['off'],
   'n/prefer-promises/dns': ['error'],
   'n/prefer-promises/fs': ['error'],
   'n/process-exit-as-throw': ['error']
