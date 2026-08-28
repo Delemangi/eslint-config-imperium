@@ -2,6 +2,7 @@ import type { Linter } from 'eslint';
 
 const tailwindRules = {
   'tailwindcss/classnames-order': ['error'],
+  'tailwindcss/enforces-canonical-classname': ['error'],
   'tailwindcss/enforces-negative-arbitrary-values': ['error'],
   'tailwindcss/enforces-shorthand': ['error'],
   'tailwindcss/important-modifier-suffix': ['error'],
