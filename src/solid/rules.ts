@@ -10,8 +10,10 @@ const solidRules = {
   'solid/jsx-uses-vars': ['error'],
   'solid/no-accessor-as-prop': ['error'],
   'solid/no-array-handlers': ['error'],
+  'solid/no-browser-globals-in-server-function': ['error'],
   'solid/no-destructure': ['error'],
   'solid/no-innerhtml': ['error'],
+  'solid/no-invalid-server-capture': ['error'],
   'solid/no-module-scope-reactive-primitive': ['off'],
   'solid/no-proxy-apis': ['error'],
   'solid/no-react-deps': ['error'],
@@ -25,8 +27,10 @@ const solidRules = {
   'solid/prefer-structured-class': ['off'],
   'solid/reactivity': ['error'],
   'solid/removed-api': ['off'],
+  'solid/require-async-server-function': ['error'],
   'solid/self-closing-comp': ['error'],
-  'solid/style-prop': ['error']
+  'solid/style-prop': ['error'],
+  'solid/valid-use-server': ['error']
 } satisfies Linter.Config['rules'];
 
 export default {
