@@ -1177,6 +1177,7 @@ const jsdocRules = {
   'jsdoc/no-restricted-syntax': ['off'],
   'jsdoc/no-types': ['off'],
   'jsdoc/no-undefined-types': ['off'],
+  'jsdoc/no-unnecessary-type-assertion': ['off'],
   'jsdoc/normalize-see-links': ['off'],
   'jsdoc/prefer-import-tag': ['off'],
   'jsdoc/reject-any-type': ['error'],
