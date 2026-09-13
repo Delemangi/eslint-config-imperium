@@ -104,6 +104,7 @@ const typescriptEslintRules = {
     }
   ],
   '@typescript-eslint/no-for-in-array': ['error'],
+  '@typescript-eslint/no-generated-empty-object-type': ['error'],
   '@typescript-eslint/no-implied-eval': ['error'],
   '@typescript-eslint/no-import-type-side-effects': ['off'],
   '@typescript-eslint/no-inferrable-types': ['error'],
