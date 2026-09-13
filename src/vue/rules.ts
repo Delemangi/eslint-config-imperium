@@ -178,6 +178,7 @@ const vueRules = {
   'vue/no-restricted-v-on': ['off'],
   'vue/no-root-v-if': ['off'],
   'vue/no-setup-props-reactivity-loss': ['error'],
+  'vue/no-shadow-native-events': ['error'],
   'vue/no-shared-component-data': ['error'],
   'vue/no-side-effects-in-computed-properties': ['error'],
   'vue/no-spaces-around-equal-signs-in-attribute': ['error'],
