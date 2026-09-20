@@ -10,6 +10,8 @@ const solidRules = {
   'solid/jsx-uses-vars': ['error'],
   'solid/no-accessor-as-prop': ['error'],
   'solid/no-array-handlers': ['error'],
+  // Solid 1 stringifies boolean attribute expressions; this rule assumes removal.
+  'solid/no-boolean-enumerated-attribute': ['off'],
   'solid/no-browser-globals-in-server-function': ['error'],
   'solid/no-destructure': ['error'],
   'solid/no-innerhtml': ['error'],
@@ -20,7 +22,12 @@ const solidRules = {
   'solid/no-react-specific-props': ['error'],
   'solid/no-restated-default-options': ['off'],
   'solid/no-single-arg-create-effect': ['off'],
+  'solid/no-store-mutation-outside-setter': ['error'],
   'solid/no-unknown-namespaces': ['error'],
+  // Shared/nested stores can be read or updated through another tuple.
+  'solid/no-unused-signal': ['off'],
+  // Solid 1 effects accept an initial value, not a second effect callback.
+  'solid/no-write-in-pure-computation': ['off'],
   'solid/prefer-for': ['error'],
   'solid/prefer-onSettled-for-side-effects': ['off'],
   'solid/prefer-show': ['off'],
