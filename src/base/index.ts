@@ -75,7 +75,17 @@ const jsdocJsOverrides: Linter.Config = {
     'jsdoc/no-undefined-types': ['error'],
     'jsdoc/require-param-type': ['error'],
     'jsdoc/require-property-type': ['error'],
-    'jsdoc/require-returns-type': ['error']
+    'jsdoc/require-returns-type': ['error'],
+    'jsdoc/ts-ban-ts-comment': [
+      'error',
+      {
+        minimumDescriptionLength: 3,
+        'ts-check': false,
+        'ts-expect-error': 'allow-with-description',
+        'ts-ignore': false,
+        'ts-nocheck': false
+      }
+    ]
   }
 };
 
