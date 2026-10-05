@@ -1,6 +1,11 @@
 import { ESLint } from 'eslint';
 import sonarjsPlugin from 'eslint-plugin-sonarjs';
-import { resolve } from 'node:path';
+import {
+  mkdtemp,
+  rm,
+  writeFile
+} from 'node:fs/promises';
+import { join, resolve } from 'node:path';
 import typescriptPlugin from 'typescript-eslint';
 import {
   describe,
@@ -65,6 +70,36 @@ const lintForRule = async (
   expect(result.fatalErrorCount).toBe(0);
 
   return result.messages.filter(({ ruleId: reportedRule }) => reportedRule === ruleId);
+};
+
+const lintForVue3Rule = async (
+  ruleId: (typeof policyRuleIds)[number],
+  source: string,
+  name: string
+) => {
+  const directory = await mkdtemp(join(process.cwd(), '.policy-vue-'));
+  try {
+    // eslint-disable-next-line security/detect-non-literal-fs-filename -- the directory is created with a fixed prefix under cwd
+    await writeFile(join(directory, 'package.json'), JSON.stringify({
+      dependencies: {
+        vue: '^3.0.0'
+      }
+    }));
+    const filePath = join(directory, `policy-${name}.js`);
+    const [result] = await lintPolicy.lintText(source, { filePath });
+    if (!result) {
+      throw new Error('Expected ESLint to return a lint result');
+    }
+
+    expect(result.fatalErrorCount).toBe(0);
+
+    return result.messages.filter(({ ruleId: reportedRule }) => reportedRule === ruleId);
+  } finally {
+    await rm(directory, {
+      force: true,
+      recursive: true
+    });
+  }
 };
 
 // eslint-disable-next-line max-lines-per-function -- keep reviewed policy rule checks focused in one suite
@@ -221,12 +256,12 @@ describe('reviewed SonarJS policy', () => {
       'const $ = { isArray(value) { return Array.isArray(value); } }; $.isArray(value);',
       'local-dollar'
     )).resolves.toHaveLength(0);
-    await expect(lintForRule(
+    await expect(lintForVue3Rule(
       policyRuleIds[6],
       "import { Vue } from 'vue-class-component'; export default class Widget extends Vue {}",
       'vue-class'
     )).resolves.toHaveLength(1);
-    await expect(lintForRule(
+    await expect(lintForVue3Rule(
       policyRuleIds[6],
       'class Widget {}',
       'plain-class'
