@@ -9,7 +9,6 @@ import noBarrelFilesPlugin from 'eslint-plugin-no-barrel-files';
 // @ts-expect-error -- untyped plugin
 import promisePlugin from 'eslint-plugin-promise';
 import regexpPlugin from 'eslint-plugin-regexp';
-// @ts-expect-error -- untyped plugin
 import securityPlugin from 'eslint-plugin-security';
 import sonarjsPlugin from 'eslint-plugin-sonarjs';
 import unicornPlugin from 'eslint-plugin-unicorn';
@@ -34,7 +33,7 @@ const base: Linter.Config = {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- untyped plugin
     promise: fixupPluginRules(promisePlugin),
     regexp: regexpPlugin,
-    security: securityPlugin as ESLint.Plugin,
+    security: securityPlugin,
     sonarjs: sonarjsPlugin,
     unicorn: unicornPlugin,
     'unused-imports': unusedImportsPlugin
