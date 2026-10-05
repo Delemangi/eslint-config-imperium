@@ -20,7 +20,6 @@ import promisePlugin from 'eslint-plugin-promise';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import reactRefreshPlugin from 'eslint-plugin-react-refresh';
 import regexpPlugin from 'eslint-plugin-regexp';
-// @ts-expect-error -- untyped plugin
 import securityPlugin from 'eslint-plugin-security';
 import solidPlugin from 'eslint-plugin-solid';
 import sonarjsPlugin from 'eslint-plugin-sonarjs';
@@ -84,13 +83,8 @@ type PluginTestCase = {
   rules: PluginRules;
 };
 
-const isPluginRules = (value: unknown): value is PluginRules => {
-  if (typeof value !== 'object' || value === null) {
-    return false;
-  }
-
-  return Object.values(value).every((rule) => typeof rule === 'object' && rule !== null);
-};
+const isPluginRules = (value: unknown): value is PluginRules => typeof value === 'object' &&
+  value !== null && Object.values(value).every((rule) => typeof rule === 'object' && rule !== null);
 
 const getPluginRules = (value: unknown, pluginName: string): PluginRules => {
   if (!isPluginRules(value)) {
@@ -100,25 +94,12 @@ const getPluginRules = (value: unknown, pluginName: string): PluginRules => {
   return value;
 };
 
-const isDeprecatedRule = (rule: Pick<Rule.RuleModule, 'meta'>): boolean => {
-  if (rule.meta === undefined) {
-    return false;
-  }
+const isDeprecatedRule = (rule: Pick<Rule.RuleModule, 'meta'>): boolean => rule.meta !== undefined &&
+  'deprecated' in rule.meta && Boolean(Reflect.get(rule.meta, 'deprecated'));
 
-  return 'deprecated' in rule.meta && Boolean(Reflect.get(rule.meta, 'deprecated'));
-};
+const isDisabledValue = (value: unknown): boolean => value === 'off' || value === 0;
 
-const isRuleDisabled = (config: unknown): boolean => {
-  if (config === 'off' || config === 0) {
-    return true;
-  }
-
-  if (Array.isArray(config)) {
-    return config[0] === 'off' || config[0] === 0;
-  }
-
-  return false;
-};
+const isRuleDisabled = (config: unknown): boolean => isDisabledValue(Array.isArray(config) ? config[0] : config);
 
 const getEslintReactRules = (): PluginRules => {
   const rules: PluginRules = {};
@@ -157,7 +138,6 @@ const plugins: PluginTestCase[] = [
   {
     name: 'security',
     prefix: 'security',
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- untyped plugin
     rules: getPluginRules(securityPlugin.rules, 'security')
   },
   {
@@ -229,7 +209,7 @@ const plugins: PluginTestCase[] = [
   {
     name: 'solid',
     prefix: 'solid',
-    rules: solidPlugin.rules
+    rules: getPluginRules(solidPlugin.rules, 'solid')
   },
   {
     name: 'stylistic',
@@ -296,16 +276,11 @@ describe('Rules Completeness', () => {
 
   it('should not have extraneous or deprecated core ESLint rules', () => {
     const validCoreRules = new Set<string>();
-    const deprecatedCoreRules = new Set<string>();
 
     // eslint-disable-next-line @typescript-eslint/no-deprecated -- no replacement API exists in ESLint v10
     for (const [name, rule] of builtinRules) {
-      if (!name.includes('/')) {
-        if (isDeprecatedRule(rule)) {
-          deprecatedCoreRules.add(name);
-        } else {
-          validCoreRules.add(name);
-        }
+      if (!name.includes('/') && !isDeprecatedRule(rule)) {
+        validCoreRules.add(name);
       }
     }
 
@@ -317,10 +292,6 @@ describe('Rules Completeness', () => {
 
       const config = allConfiguredRules[rule];
       const isDisabled = isRuleDisabled(config);
-
-      if (deprecatedCoreRules.has(rule)) {
-        return !isDisabled;
-      }
 
       return !isDisabled;
     });
@@ -355,11 +326,13 @@ describe('Rules Completeness', () => {
       }
 
       validRules.add(`${prefix}/${ruleName}`);
-      if (name === 'stylistic' && ruleName.includes('/')) {
-        const unprefixedName = ruleName.split('/').slice(1)
-          .join('/');
-        validRules.add(`${prefix}/${unprefixedName}`);
+      if (name !== 'stylistic' || !ruleName.includes('/')) {
+        continue;
       }
+
+      const unprefixedName = ruleName.split('/').slice(1)
+        .join('/');
+      validRules.add(`${prefix}/${unprefixedName}`);
     }
 
     const configuredRuleNames = Object.keys(allConfiguredRules).filter((rule) => rule.startsWith(`${prefix}/`));
