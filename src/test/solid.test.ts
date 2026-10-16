@@ -30,8 +30,9 @@ const lint = async (code: string) => {
   expect(result?.messages.map(({ ruleId }) => ruleId)).not.toContain(null);
 
   // Existing reactivity and proxy restrictions are outside this policy change.
-  // eslint-disable-next-line unicorn/prefer-default-parameters -- ESLint may return messages without a rule id
-  return result === undefined ? [] : result.messages.filter(({ ruleId }) => newRules.has(ruleId ?? ''));
+  return result === undefined
+    ? []
+    : result.messages.filter(({ ruleId }) => newRules.has(ruleId ?? ''));
 };
 
 describe('Solid rule policy', () => {

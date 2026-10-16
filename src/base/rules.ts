@@ -439,6 +439,7 @@ const unicornRules = {
   'unicorn/no-optional-chaining-on-undeclared-variable': ['error'],
   'unicorn/no-prevent-default-in-passive-listener': ['error'],
   'unicorn/no-redundant-comparison': ['error'],
+  'unicorn/no-repeated-call-wrappers': ['off'], // Caller conversions can intentionally preserve return contracts
   'unicorn/no-return-array-push': ['error'],
   'unicorn/no-shorthand-property-overrides': ['off'], // CSS files are not linted by base
   'unicorn/no-single-promise-in-promise-methods': ['error'],
@@ -458,6 +459,7 @@ const unicornRules = {
   'unicorn/no-unnecessary-array-splice-count': ['error'],
   'unicorn/no-unnecessary-await': ['error'],
   'unicorn/no-unnecessary-boolean-comparison': ['error'],
+  'unicorn/no-unnecessary-default-arguments': ['error'],
   'unicorn/no-unnecessary-fetch-options': ['error'],
   'unicorn/no-unnecessary-global-this': ['error'],
   'unicorn/no-unnecessary-nested-ternary': ['error'],
