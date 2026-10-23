@@ -194,31 +194,8 @@ a `tsconfig.json` that covers the TypeScript files you lint. Files outside the T
 produce project-service parsing errors; include them in the appropriate project
 or exclude them from typed linting.
 
-### TypeScript 7 Compilation
-
-TypeScript 7 can be used for compilation alongside TypeScript 6 for linting.
-The current `typescript-eslint` dependency does not support TypeScript 7's
-compiler API; replacing the `typescript` package with version 7 alone is not
-supported for typed linting.
-
-Use the [side-by-side setup recommended by Microsoft](https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/#running-side-by-side-with-typescript-6.0):
-
-```json
-{
-  "devDependencies": {
-    "@typescript/native": "npm:typescript@^7.0.2",
-    "typescript": "npm:@typescript/typescript6@^6.0.2"
-  }
-}
-```
-
-This keeps imports of `typescript` on the TypeScript 6 API while installing the
-TypeScript 7 compiler separately. The compatibility package provides `tsc6`,
-leaving `tsc` for TypeScript 7. Linting still uses TypeScript 6's type analysis,
-so this does not guarantee support for TypeScript 7-only syntax or semantics, or
-TypeScript 7 integration in framework build tools.
-
-### Project Root
+For TypeScript 7 compilation, use Microsoft's [side-by-side setup](https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/#running-side-by-side-with-typescript-6.0).
+Typed linting still requires the TypeScript 6 API.
 
 If your editor or environment runs ESLint from a directory other than the project root, you may need to set `tsconfigRootDir` explicitly:
 
@@ -274,8 +251,7 @@ This is a list of the currently used ESLint plugins:
 
 ## Testing
 
-Build the package before running checks, since the repository's ESLint config
-loads the generated `lib` output:
+Build first, then run the checks:
 
 ```sh
 npm run build
@@ -285,28 +261,6 @@ npm test
 npm run test:consumer
 ```
 
-The consumer check packs the built package and installs it in a temporary project
-with ESLint and TypeScript, without this repository's development dependencies.
-It requires registry access and checks package exports, typed linting, and JSX,
-Astro, Svelte, and Vue integration. The temporary project is removed afterwards.
-
-To check the minimum supported ESLint version or the latest ESLint 10 release:
-
-```sh
-npm run test:consumer -- --eslint-version=10.4.0
-npm run test:consumer -- --eslint-version=10
-npm run test:consumer -- --eslint-version=10.4.0 --typescript-mode=side-by-side
-npm run test:consumer -- --eslint-version=10 --typescript-mode=side-by-side
-```
-
-The consumer check defaults to `--typescript-mode=typescript6`. Side-by-side mode
-also verifies successful TypeScript 7 compilation, rejection of a type error,
-and continued TypeScript 6-based typed linting.
-
-CI runs the checks on Node.js 24 and 26 with ESLint 10.4.0 and the latest 10.x
-release, testing both TypeScript consumer setups. The required `Lint & Run Tests`
-check succeeds only when every matrix combination passes.
-
 ## Building
 
 1. Clone the repository: `git clone https://github.com/Delemangi/eslint-config-imperium.git`
@@ -314,10 +268,6 @@ check succeeds only when every matrix combination passes.
 3. Build the package: `npm run build`
 
 After this, the build output will be placed in the `lib` folder. You may use it directly, pack it or whatever you'd like afterwards.
-
-The repository's `build` and `check` scripts use TypeScript 7's `tsc` command.
-The TypeScript 6 compiler remains available as `tsc6`, and ESLint's typed linting
-continues to use the TypeScript 6 API.
 
 ## License
 
