@@ -33,10 +33,10 @@ jobs:
           cache: npm
 
       - name: Install Dependencies
-        run: npm ci
+        run: npm ci --ignore-scripts
 
       - name: Select ESLint Version
-        run: npm install --no-save --package-lock=false eslint@${{ matrix.eslint-version }}
+        run: npm install --ignore-scripts --no-save --package-lock=false eslint@${{ matrix.eslint-version }}
 
       - name: Verify ESLint Version
         env:
@@ -50,8 +50,8 @@ jobs:
       - name: Verify TypeScript Toolchains
         run: |
           node -e "const fs = require('node:fs'); const ts = require('typescript'); const compat = JSON.parse(fs.readFileSync('node_modules/typescript/package.json', 'utf8')); const native = JSON.parse(fs.readFileSync('node_modules/@typescript/native/package.json', 'utf8')); console.log('Lint API: ' + compat.name + '@' + ts.version + '; compiler: ' + native.name + '@' + native.version); if (compat.name !== '@typescript/typescript6' || native.name !== 'typescript' || !ts.version.startsWith('6.') || !native.version.startsWith('7.') || !compat.bin.tsc6 || compat.bin.tsc) process.exit(1);"
-          ts7_version="$(npm exec -- tsc --version)"
-          ts6_version="$(npm exec -- tsc6 --version)"
+          ts7_version="$(npm exec --no --ignore-scripts -- tsc --version)"
+          ts6_version="$(npm exec --no --ignore-scripts -- tsc6 --version)"
           echo "tsc: $ts7_version; tsc6: $ts6_version"
           [[ "$ts7_version" == "Version 7."* ]]
           [[ "$ts6_version" == "Version 6."* ]]

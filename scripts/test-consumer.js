@@ -73,15 +73,9 @@ function consumerEnvironment() {
     if (parent === directory) break;
   }
   if (pathKey) {
-    const filtered = env[pathKey].split(path.delimiter).filter(
-      (entry) =>
-        !bins.has(
-          path
-            .resolve(entry)
-            .replace(/[\\/]+$/, "")
-            .toLowerCase(),
-        ),
-    );
+    const filtered = env[pathKey]
+      .split(path.delimiter)
+      .filter((entry) => !bins.has(path.resolve(entry).toLowerCase()));
     env[pathKey] = filtered.join(path.delimiter);
     for (const duplicate of pathKeys.slice(1)) delete env[duplicate];
   }
@@ -92,7 +86,7 @@ function terminateProcessTree(child) {
   if (process.platform === "win32") {
     return new Promise((resolve) => {
       const taskkill = path.join(
-        process.env.SystemRoot ?? "C:\\Windows",
+        process.env.SystemRoot ?? String.raw`C:\Windows`,
         "System32",
         "taskkill.exe",
       );
@@ -324,49 +318,47 @@ try {
     "Consumer must not use resolutions",
   );
 
-  await writeFile(
-    path.join(consumer, "bad.jsx"),
-    'export default function Bad() { return <img src="/x" />; }',
-  );
-  await writeFile(
-    path.join(consumer, "good.jsx"),
-    'export default function Good() { return <img src="/x" alt="example" />; }',
-  );
-  await writeFile(
-    path.join(consumer, "bad.astro"),
-    '---\nconst value = 1;\n---\n<img src="/x" />',
-  );
-  await writeFile(
-    path.join(consumer, "good.astro"),
-    '---\nconst value = 1;\n---\n<img src="/x" alt="example" />',
-  );
-  await writeFile(
-    path.join(consumer, "component.svelte"),
-    "<script>const value = 1;</script><p>{value}</p>",
-  );
-  await writeFile(
-    path.join(consumer, "component.vue"),
-    "<template><div>{{ value }}</div></template><script>export default { data() { return { value: 1 }; } };</script>",
-  );
-  await writeFile(
-    path.join(consumer, "typed.ts"),
-    "async function check(value: Promise<number>) { await value; await 1; }\nvoid check(Promise.resolve(1));",
-  );
-  await writeFile(
-    path.join(consumer, "clean.ts"),
-    "async function check(value: Promise<number>) { await value; }\nvoid check(Promise.resolve(1));",
-  );
-  await writeFile(
-    path.join(consumer, "tsconfig.json"),
-    JSON.stringify({
-      compilerOptions: {
-        strict: true,
-        target: "ESNext",
-        module: "NodeNext",
-        moduleResolution: "NodeNext",
-      },
-      include: ["typed.ts", "clean.ts"],
-    }),
+  const fixtures = [
+    ["bad.jsx", 'export default function Bad() { return <img src="/x" />; }'],
+    [
+      "good.jsx",
+      'export default function Good() { return <img src="/x" alt="example" />; }',
+    ],
+    ["bad.astro", '---\nconst value = 1;\n---\n<img src="/x" />'],
+    [
+      "good.astro",
+      '---\nconst value = 1;\n---\n<img src="/x" alt="example" />',
+    ],
+    ["component.svelte", "<script>const value = 1;</script><p>{value}</p>"],
+    [
+      "component.vue",
+      "<template><div>{{ value }}</div></template><script>export default { data() { return { value: 1 }; } };</script>",
+    ],
+    [
+      "typed.ts",
+      "async function check(value: Promise<number>) { await value; await 1; }\nvoid check(Promise.resolve(1));",
+    ],
+    [
+      "clean.ts",
+      "async function check(value: Promise<number>) { await value; }\nvoid check(Promise.resolve(1));",
+    ],
+    [
+      "tsconfig.json",
+      JSON.stringify({
+        compilerOptions: {
+          strict: true,
+          target: "ESNext",
+          module: "NodeNext",
+          moduleResolution: "NodeNext",
+        },
+        include: ["typed.ts", "clean.ts"],
+      }),
+    ],
+  ];
+  await Promise.all(
+    fixtures.map(([name, contents]) =>
+      writeFile(path.join(consumer, name), contents),
+    ),
   );
   if (typescriptMode === "side-by-side") {
     const ts7Manifest = JSON.parse(
@@ -402,9 +394,9 @@ try {
       consumer,
       env,
     );
-    assert.match(
-      versionOutput,
-      new RegExp(`Version ${ts7Manifest.version.replaceAll(".", "\\.")}`),
+    assert.ok(
+      versionOutput.includes(`Version ${ts7Manifest.version}`),
+      `TypeScript CLI version does not match package ${ts7Manifest.version}`,
     );
     assert.match(
       ts7Manifest.version,
@@ -421,13 +413,13 @@ try {
       /Version 6\./,
       "Installed tsc6 CLI must be major 6",
     );
-    await writeFile(
-      path.join(consumer, "ts7-good.ts"),
-      'const value: string = "valid";',
-    );
-    await writeFile(
-      path.join(consumer, "ts7-bad.ts"),
-      "const value: string = 1;",
+    await Promise.all(
+      [
+        ["ts7-good.ts", 'const value: string = "valid";'],
+        ["ts7-bad.ts", "const value: string = 1;"],
+      ].map(([name, contents]) =>
+        writeFile(path.join(consumer, name), contents),
+      ),
     );
     const ts7Config = (file) =>
       JSON.stringify({
@@ -440,13 +432,13 @@ try {
         },
         files: [file],
       });
-    await writeFile(
-      path.join(consumer, "tsconfig.ts7-good.json"),
-      ts7Config("ts7-good.ts"),
-    );
-    await writeFile(
-      path.join(consumer, "tsconfig.ts7-bad.json"),
-      ts7Config("ts7-bad.ts"),
+    await Promise.all(
+      ["good", "bad"].map((name) =>
+        writeFile(
+          path.join(consumer, `tsconfig.ts7-${name}.json`),
+          ts7Config(`ts7-${name}.ts`),
+        ),
+      ),
     );
     await run(
       process.execPath,

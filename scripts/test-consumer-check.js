@@ -148,16 +148,16 @@ assert.ok(
   "JSX rule leaked to Svelte",
 );
 
-for (const [name, count] of [
-  ["bad.astro", 1],
-  ["good.astro", 0],
-]) {
-  const [result] = await astro.lintFiles([name]);
+const astroFiles = ["bad.astro", "good.astro"];
+const astroResults = await astro.lintFiles(astroFiles);
+for (const [index, expectedCount] of [1, 0].entries()) {
+  const result = astroResults[index];
+  const name = astroFiles[index];
   assertLinted(result, name);
   assertRule(
     result.messages,
     "astro/jsx-a11y/alt-text",
-    count,
+    expectedCount,
     `${name} Astro alt-text assertion`,
   );
   assert.equal(
@@ -166,11 +166,14 @@ for (const [name, count] of [
     `${name} Astro parser failed: ${JSON.stringify(result.messages)}`,
   );
 }
-for (const [config, filename] of [
-  [svelte, "component.svelte"],
-  [vue, "component.vue"],
+const [[svelteResult], [vueResult]] = await Promise.all([
+  svelte.lintFiles(["component.svelte"]),
+  vue.lintFiles(["component.vue"]),
+]);
+for (const [result, filename] of [
+  [svelteResult, "component.svelte"],
+  [vueResult, "component.vue"],
 ]) {
-  const [result] = await config.lintFiles([filename]);
   assertLinted(result, filename);
   assert.ok(result, `${filename} was ignored`);
   assert.equal(
