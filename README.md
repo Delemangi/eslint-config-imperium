@@ -2,13 +2,26 @@
 
 This is a strict configuration for [ESLint](https://github.com/eslint/eslint). It is meant for those who have never found a linter annoying before.
 
-Currently supports ESLint v10 with the flat config only.
+Currently supports ESLint v10.4.0 and newer v10 releases with the flat config only.
+
+Requires Node.js 24.x or 26.x.
 
 ## Quickstart
 
-1. Install dependencies: `npm i --save-dev eslint eslint-config-imperium`
+1. Install dependencies: `npm i --save-dev eslint eslint-config-imperium typescript@~6.0.3`
 2. Create `eslint.config.js` (see [Example Configuration](#example-configuration))
-3. Run your linter: `npm run lint` (or `npx eslint`)
+3. Ensure your project has a suitable `tsconfig.json` (see [Typed Linting](#typed-linting)).
+4. Run your linter: `npx eslint .`
+
+Optionally, add a script to your `package.json` and run it with `npm run lint`:
+
+```json
+{
+  "scripts": {
+    "lint": "eslint ."
+  }
+}
+```
 
 ## Example Configuration
 
@@ -23,7 +36,7 @@ export default auto;
 
 ## Configurations
 
-This package is modular and includes several configurations intended to be enabled for certain environments. If you don't know what you need, you should probably use [`auto`](./src/index.ts). Otherwise, pick a combination of the above configurations.
+This package is modular and includes several configurations intended to be enabled for certain environments. If you don't know what you need, you should probably use [`auto`](./src/index.ts). Otherwise, pick a combination of the configurations below.
 
 ### Main
 
@@ -56,6 +69,20 @@ Framework modules are intentionally kept separate from runtime modules. Use `bro
 
 You should not enable `prettier` and `stylistic` at the same time.
 
+Since `auto` includes `stylistic`, compose the core presets explicitly when using
+`prettier` instead:
+
+```ts
+import {
+  base,
+  perfectionist,
+  prettier,
+  typescript,
+} from "eslint-config-imperium";
+
+export default [...base, typescript, perfectionist, prettier];
+```
+
 ### Accessibility
 
 - [`jsxA11y`](./src/jsx-a11y/index.ts) - JSX accessibility rules
@@ -69,10 +96,7 @@ The package is designed to be composed explicitly. A few common combinations:
 ```ts
 import { auto, browser } from "eslint-config-imperium";
 
-export default [
-  ...auto,
-  browser,
-];
+export default [...auto, browser];
 ```
 
 ### React App
@@ -80,26 +104,21 @@ export default [
 ```ts
 import { auto, browser, jsxA11y, react } from "eslint-config-imperium";
 
-export default [
-  ...auto,
-  browser,
-  react,
-  jsxA11y,
-];
+export default [...auto, browser, react, jsxA11y];
 ```
+
+The `jsxA11y` preset uses `eslint-plugin-jsx-a11y-x`. When upgrading from the
+previous plugin, rename custom rule overrides and inline disable comments from
+`jsx-a11y/*` to `jsx-a11y-x/*`, and rename `settings['jsx-a11y']` to
+`settings['jsx-a11y-x']`. The `jsxA11y` export and Astro's `astro/jsx-a11y/*`
+rule names remain unchanged.
 
 ### Next.js App
 
 ```ts
 import { auto, browser, jsxA11y, next, react } from "eslint-config-imperium";
 
-export default [
-  ...auto,
-  browser,
-  react,
-  next,
-  jsxA11y,
-];
+export default [...auto, browser, react, next, jsxA11y];
 ```
 
 ### Node.js Library
@@ -107,24 +126,21 @@ export default [
 ```ts
 import { auto, node } from "eslint-config-imperium";
 
-export default [
-  ...auto,
-  node,
-];
+export default [...auto, node];
 ```
 
 ### Vitest + Testing Library
 
 ```ts
-import { auto, browser, react, testingLibrary, vitest } from "eslint-config-imperium";
-
-export default [
-  ...auto,
+import {
+  auto,
   browser,
   react,
-  vitest,
   testingLibrary,
-];
+  vitest,
+} from "eslint-config-imperium";
+
+export default [...auto, browser, react, vitest, testingLibrary];
 ```
 
 ### Svelte App
@@ -134,11 +150,7 @@ export default [
 ```ts
 import { auto, browser, svelte } from "eslint-config-imperium";
 
-export default [
-  ...auto,
-  browser,
-  ...svelte,
-];
+export default [...auto, browser, ...svelte];
 ```
 
 ### Astro App
@@ -148,10 +160,7 @@ export default [
 ```ts
 import { astro, auto } from "eslint-config-imperium";
 
-export default [
-  ...auto,
-  ...astro,
-];
+export default [...auto, ...astro];
 ```
 
 ### Tailwind App
@@ -180,6 +189,14 @@ export default [
 
 The `typescript` and `auto` configurations use [`parserOptions.projectService`](https://typescript-eslint.io/packages/parser/#projectservice) to enable type-aware linting. This automatically finds the closest `tsconfig.json` for each file.
 
+Install a supported TypeScript 6.0 version as a development dependency and provide
+a `tsconfig.json` that covers the TypeScript files you lint. Files outside the TypeScript project can
+produce project-service parsing errors; include them in the appropriate project
+or exclude them from typed linting.
+
+For TypeScript 7 compilation, use Microsoft's [side-by-side setup](https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/#running-side-by-side-with-typescript-6.0).
+Typed linting still requires the TypeScript 6 API.
+
 If your editor or environment runs ESLint from a directory other than the project root, you may need to set `tsconfigRootDir` explicitly:
 
 ```ts
@@ -205,7 +222,6 @@ This is a list of the currently used ESLint plugins:
 - [`@e18e/eslint-plugin`](https://github.com/e18e/eslint-plugin)
 - [`@eslint-community/eslint-plugin-eslint-comments`](https://github.com/eslint-community/eslint-plugin-eslint-comments)
 - [`@eslint-react/eslint-plugin`](https://github.com/Rel1cx/eslint-react)
-- [`@eslint/compat`](https://github.com/eslint/rewrite/tree/main/packages/compat)
 - [`@next/eslint-plugin-next`](https://github.com/vercel/next.js/tree/canary/packages/eslint-plugin-next)
 - [`@stylistic/eslint-plugin`](https://github.com/eslint-stylistic/eslint-stylistic)
 - [`@tanstack/eslint-plugin-query`](https://github.com/TanStack/query/tree/main/packages/eslint-plugin-query)
@@ -214,7 +230,7 @@ This is a list of the currently used ESLint plugins:
 - [`eslint-plugin-astro`](https://github.com/ota-meshi/eslint-plugin-astro)
 - [`eslint-plugin-import-x`](https://github.com/un-ts/eslint-plugin-import-x)
 - [`eslint-plugin-jsdoc`](https://github.com/gajus/eslint-plugin-jsdoc)
-- [`eslint-plugin-jsx-a11y`](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y)
+- [`eslint-plugin-jsx-a11y-x`](https://github.com/eslint-community/eslint-plugin-jsx-a11y-x)
 - [`eslint-plugin-n`](https://github.com/eslint-community/eslint-plugin-n)
 - [`eslint-plugin-no-barrel-files`](https://github.com/art0rz/eslint-plugin-no-barrel-files)
 - [`eslint-plugin-perfectionist`](https://github.com/azat-io/eslint-plugin-perfectionist)
@@ -232,6 +248,18 @@ This is a list of the currently used ESLint plugins:
 - [`eslint-plugin-unicorn`](https://github.com/sindresorhus/eslint-plugin-unicorn)
 - [`eslint-plugin-unused-imports`](https://github.com/sweepline/eslint-plugin-unused-imports)
 - [`eslint-plugin-vue`](https://github.com/vuejs/eslint-plugin-vue)
+
+## Testing
+
+Build first, then run the checks:
+
+```sh
+npm run build
+npm run check
+npm run lint
+npm test
+npm run test:consumer
+```
 
 ## Building
 

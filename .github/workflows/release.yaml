@@ -28,7 +28,7 @@ jobs:
           registry-url: https://registry.npmjs.org
 
       - name: Install Dependencies
-        run: npm ci
+        run: npm ci --ignore-scripts
 
       - name: Verify Package Signatures
         run: npm audit signatures
@@ -46,4 +46,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_CONFIG_PROVENANCE: true
-        run: npx semantic-release
+        run: npm exec --no --ignore-scripts -- semantic-release
