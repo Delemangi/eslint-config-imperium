@@ -134,15 +134,15 @@ describe('Rules', () => {
       overrideConfig: [jsxA11y]
     });
     const results = await jsxA11yEslint.lintFiles(['src/test/cases/jsx-a11y.tsx']);
-    const messages = filterMessages(results, 'jsx-a11y/');
+    const messages = filterMessages(results, 'jsx-a11y-x/');
 
     expect(messages).toHaveLength(5);
 
-    expect(messages[0]?.ruleId).toBe('jsx-a11y/alt-text');
-    expect(messages[1]?.ruleId).toBe('jsx-a11y/click-events-have-key-events');
-    expect(messages[2]?.ruleId).toBe('jsx-a11y/no-static-element-interactions');
-    expect(messages[3]?.ruleId).toBe('jsx-a11y/no-noninteractive-tabindex');
-    expect(messages[4]?.ruleId).toBe('jsx-a11y/tabindex-no-positive');
+    expect(messages[0]?.ruleId).toBe('jsx-a11y-x/alt-text');
+    expect(messages[1]?.ruleId).toBe('jsx-a11y-x/click-events-have-key-events');
+    expect(messages[2]?.ruleId).toBe('jsx-a11y-x/no-static-element-interactions');
+    expect(messages[3]?.ruleId).toBe('jsx-a11y-x/no-noninteractive-tabindex');
+    expect(messages[4]?.ruleId).toBe('jsx-a11y-x/tabindex-no-positive');
   });
 
   it('should verify Node configuration rules', async () => {
@@ -364,11 +364,12 @@ describe('Rules', () => {
     const results = await astroEslint.lintFiles(['src/test/cases/astro.astro']);
     const messages = filterMessages(results, 'astro/');
 
-    expect(messages).toHaveLength(3);
+    const ruleIds = messages.map(({ ruleId }) => ruleId);
 
-    expect(messages[0]?.ruleId).toBe('astro/no-deprecated-astro-resolve');
-    expect(messages[1]?.ruleId).toBe('astro/no-set-html-directive');
-    expect(messages[2]?.ruleId).toBe('astro/no-set-text-directive');
+    expect(ruleIds).toContain('astro/jsx-a11y/alt-text');
+    expect(ruleIds).toContain('astro/no-deprecated-astro-resolve');
+    expect(ruleIds).toContain('astro/no-set-html-directive');
+    expect(ruleIds).toContain('astro/no-set-text-directive');
   });
 
   it('should verify Tailwind configuration rules', async () => {

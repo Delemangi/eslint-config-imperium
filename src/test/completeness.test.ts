@@ -1,4 +1,4 @@
-import type { Rule } from 'eslint';
+import type { ESLint, Rule } from 'eslint';
 
 import e18ePlugin from '@e18e/eslint-plugin';
 import eslintCommentsPlugin from '@eslint-community/eslint-plugin-eslint-comments';
@@ -10,8 +10,7 @@ import vitestPlugin from '@vitest/eslint-plugin';
 import astroPlugin from 'eslint-plugin-astro';
 import { importX as importXPlugin } from 'eslint-plugin-import-x';
 import jsdocPlugin from 'eslint-plugin-jsdoc';
-// @ts-expect-error -- untyped plugin
-import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
+import jsxA11yPlugin from 'eslint-plugin-jsx-a11y-x';
 import nPlugin from 'eslint-plugin-n';
 import noBarrelFilesPlugin from 'eslint-plugin-no-barrel-files';
 import prettierPlugin from 'eslint-plugin-prettier';
@@ -84,7 +83,8 @@ type PluginTestCase = {
 };
 
 const isPluginRules = (value: unknown): value is PluginRules => typeof value === 'object' &&
-  value !== null && Object.values(value).every((rule) => typeof rule === 'object' && rule !== null);
+  value !== null &&
+  Object.values(value).every((rule) => typeof rule === 'object' && rule !== null);
 
 const getPluginRules = (value: unknown, pluginName: string): PluginRules => {
   if (!isPluginRules(value)) {
@@ -95,7 +95,8 @@ const getPluginRules = (value: unknown, pluginName: string): PluginRules => {
 };
 
 const isDeprecatedRule = (rule: Pick<Rule.RuleModule, 'meta'>): boolean => rule.meta !== undefined &&
-  'deprecated' in rule.meta && Boolean(Reflect.get(rule.meta, 'deprecated'));
+  'deprecated' in rule.meta &&
+  Boolean(Reflect.get(rule.meta, 'deprecated'));
 
 const isDisabledValue = (value: unknown): boolean => value === 'off' || value === 0;
 
@@ -176,10 +177,9 @@ const plugins: PluginTestCase[] = [
     rules: getPluginRules(noBarrelFilesPlugin.rules, 'no-barrel-files')
   },
   {
-    name: 'jsx-a11y',
-    prefix: 'jsx-a11y',
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- untyped plugin
-    rules: getPluginRules(jsxA11yPlugin.rules, 'jsx-a11y')
+    name: 'jsx-a11y-x',
+    prefix: 'jsx-a11y-x',
+    rules: getPluginRules((jsxA11yPlugin as unknown as ESLint.Plugin).rules, 'jsx-a11y-x')
   },
   {
     name: 'next',
@@ -266,7 +266,11 @@ describe('Rules Completeness', () => {
 
     // eslint-disable-next-line @typescript-eslint/no-deprecated -- no replacement API exists in ESLint v10
     for (const [name, rule] of builtinRules) {
-      if (!name.includes('/') && !isDeprecatedRule(rule) && !configuredRuleNames.includes(name)) {
+      if (
+        !name.includes('/') &&
+        !isDeprecatedRule(rule) &&
+        !configuredRuleNames.includes(name)
+      ) {
         missingRules.push(name);
       }
     }
@@ -296,8 +300,7 @@ describe('Rules Completeness', () => {
       return !isDisabled;
     });
 
-    expect(invalidRules, `The following core rules are extraneous or deprecated: ${invalidRules.join(', ')}`)
-      .toStrictEqual([]);
+    expect(invalidRules, `Invalid core rules: ${invalidRules.join(', ')}`).toStrictEqual([]);
   });
 
   it.each(plugins)('should configure all available $name rules', ({ prefix, rules }) => {
@@ -339,7 +342,6 @@ describe('Rules Completeness', () => {
 
     const invalidRules = configuredRuleNames.filter((rule) => !validRules.has(rule));
 
-    expect(invalidRules, `The following rules are extraneous or deprecated: ${invalidRules.join(', ')}`)
-      .toStrictEqual([]);
+    expect(invalidRules, `Invalid rules: ${invalidRules.join(', ')}`).toStrictEqual([]);
   });
 });
