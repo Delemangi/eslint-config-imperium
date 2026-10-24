@@ -10,12 +10,15 @@ import {
   astro,
   jsxA11y,
   next,
+  playwright,
   prettier,
   solid,
   svelte,
   tailwind,
   tanstackQuery,
+  tanstackRouter,
   testingLibrary,
+  vitest,
   vue
 } from '../index.js';
 
@@ -168,6 +171,119 @@ describe('Rules', () => {
     expect(messages[2]?.ruleId).toBe('perfectionist/sort-object-types');
   });
 
+  it('should verify Playwright configuration rules', async () => {
+    const playwrightEslint = new ESLint({ overrideConfig: [playwright] });
+    const results = await playwrightEslint.lintFiles(['src/test/cases/playwright.e2e.ts']);
+    const messages = filterMessages(results, 'playwright/');
+
+    expect(results[0]?.fatalErrorCount).toBe(0);
+    expect(messages.map(({ ruleId, severity }) => ({
+      ruleId,
+      severity
+    }))).toStrictEqual([
+      {
+        ruleId: 'playwright/no-focused-test',
+        severity: 2
+      },
+      {
+        ruleId: 'playwright/missing-playwright-await',
+        severity: 2
+      },
+      {
+        ruleId: 'playwright/missing-playwright-await',
+        severity: 2
+      },
+      {
+        ruleId: 'playwright/require-annotation-reason',
+        severity: 2
+      },
+      {
+        ruleId: 'playwright/prefer-strict-equal',
+        severity: 2
+      },
+      {
+        ruleId: 'playwright/no-skipped-test',
+        severity: 1
+      },
+      {
+        ruleId: 'playwright/no-skipped-test',
+        severity: 1
+      }
+    ]);
+    expect(results[0]?.messages.filter(({ ruleId }) => ruleId === 'no-empty-pattern')).toMatchObject([
+      {
+        severity: 2
+      }
+    ]);
+
+    const ordinaryConfig: unknown =
+      await playwrightEslint.calculateConfigForFile('src/app.spec.ts');
+
+    expect(ordinaryConfig).not.toHaveProperty('rules.playwright/no-focused-test');
+
+    const customEslint = new ESLint({
+      overrideConfig: [
+        {
+          ...playwright,
+          files: ['custom/**/*.js']
+        }
+      ],
+      overrideConfigFile: true
+    });
+    const customResults = await customEslint.lintText(`
+      import { test, expect } from '@playwright/test';
+
+      test.only('custom', async ({ page }) => {
+        await expect(page).toHaveTitle('Custom');
+      });
+    `, { filePath: 'custom/example.js' });
+
+    expect(filterMessages(customResults, 'playwright/')[0]?.ruleId).toBe('playwright/no-focused-test');
+  });
+
+  it('should isolate Playwright files from explicitly excluded Vitest scopes', async () => {
+    const composedEslint = new ESLint({
+      overrideConfig: [
+        {
+          ...vitest,
+          ignores: [
+            '**/e2e/**',
+            '**/playwright/**',
+            '**/*.e2e.*'
+          ]
+        },
+        playwright
+      ],
+      overrideConfigFile: true
+    });
+
+    for (const filePath of [
+      'e2e/example.spec.js',
+      'playwright/example.spec.js',
+      'example.e2e.js'
+    ]) {
+      const results = await composedEslint.lintText(`
+        import { test, expect } from '@playwright/test';
+
+        test.only('example', async ({ page }) => {
+          await expect(page).toHaveTitle('Example');
+        });
+      `, { filePath });
+      const config: unknown =
+        await composedEslint.calculateConfigForFile(filePath);
+
+      expect(results[0]?.fatalErrorCount).toBe(0);
+      expect(filterMessages(results, 'vitest/')).toHaveLength(0);
+      expect(config).not.toHaveProperty('rules.vitest/prefer-importing-vitest-globals');
+      expect(filterMessages(results, 'playwright/')).toMatchObject([
+        {
+          ruleId: 'playwright/no-focused-test',
+          severity: 2
+        }
+      ]);
+    }
+  });
+
   it('should verify Prettier configuration rules', async () => {
     const prettierEslint = new ESLint({
       overrideConfig: [prettier]
@@ -299,6 +415,19 @@ describe('Rules', () => {
     expect(messages.length).toBeGreaterThanOrEqual(1);
 
     expect(messages[0]?.ruleId).toBe('@tanstack/query/stable-query-client');
+  });
+
+  it('should verify TanStack Router configuration rules', async () => {
+    const routerEslint = new ESLint({ overrideConfig: [tanstackRouter] });
+    const results = await routerEslint.lintFiles(['src/test/cases/tanstack-router.ts']);
+    const messages = filterMessages(results, '@tanstack/router/');
+
+    expect(results[0]?.fatalErrorCount).toBe(0);
+    expect(messages).toHaveLength(1);
+    expect(messages[0]).toMatchObject({
+      ruleId: '@tanstack/router/route-param-names',
+      severity: 2
+    });
   });
 
   it('should verify Testing Library configuration rules', async () => {

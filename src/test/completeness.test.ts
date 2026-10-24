@@ -6,6 +6,7 @@ import eslintReactPlugin from '@eslint-react/eslint-plugin';
 import nextPlugin from '@next/eslint-plugin-next';
 import stylisticPlugin from '@stylistic/eslint-plugin';
 import tanstackQueryPlugin from '@tanstack/eslint-plugin-query';
+import tanstackRouterPlugin from '@tanstack/eslint-plugin-router';
 import vitestPlugin from '@vitest/eslint-plugin';
 import astroPlugin from 'eslint-plugin-astro';
 import { importX as importXPlugin } from 'eslint-plugin-import-x';
@@ -13,6 +14,7 @@ import jsdocPlugin from 'eslint-plugin-jsdoc';
 import jsxA11yPlugin from 'eslint-plugin-jsx-a11y-x';
 import nPlugin from 'eslint-plugin-n';
 import noBarrelFilesPlugin from 'eslint-plugin-no-barrel-files';
+import playwrightPlugin from 'eslint-plugin-playwright';
 import prettierPlugin from 'eslint-plugin-prettier';
 // @ts-expect-error -- untyped plugin
 import promisePlugin from 'eslint-plugin-promise';
@@ -42,6 +44,7 @@ import browserRules from '../browser/rules.js';
 import jsxA11yRules from '../jsx-a11y/rules.js';
 import nextRules from '../next/rules.js';
 import nodeRules from '../node/rules.js';
+import playwrightRules from '../playwright/rules.js';
 import prettierRules from '../prettier/rules.js';
 import reactRules from '../react/rules.js';
 import solidRules from '../solid/rules.js';
@@ -49,6 +52,7 @@ import stylisticRules from '../stylistic/rules.js';
 import svelteRules from '../svelte/rules.js';
 import tailwindRules from '../tailwind/rules.js';
 import tanstackQueryRules from '../tanstack-query/rules.js';
+import tanstackRouterRules from '../tanstack-router/rules.js';
 import testingLibraryRules from '../testing-library/rules.js';
 import typescriptRules from '../typescript/rules.js';
 import vitestRules from '../vitest/rules.js';
@@ -63,6 +67,7 @@ const allConfiguredRules: Record<string, unknown> = {
   ...jsxA11yRules,
   ...nextRules,
   ...nodeRules,
+  ...playwrightRules,
   ...prettierRules,
   ...reactRules,
   ...solidRules,
@@ -70,6 +75,7 @@ const allConfiguredRules: Record<string, unknown> = {
   ...svelteRules,
   ...tailwindRules,
   ...tanstackQueryRules,
+  ...tanstackRouterRules,
   ...testingLibraryRules,
   ...typescriptRules,
   ...vitestRules,
@@ -115,6 +121,16 @@ const getEslintReactRules = (): PluginRules => {
 };
 
 const plugins: PluginTestCase[] = [
+  {
+    name: 'tanstack-router',
+    prefix: '@tanstack/router',
+    rules: getPluginRules(tanstackRouterPlugin.rules, 'tanstack-router')
+  },
+  {
+    name: 'playwright',
+    prefix: 'playwright',
+    rules: getPluginRules(playwrightPlugin.rules, 'playwright')
+  },
   {
     name: 'e18e',
     prefix: 'e18e',

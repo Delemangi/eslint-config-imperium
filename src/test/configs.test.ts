@@ -56,6 +56,12 @@ describe('Configurations', () => {
     expect(errors).toBe(0);
   });
 
+  it('should lint Playwright configuration code without errors', async () => {
+    const errors = await getErrorsCount(['src/playwright/*.ts']);
+
+    expect(errors).toBe(0);
+  });
+
   it('should lint Prettier configuration code without errors', async () => {
     const errors = await getErrorsCount(['src/prettier/*.ts']);
 
@@ -94,6 +100,12 @@ describe('Configurations', () => {
 
   it('should lint TanStack Query configuration code without errors', async () => {
     const errors = await getErrorsCount(['src/tanstack-query/*.ts']);
+
+    expect(errors).toBe(0);
+  });
+
+  it('should lint TanStack Router configuration code without errors', async () => {
+    const errors = await getErrorsCount(['src/tanstack-router/*.ts']);
 
     expect(errors).toBe(0);
   });

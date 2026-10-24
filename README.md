@@ -49,15 +49,19 @@ This package is modular and includes several configurations intended to be enabl
 - [`browser`](./src/browser/index.ts) - Browser environment configuration
 - [`next`](./src/next/index.ts) - Next.js configuration
 - [`node`](./src/node/index.ts) - Node environment configuration
+- [`playwright`](./src/playwright/index.ts) - Playwright E2E test configuration (`e2e/`, `playwright/`, and `*.e2e.*`; override `files` for other paths)
 - [`react`](./src/react/index.ts) - React configuration
 - [`solid`](./src/solid/index.ts) - Solid configuration
 - [`svelte`](./src/svelte/index.ts) - Svelte configuration
 - [`tailwind`](./src/tailwind/index.ts) - Tailwind CSS v4 configuration
 - [`tanstackQuery`](./src/tanstack-query/index.ts) - TanStack Query configuration
+- [`tanstackRouter`](./src/tanstack-router/index.ts) - TanStack Router configuration
 - [`testingLibrary`](./src/testing-library/index.ts) - Testing Library configuration
 - [`typescript`](./src/typescript/index.ts) - TypeScript configuration
 - [`vitest`](./src/vitest/index.ts) - Vitest configuration
 - [`vue`](./src/vue/index.ts) - Vue configuration
+
+When combining Vitest and Playwright, explicitly exclude Playwright paths from the Vitest preset with `ignores: ['**/e2e/**', '**/playwright/**', '**/*.e2e.*']`; preset order does not prevent overlapping `*.spec.*` scopes.
 
 Framework modules are intentionally kept separate from runtime modules. Use `browser` or `node` when you want runtime globals and environment-specific rules, and then layer framework or library modules on top.
 
@@ -225,6 +229,7 @@ This is a list of the currently used ESLint plugins:
 - [`@next/eslint-plugin-next`](https://github.com/vercel/next.js/tree/canary/packages/eslint-plugin-next)
 - [`@stylistic/eslint-plugin`](https://github.com/eslint-stylistic/eslint-stylistic)
 - [`@tanstack/eslint-plugin-query`](https://github.com/TanStack/query/tree/main/packages/eslint-plugin-query)
+- [`@tanstack/eslint-plugin-router`](https://tanstack.com/router/latest/docs/eslint/eslint-plugin-router)
 - [`@typescript-eslint/eslint-plugin`](https://github.com/typescript-eslint/typescript-eslint)
 - [`@vitest/eslint-plugin`](https://github.com/vitest-dev/eslint-plugin-vitest)
 - [`eslint-plugin-astro`](https://github.com/ota-meshi/eslint-plugin-astro)
@@ -234,6 +239,7 @@ This is a list of the currently used ESLint plugins:
 - [`eslint-plugin-n`](https://github.com/eslint-community/eslint-plugin-n)
 - [`eslint-plugin-no-barrel-files`](https://github.com/art0rz/eslint-plugin-no-barrel-files)
 - [`eslint-plugin-perfectionist`](https://github.com/azat-io/eslint-plugin-perfectionist)
+- [`eslint-plugin-playwright`](https://github.com/mskelton/eslint-plugin-playwright)
 - [`eslint-plugin-prettier`](https://github.com/prettier/eslint-plugin-prettier)
 - [`eslint-plugin-promise`](https://github.com/eslint-community/eslint-plugin-promise)
 - [`eslint-plugin-react-hooks`](https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks)
