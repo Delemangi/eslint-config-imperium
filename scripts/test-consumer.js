@@ -297,9 +297,7 @@ try {
   await access(localBin('tsc'));
   assert.equal(
     typescript6Manifest.name,
-    typescriptMode === sideBySide
-      ? '@typescript/typescript6'
-      : 'typescript',
+    typescriptMode === sideBySide ? '@typescript/typescript6' : 'typescript',
     `Unexpected TypeScript 6 package identity: ${typescript6Manifest.name}`
   );
   assert.equal(
@@ -347,6 +345,16 @@ try {
       'clean.ts',
       'async function check(value: Promise<number>) { await value; }\nvoid check(Promise.resolve(1));'
     ],
+    ...['mts', 'cts'].flatMap((extension) => [
+      [
+        `typed.${extension}`,
+        'async function check(value: Promise<number>) { await value; await 1; }\nvoid check(Promise.resolve(1));'
+      ],
+      [
+        `clean.${extension}`,
+        'async function check(value: Promise<number>) { await value; }\nvoid check(Promise.resolve(1));'
+      ]
+    ]),
     [
       'tsconfig.json',
       JSON.stringify({
@@ -356,7 +364,11 @@ try {
           strict: true,
           target: 'ESNext'
         },
-        include: ['typed.ts', 'clean.ts']
+        include: [
+          '*.ts',
+          '*.mts',
+          '*.cts'
+        ]
       })
     ]
   ];
