@@ -199,7 +199,24 @@ const typescriptEslintRules = {
   '@typescript-eslint/no-useless-empty-export': ['error'],
   '@typescript-eslint/no-wrapper-object-types': ['error'],
   '@typescript-eslint/non-nullable-type-assertion-style': ['error'],
-  '@typescript-eslint/only-throw-error': ['error'],
+  '@typescript-eslint/only-throw-error': [
+    'error',
+    {
+      // Router uses these package-defined objects for redirect/not-found control flow.
+      allow: [
+        {
+          from: 'package',
+          name: [
+            'Redirect',
+            'AnyRedirect',
+            'ResolvedRedirect',
+            'NotFoundError'
+          ],
+          package: '@tanstack/router-core'
+        }
+      ]
+    }
+  ],
   '@typescript-eslint/parameter-properties': ['off'],
   '@typescript-eslint/prefer-as-const': ['error'],
   '@typescript-eslint/prefer-destructuring': ['off'],

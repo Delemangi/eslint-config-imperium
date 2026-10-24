@@ -67,6 +67,7 @@ const exports = [
   "next",
   "node",
   "perfectionist",
+  "playwright",
   "prettier",
   "react",
   "solid",
@@ -74,6 +75,7 @@ const exports = [
   "svelte",
   "tailwind",
   "tanstackQuery",
+  "tanstackRouter",
   "testingLibrary",
   "typescript",
   "vitest",
@@ -90,6 +92,68 @@ assert.ok(
   `ESLint ${eslintManifest.default.version} is outside peer ${peerRange}`,
 );
 const ESLint = (await import(local("node_modules/eslint/lib/api.js"))).ESLint;
+await Promise.all(
+  [
+    [
+      entry.tanstackRouter,
+      "route.js",
+      "import { createRoute } from '@tanstack/react-router';\n\ncreateRoute({ loader: () => null, beforeLoad: () => null });",
+      "@tanstack/router/create-route-property-order",
+      0,
+    ],
+    [
+      entry.tanstackRouter,
+      "route.js",
+      "import { createRoute } from '@tanstack/react-router';\n\ncreateRoute({ beforeLoad: () => null, loader: () => null });",
+      "@tanstack/router/create-route-property-order",
+      0,
+    ],
+    [
+      entry.tanstackRouter,
+      "route.js",
+      "import { createRoute } from '@tanstack/react-router';\n\nconst factory = () => ({ beforeLoad: () => null }); createRoute({ ...factory(), loader: () => null });",
+      "@tanstack/router/create-route-property-order",
+      0,
+    ],
+    [
+      entry.tanstackRouter,
+      "route.js",
+      "import { createRoute } from '@tanstack/react-router';\n\ncreateRoute({ path: '/$user-id' });",
+      "@tanstack/router/route-param-names",
+      1,
+    ],
+    [
+      entry.playwright,
+      "e2e/example.spec.js",
+      "import { test, expect } from '@playwright/test';\n\ntest('example', async ({ page }) => { expect(page).toHaveTitle('Example'); });",
+      "playwright/missing-playwright-await",
+      1,
+    ],
+    [
+      entry.playwright,
+      "e2e/example.spec.js",
+      "import { test, expect } from '@playwright/test';\n\ntest('example', async ({ page }) => { await page.getByRole('button').click(); await expect(page).toHaveTitle('Example'); });",
+      "playwright/missing-playwright-await",
+      0,
+    ],
+    [
+      entry.playwright,
+      "e2e/example.spec.js",
+      "import { test } from '@playwright/test';\n\ntest.only('example', async ({ page }) => { await page.getByRole('button').click(); });",
+      "playwright/no-focused-test",
+      1,
+    ],
+  ].map(async ([config, filePath, code, ruleId, count]) => {
+    const checker = new ESLint({
+      cwd: consumer,
+      overrideConfigFile: true,
+      overrideConfig: [config],
+    });
+    const [result] = await checker.lintText(code, { filePath });
+    assert.equal(result.fatalErrorCount, 0, JSON.stringify(result.messages));
+    assertRule(result.messages, ruleId, count, filePath);
+  }),
+);
 const jsx = new ESLint({
   cwd: consumer,
   overrideConfigFile: true,
