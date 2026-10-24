@@ -8,6 +8,8 @@ import {
 import baseRules from '../base/rules.js';
 import {
   astro,
+  auto,
+  base,
   jsxA11y,
   next,
   playwright,
@@ -18,6 +20,7 @@ import {
   tanstackQuery,
   tanstackRouter,
   testingLibrary,
+  typescript,
   vitest,
   vue
 } from '../index.js';
@@ -372,6 +375,33 @@ describe('Rules', () => {
     expect(messages[0]?.ruleId).toBe('@typescript-eslint/no-unused-expressions');
     expect(messages[1]?.ruleId).toBe('@typescript-eslint/dot-notation');
     expect(messages[2]?.ruleId).toBe('@typescript-eslint/only-throw-error');
+  });
+
+  it.each(['mts', 'cts'])('should apply typed and base rules to .%s modules', async (extension) => {
+    for (const config of [[...base, typescript], auto]) {
+      const checker = new ESLint({
+        overrideConfig: config,
+        overrideConfigFile: true
+      });
+      const filePath = `src/test/cases/typescript.${extension}`;
+      const results = await checker.lintFiles([filePath]);
+
+      expect(results[0]?.fatalErrorCount).toBe(0);
+      expect(filterMessages(results, '@typescript-eslint/await-thenable')).toHaveLength(1);
+      expect(filterMessages(results, 'jsdoc/no-types')).toHaveLength(1);
+      expect(filterCoreMessages(results).map(({ ruleId }) => ruleId)).toContain('no-var');
+
+      const effectiveConfig: unknown =
+        await checker.calculateConfigForFile(filePath);
+
+      expect(effectiveConfig).toHaveProperty('rules.no-undef.0', 2);
+      expect(effectiveConfig).toHaveProperty('languageOptions.parserOptions.projectService', true);
+
+      const clean = await checker.lintFiles([`src/test/cases/typescript-clean.${extension}`]);
+
+      expect(clean[0]?.fatalErrorCount).toBe(0);
+      expect(clean[0]?.messages).toStrictEqual([]);
+    }
   });
 
   it('should verify Vitest configuration rules', async () => {

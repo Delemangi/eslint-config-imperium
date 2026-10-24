@@ -17,7 +17,7 @@ import globals from 'globals';
 import rules from './rules.js';
 
 const base: Linter.Config = {
-  files: ['**/*.{js,ts,jsx,tsx,mjs,cjs}'],
+  files: ['**/*.{js,ts,jsx,tsx,mjs,cjs,mts,cts}'],
   languageOptions: {
     globals: {
       ...globals['shared-node-browser']

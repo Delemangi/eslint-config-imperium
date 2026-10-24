@@ -63,7 +63,8 @@ assert.match(
   'Imported TypeScript API must be major 6'
 );
 if (typescriptMode === 'typescript6') {
-  const missingNativeMessage = 'Standard TypeScript 6 consumer must not install TypeScript 7';
+  const missingNativeMessage =
+    'Standard TypeScript 6 consumer must not install TypeScript 7';
   assert.throws(() => consumerRequire.resolve('@typescript/native'), missingNativeMessage);
 }
 const exports = [
@@ -201,12 +202,7 @@ const vue = new ESLint({
 });
 const typed = new ESLint({
   cwd: consumer,
-  overrideConfig: [
-    {
-      ...entry.typescript,
-      rules: { '@typescript-eslint/await-thenable': 'error' }
-    }
-  ],
+  overrideConfig: [...entry.base, entry.typescript],
   overrideConfigFile: true
 });
 
@@ -229,9 +225,7 @@ assertRule(
 const jsxConfig = await jsx.calculateConfigForFile('bad.jsx');
 assert.ok(jsxConfig?.rules['jsx-a11y-x/alt-text'], 'JSX rule is not accessible in JSX');
 const svelteConfig = await jsx.calculateConfigForFile('component.svelte');
-assert.ok(!svelteConfig?.rules[
-  'jsx-a11y-x/alt-text'
-], 'JSX rule leaked to Svelte');
+assert.ok(!svelteConfig?.rules['jsx-a11y-x/alt-text'], 'JSX rule leaked to Svelte');
 
 const astroFiles = ['bad.astro', 'good.astro'];
 const astroResults = await astro.lintFiles(astroFiles);
@@ -268,31 +262,53 @@ for (const [result, filename] of [
   );
 }
 
-const [badTyped] = await typed.lintFiles(['typed.ts']);
-assertLinted(badTyped, 'Invalid typed fixture');
-assert.equal(
-  badTyped.fatalErrorCount,
-  0,
-  `Typed parser/projectService failed: ${JSON.stringify(badTyped.messages)}`
-);
-assertRule(
-  badTyped.messages,
-  '@typescript-eslint/await-thenable',
-  1,
-  'Non-thenable await must trigger await-thenable'
-);
-const [goodTyped] = await typed.lintFiles(['clean.ts']);
-assertLinted(goodTyped, 'Valid typed fixture');
-assert.equal(
-  goodTyped.fatalErrorCount,
-  0,
-  'Valid typed fixture failed parser/projectService'
-);
-assertRule(
-  goodTyped.messages,
-  '@typescript-eslint/await-thenable',
-  0,
-  'Awaiting a promise must be valid'
-);
+for (const extension of [
+  'ts',
+  'mts',
+  'cts'
+]) {
+  const config = await typed.calculateConfigForFile(`typed.${extension}`);
+  assert.equal(
+    config?.rules['no-var']?.[0],
+    2,
+    `${extension} must load base rules`
+  );
+  assert.equal(
+    config?.rules['jsdoc/no-types']?.[0],
+    2,
+    `${extension} must load typed JSDoc rules`
+  );
+  assert.equal(
+    config?.languageOptions.parserOptions.projectService,
+    true,
+    `${extension} must use projectService`
+  );
+  const [badTyped] = await typed.lintFiles([`typed.${extension}`]);
+  assertLinted(badTyped, 'Invalid typed fixture');
+  assert.equal(
+    badTyped.fatalErrorCount,
+    0,
+    `Typed parser/projectService failed: ${JSON.stringify(badTyped.messages)}`
+  );
+  assertRule(
+    badTyped.messages,
+    '@typescript-eslint/await-thenable',
+    1,
+    'Non-thenable await must trigger await-thenable'
+  );
+  const [goodTyped] = await typed.lintFiles([`clean.${extension}`]);
+  assertLinted(goodTyped, 'Valid typed fixture');
+  assert.equal(
+    goodTyped.fatalErrorCount,
+    0,
+    'Valid typed fixture failed parser/projectService'
+  );
+  assertRule(
+    goodTyped.messages,
+    '@typescript-eslint/await-thenable',
+    0,
+    'Awaiting a promise must be valid'
+  );
+}
 process.stdout.write(`Packed consumer passed with ESLint ${eslintManifest.default.version}, ` +
   `TypeScript ${typescript6.version} (${typescriptMode}, peer ${peerRange}).\n`);

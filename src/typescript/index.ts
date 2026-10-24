@@ -5,7 +5,7 @@ import typescriptPlugin from 'typescript-eslint';
 import rules from './rules.js';
 
 const typescript: Linter.Config = {
-  files: ['**/*.{ts,tsx}'],
+  files: ['**/*.{ts,tsx,mts,cts}'],
   languageOptions: {
     parser: typescriptPlugin.parser,
     parserOptions: {
