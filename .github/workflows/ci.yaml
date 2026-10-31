@@ -36,7 +36,6 @@ jobs:
         run: npm ci --ignore-scripts
 
       - name: Select ESLint Version
-        # Read the lockfile so selecting ESLint does not upgrade unrelated dependencies.
         run: npm install --ignore-scripts --no-save eslint@${{ matrix.eslint-version }}
 
       - name: Verify ESLint Version
