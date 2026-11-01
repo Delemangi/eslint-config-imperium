@@ -36,7 +36,7 @@ jobs:
         run: npm ci --ignore-scripts
 
       - name: Select ESLint Version
-        run: npm install --ignore-scripts --no-save --package-lock=false eslint@${{ matrix.eslint-version }}
+        run: npm install --ignore-scripts --no-save eslint@${{ matrix.eslint-version }}
 
       - name: Verify ESLint Version
         env:
