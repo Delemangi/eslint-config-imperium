@@ -495,10 +495,17 @@ describe('Rules', () => {
     const results = await vueEslint.lintFiles(['src/test/cases/vue.vue']);
     const messages = filterMessages(results, 'vue/');
 
-    expect(messages.length).toBeGreaterThanOrEqual(2);
+    expect(results[0]?.fatalErrorCount).toBe(0);
+    expect(messages.length).toBeGreaterThanOrEqual(5);
 
     expect(messages[0]?.ruleId).toBe('vue/multi-word-component-names');
     expect(messages[1]?.ruleId).toBe('vue/html-button-has-type');
+
+    const ruleIds = messages.map(({ ruleId }) => ruleId);
+
+    expect(ruleIds).toContain('vue/no-content-outside-block');
+    expect(ruleIds).toContain('vue/no-define-model-default');
+    expect(ruleIds).toContain('vue/no-props-shadow');
   });
 
   it('should verify Svelte configuration rules', async () => {
