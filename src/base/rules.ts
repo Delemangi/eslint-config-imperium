@@ -795,6 +795,10 @@ const promiseRules = {
 } satisfies Linter.Config['rules'];
 
 const importXRules = {
+  'import-x/avoid-barrel-files': ['off'], // Handled by no-barrel-files/no-barrel-files
+  'import-x/avoid-importing-barrel-files': ['off'], // Handled by no-barrel-files/prefer-source-imports
+  'import-x/avoid-namespace-import': ['off'], // Namespace imports are permitted
+  'import-x/avoid-re-export-all': ['off'], // Handled by no-barrel-files/no-barrel-files
   'import-x/consistent-type-specifier-style': ['off'], // Handled by @typescript-eslint/consistent-type-imports
   'import-x/default': ['error'],
   'import-x/dynamic-import-chunkname': ['off'],
