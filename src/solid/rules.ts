@@ -1,6 +1,8 @@
 import type { Linter } from 'eslint';
 
 const solidRules = {
+  // Solid 2 async actions; `action` is not a Solid 1 API.
+  'solid/action-yield-after-await': ['off'],
   'solid/components-return-once': ['error'],
   'solid/event-handlers': ['error'],
   'solid/imports': ['error'],
@@ -23,6 +25,7 @@ const solidRules = {
   'solid/no-restated-default-options': ['off'],
   'solid/no-single-arg-create-effect': ['off'],
   'solid/no-store-mutation-outside-setter': ['error'],
+  'solid/no-unassigned-vars': ['error'],
   'solid/no-unknown-namespaces': ['error'],
   // Shared/nested stores can be read or updated through another tuple.
   'solid/no-unused-signal': ['off'],
@@ -37,9 +40,16 @@ const solidRules = {
   'solid/require-async-server-function': ['error'],
   'solid/self-closing-comp': ['error'],
   'solid/style-prop': ['error'],
-  'solid/valid-use-server': ['error']
+  'solid/valid-use-server': ['error'],
+  'solid/validate-jsx-nesting': ['error']
+} satisfies Linter.Config['rules'];
+
+// Replaced by `solid/no-unassigned-vars`, which understands `ref={el}` assignments.
+const eslintDisabledRules = {
+  'no-unassigned-vars': ['off']
 } satisfies Linter.Config['rules'];
 
 export default {
-  ...solidRules
+  ...solidRules,
+  ...eslintDisabledRules
 } satisfies Linter.Config['rules'];
