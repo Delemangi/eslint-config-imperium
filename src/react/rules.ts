@@ -51,6 +51,8 @@ const eslintReactRules = {
   '@eslint-react/set-state-in-effect': ['off'],
   '@eslint-react/set-state-in-render': ['off'],
   '@eslint-react/static-components': ['off'],
+  // Incubating fork of `exhaustive-deps`; `react-hooks/exhaustive-deps` covers dependency analysis.
+  '@eslint-react/unstable-exhaustive-deps': ['off'],
   '@eslint-react/unsupported-syntax': ['off'],
   '@eslint-react/use-memo': ['off'],
   '@eslint-react/use-state': ['error']
