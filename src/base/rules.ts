@@ -600,6 +600,7 @@ const unicornRules = {
   'unicorn/prefer-object-iterable-methods': ['error'],
   'unicorn/prefer-observer-apis': ['error'],
   'unicorn/prefer-optional-catch-binding': ['error'],
+  'unicorn/prefer-options-parameter': ['error'],
   'unicorn/prefer-private-class-fields': ['error'],
   'unicorn/prefer-promise-static-methods': ['off'], // Can change rejection behavior, promise identity, and scheduling
   'unicorn/prefer-promise-try': ['error'],
@@ -608,6 +609,7 @@ const unicornRules = {
   'unicorn/prefer-queue-microtask': ['error'],
   'unicorn/prefer-reflect-apply': ['error'],
   'unicorn/prefer-regexp-escape': ['off'],
+  'unicorn/prefer-regexp-exec': ['error'],
   'unicorn/prefer-regexp-test': ['error'],
   'unicorn/prefer-response-static-json': ['error'],
   'unicorn/prefer-set-has': ['error'],
@@ -658,6 +660,8 @@ const unicornRules = {
   'unicorn/require-module-specifiers': ['off'],
   'unicorn/require-number-to-fixed-digits-argument': ['error'],
   'unicorn/require-proxy-trap-boolean-return': ['error'],
+  // Conflicts with @stylistic/no-extra-parens
+  'unicorn/require-spread-parentheses': ['off'],
   'unicorn/require-text-decoder-streaming': ['error'],
   'unicorn/single-line-block-comment-style': ['error', 'single-line'],
   'unicorn/string-content': ['off'],
