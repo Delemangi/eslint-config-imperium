@@ -174,6 +174,7 @@ const typescriptEslintRules = {
   '@typescript-eslint/no-unsafe-argument': ['error'],
   '@typescript-eslint/no-unsafe-assignment': ['error'],
   '@typescript-eslint/no-unsafe-call': ['error'],
+  '@typescript-eslint/no-unsafe-class-instance-assignment': ['error'],
   '@typescript-eslint/no-unsafe-declaration-merging': ['error'],
   '@typescript-eslint/no-unsafe-enum-assignment': ['error'],
   '@typescript-eslint/no-unsafe-enum-comparison': ['error'],
