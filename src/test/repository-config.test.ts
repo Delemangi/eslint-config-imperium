@@ -16,9 +16,9 @@ const calculateConfig = async (path: string) => {
     };
     rules: Record<string, [number, ...unknown[]]>;
   };
-  const config = await eslint.calculateConfigForFile(path);
+  const config: unknown = await eslint.calculateConfigForFile(path);
 
-  return config as unknown as RepositoryConfig;
+  return config as RepositoryConfig;
 };
 const specialistRulePattern =
   /^(?:@typescript-eslint|@eslint-react|react-hooks|react-refresh|vitest)\//u;
