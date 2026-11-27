@@ -6,16 +6,24 @@ import {
 } from 'vitest';
 
 const eslint = new ESLint();
-type RepositoryConfig = {
-  languageOptions: {
-    globals: Record<string, unknown>;
-    parser: { meta?: { name?: string } };
-    parserOptions: { projectService?: boolean };
-  };
-  rules: Record<string, [number, ...unknown[]]>;
-};
 
-const calculateConfig = async (path: string) => (await eslint.calculateConfigForFile(path)) as RepositoryConfig;
+const calculateConfig = async (path: string) => {
+  type RepositoryConfig = {
+    languageOptions: {
+      globals: Record<string, unknown>;
+      parser: { meta?: { name?: string } };
+      parserOptions: { projectService?: boolean };
+    };
+    rules: Record<string, [number, ...unknown[]]>;
+  };
+  const config: unknown = await eslint.calculateConfigForFile(path);
+
+  if (config === undefined) {
+    throw new Error(`ESLint returned no calculated config for ${path}`);
+  }
+
+  return config as RepositoryConfig;
+};
 const specialistRulePattern =
   /^(?:@typescript-eslint|@eslint-react|react-hooks|react-refresh|vitest)\//u;
 const javascriptFiles = [
