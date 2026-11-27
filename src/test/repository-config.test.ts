@@ -18,6 +18,10 @@ const calculateConfig = async (path: string) => {
   };
   const config: unknown = await eslint.calculateConfigForFile(path);
 
+  if (config === undefined) {
+    throw new Error(`ESLint returned no calculated config for ${path}`);
+  }
+
   return config as RepositoryConfig;
 };
 const specialistRulePattern =
